@@ -1,0 +1,79 @@
+﻿var Livros = new Array()
+		Livros[0] = "Todos|0";
+		Livros[1] = "Gênesis|50";
+		Livros[2] = "Êxodo|40";
+		Livros[3] = "Levítico|27";
+		Livros[4] = "Números|36";
+		Livros[5] = "Deuteronômio|34";
+		Livros[6] = "Josué|24";
+		Livros[7] = "Juízes|21";
+		Livros[8] = "Rute|4";
+		Livros[9] = "I Samuel|31";
+		Livros[10] = "II Samuel|24";
+		Livros[11] = "I Reis|22";
+		Livros[12] = "II Reis|25";
+		Livros[13] = "I Crônicas|29";
+		Livros[14] = "II Crônicas|36";
+		Livros[15] = "Esdras|10";
+		Livros[16] = "Neemias|13";
+		Livros[17] = "Ester|10";
+		Livros[18] = "Jó|42";
+		Livros[19] = "Salmos|150";
+		Livros[20] = "Provérbios|31";
+		Livros[21] = "Eclesiastes|12";
+		Livros[22] = "Cântico dos Cânticos|8";
+		Livros[23] = "Isaías|66";
+		Livros[24] = "Jeremias|52";
+		Livros[25] = "Lamentações|5";
+		Livros[26] = "Ezequiel|48";
+		Livros[27] = "Daniel|12";
+		Livros[28] = "Oséias|14";
+		Livros[29] = "Joel|3";
+		Livros[30] = "Amós|9";
+		Livros[31] = "Abdias|1";
+		Livros[32] = "Jonas|4";
+		Livros[33] = "Miquéias|7";
+		Livros[34] = "Naum|3";
+		Livros[35] = "Habacuque|3";
+		Livros[36] = "Sofonias|3";
+		Livros[37] = "Ageu|2";
+		Livros[38] = "Zacarias|14";
+		Livros[39] = "Malaquias|3";
+		Livros[40] = "Mateus|28";
+		Livros[41] = "Marcos|16";
+		Livros[42] = "Lucas|24";
+		Livros[43] = "João|21";
+		Livros[44] = "Atos dos Apóstolos|28";
+		Livros[45] = "Romanos|16";
+		Livros[46] = "I Coríntios|16";
+		Livros[47] = "II Coríntios|13";
+		Livros[48] = "Gálatas|6";
+		Livros[49] = "Efésios|6";
+		Livros[50] = "Filipenses|4";
+		Livros[51] = "Colossenses|4";
+		Livros[52] = "I Tessalonicenses|5";
+		Livros[53] = "II Tessalonicenses|3";
+		Livros[54] = "I Timóteo|6";
+		Livros[55] = "II Timóteo|4";
+		Livros[56] = "Tito|3";
+		Livros[57] = "Filêmon|1";
+		Livros[58] = "Hebreus|13";
+		Livros[59] = "Tiago|5";
+		Livros[60] = "I Pedro|5";
+		Livros[61] = "II Pedro|3";
+		Livros[62] = "I João|5";
+		Livros[63] = "II João|1";
+		Livros[64] = "III João|1";
+		Livros[65] = "Judas|1";
+		Livros[66] = "Apocalipse|22";
+		
+function PreencheCombo(livro){
+
+	if(livro == 0) {document.getElementById('capitulo').style.display = "none";} else {document.getElementById('capitulo').style.display = "";}
+	document.forms['BuscaNaBiblia'].capitulo.options.length = 0;
+	for (i=0; i<Livros[livro].split("|")[1]; i++) {
+	var valor = i+1;
+	document.forms['BuscaNaBiblia'].capitulo.options[i] = new Option(valor,valor);
+	}
+	//document.getElementById('LVP').innerHTML = '<center><a href="http://www.vivendoapalavra.com.br/index.php/plugin-da-biblia-online-para-wordpress/" style="text-decoration: none;" target="_top"><font face="Verdana" style="color: #000; font-size: 8px;"><br><b>www.vivendoapalavra.com.br</b></font></a></center><hr>';
+}

@@ -1,0 +1,155 @@
+.verdiario {
+	border: 1px solid #D3D3D3;
+	background: #DBDBDB;
+	color: #999999;
+	padding:5px;
+	}
+	
+.titulo {
+	color: #3c78a7;
+	font: 1.2em Arial, Helvetica, sans-serif;
+	margin-bottom:5px;
+	}
+
+#bibliaVP {
+	width:100%;
+	border: 1px solid #D3D3D3;
+	}
+	
+#cabecaBibliaVP {
+	width:100%;
+	height:90px;
+	background: #DBDBDB url(../imagens/iconeTopo.png) repeat-y;
+	}
+	
+#rodapeBibliaVP {
+	width:100%;
+	height:63px;
+	padding:0px;
+	background:#DBDBDB;/* url(../imagens/fundoCabecaBOVP.png);*/
+	valign:center;
+	}
+
+
+#bibliaVP a, #bibliaVP a:link,#bibliaVP a:hover, #bibliaVP a:visited {
+	color: #3c78a7;
+	text-decoration:none
+	}
+
+#bibliaVP img {
+	border:0px;
+	}
+	
+#conteudo {
+	width:90%;
+	margin: 15px 20px 20px 20px; /* cima - esquerda - abaixo - direita */
+	}
+
+#logoBOVP{
+	margin: 0px 0px 0px 0px; /* cima - esquerda - abaixo - direita */
+	float: right;
+	}
+
+#formBuscaBiblia {
+	width:100%;
+	height:100%;
+	margin:5px;
+	align:center;
+	}
+	
+#BuscaNaBiblia {
+	height:100%;
+	margin:5px;
+	}
+
+.botao  {
+	font-size:11px;
+	background-color: #ffffff;
+	color:#999999;
+	border:1px solid #ccc;
+	text-decoration: none;
+	width:50px;
+	}
+
+.caixaDeTexto  {
+	font-size:11px;
+	background-color: #fff;
+	color:#999999;
+	border:1px solid #ccc;
+	text-decoration: none;
+	width:230px;
+	margin-bottom:5px;
+	}
+	
+.caixaLivro { 
+	background-color: #fff;
+	font-size:11px;
+	font-weight: bold;
+	width:180px;
+	border: #ccc 1px solid;
+	color: #8c8c8c;
+	margin-bottom:5px;
+	}
+	
+.caixaCapitulo { 
+	background-color: #fff;
+	font-size:11px;
+	color:#999999;
+	font-weight: bold;
+	width:45px;
+	border: #ccc 1px solid;
+	color: #8c8c8c;
+	margin-bottom:5px;
+	}
+
+input:focus, textarea:focus, label:focus, select:focus, button:focus {
+border: 1px solid #3c78a7;
+color:#3c78a7;
+background-image: url('images/back1.png'); }
+	
+	
+/* CSS Document 
+
+Plugin Name: WP-Digg Style Paginator
+Plugin URI: http://www.mis-algoritmos.com/2007/09/09/wp-digg-style-pagination-plugin-v-10/
+Author: Victor De la Rocha
+Author URI: http://www.mis-algoritmos.com
+*/
+
+/*Quotes style*/
+div.pagination {
+	padding:3px;
+	margin:3px;
+	text-align:center;
+}
+
+div.pagination a {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #ddd;
+	text-decoration: none; 
+	color: #aaa;
+}
+div.pagination a:hover, div.pagination a:active {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #a0a0a0;
+}
+div.pagination span.current {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #e0e0e0;
+	font-weight: bold;
+	background-color: #f0f0f0;
+	color: #aaa;
+}
+div.pagination span.disabled {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #f3f3f3;
+	color: #ccc;
+}
+.Buttons {
+	border:1px solid #c8c8c8;
+	background-color: #f3f6f8;
+}
