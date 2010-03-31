@@ -11,7 +11,7 @@ O Bíblia Online VP possibilita a consulta e exibição dos livros da Bíblia Sa
 
 == Description ==
 
-Plugin que possibilita a consulta e exibição dos livros da Bíblia Sagrada. O Plugin contém recursos como a exibição da "Palavra Diária" e a geração automática de links para o texto bíblico, a partir de referências encontradas nos posts do blog. 
+Consulta aos 66 livros da B&iacute;blia Sagrada. A vers&atilde;o que acompanha o plugin &eacute; Almeida Revisada e Corrigida, considerada de dom&iacute;nio p&uacute;blico. Este plugin, assim como o texto b&iacute;blico usado por ele n&atilde;o est&atilde;o sendo comercializados. O texto b&iacute;blico utilizado foi coletado na internet, caso encontre algum erro no mesmo, nos informe para que possamos corrigir.
 
 
 == Changelog ==
