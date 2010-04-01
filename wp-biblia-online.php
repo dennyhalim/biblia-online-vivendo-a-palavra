@@ -72,6 +72,7 @@ else {
 	}else{$pularLinha = false;}
 }
 }
+echo "<meta HTTP-EQUIV='refresh' CONTENT='0'>";
 }
 
 function Inicializar(){
@@ -89,6 +90,17 @@ function Inicializar(){
 		BibliaOnline::$id_pagina_biblia = get_option('paginaBOVP');
 		BibliaOnline::$origemVersiculo = get_option('verdiarioBOVP');
 		BibliaOnline::$pastaPlugin = plugins_url('/biblia-online/');// BibliaOnline::$diretoriodosite.'/wp-content/plugins/biblia-online/';
+		
+		if ( get_option('estadoBancoDeDadosBOVP') == 'vazio' ) {
+		
+		function alertaBOVP() {
+		echo "
+			<div id='message' class='updated fade'><p><strong>".__('A B&iacute;blia Online VP est&aacute; quase pronta. ')."</strong> ".sprintf(__('<a href="%1$s">Clique aqui</a> para completar a instala&ccedil;&atilde;o.'), "plugins.php?page=biblia-online/wp-biblia-online.php")."</p></div>
+			";
+		}
+		add_action('admin_notices', 'alertaBOVP');
+		return;
+	}
 		}	
 
 function Instalar(){ 
@@ -102,7 +114,7 @@ function Instalar(){
 }	
 
 function Desinstalar(){
-		$sqlExcluirBiblia = "DROP TABLE IF EXIST `".BibliaOnline::$wpdb->prefix."arc`";
+		$sqlExcluirBiblia = "DROP TABLE `".BibliaOnline::$wpdb->prefix."arc`";
 		BibliaOnline::$wpdb->query($sqlExcluirBiblia);
 		delete_option('paginaBOVP');
 		delete_option('verdiarioBOVP');
@@ -138,11 +150,12 @@ function paginaCongigBOVP() {
 	<table class="form-table">
 		<?php  ?>
         <tr valign="top">
-        <th scope="row">Pagina onde sera exibida a Biblia Online VP</th>
+        <th scope="row">P&aacute;gina onde ser&aacute; exibida a B&iacute;blia 
+          Online VP</th>
         <td><input type="text" name="paginaBOVP" value="<?php echo get_option('paginaBOVP'); ?>" /></td>
         </tr>
         <tr valign="top">
-        <th scope="row">Origem do Vers&iacute;culo a ser exibido na Palavra Diária</th>
+        <th scope="row">Origem do Vers&iacute;culo a ser exibido na Palavra Di&aacute;ria</th>
         <td><select name="verdiarioBOVP">
             <option value="0" <?php if (get_option('verdiarioBOVP')==0) {echo 'selected';} ?> >Toda a B&iacute;blia</option>
 			<option value="1" <?php if (get_option('verdiarioBOVP')==1) {echo 'selected';} ?> >Antigo Testamento</option>
@@ -256,20 +269,34 @@ function preencheComboLivros(){
 function formBiblia(){ 
 	?>
 
-<div id="formBuscaBiblia" align="right">
+<div id="formBuscaBiblia" style="border-bottom:3px double; width:100%; background-color:#ccc;"  > 
 <form name="BuscaNaBiblia" id="BuscaNaBiblia" action="<?php echo BibliaOnline::$diretoriodosite.'index.php'; ?>"/>
-        <input name="page_id" type="hidden" value="<?php echo BibliaOnline::$id_pagina_biblia?>"/>
-		<input name="consulta" type="text" class="caixaDeTexto" id="consulta" size="100%"/>
-		<select name="livro" id="select" onChange="PreencheCombo(this.form.livro.selectedIndex)" class="caixaLivro">
-        <?php BibliaOnline::preencheComboLivros(); ?>
-        </select>
-        <select name="capitulo" id="capitulo" class="caixaCapitulo">
-        <option>Cap&iacute;tulo</option>
-        </select>
-        <input type="submit" value="Ok" class="botao">
-		<script type="text/javascript" language="JavaScript">PreencheCombo(0);</script>
-        </form>
-	</div>
+<table width="100%" border="0" style="padding:5px";>
+  <tr>
+    <td><div align="right">
+	<font style="color:#999999;font: 12px Arial, Helvetica, sans-serif;">digite aqui o que deseja procurar:</font><br />
+    <input name="page_id" type="hidden" value="<?php echo BibliaOnline::$id_pagina_biblia?>"/><input name="consulta" type="text" class="caixaDeTexto" id="consulta" size="100%"/>
+        </div></td>
+  </tr>
+  <tr>
+    <td><div align="right">
+	<font style="color:#999999;font: 12px Arial, Helvetica, sans-serif;margin-bottom:5px;">para ler um livro, selecione aqui:</font><br />
+    <select name="livro" id="select2" onChange="PreencheCombo(this.form.livro.selectedIndex)" class="caixaLivro">
+            <?php BibliaOnline::preencheComboLivros(); ?>
+          </select>
+          <select name="capitulo" id="capitulo" class="caixaCapitulo">
+            <option>Cap&iacute;tulo</option>
+          </select>
+        </div></td>
+  </tr>
+  <tr>
+    <td><div align="right">
+          <script type="text/javascript" language="JavaScript">PreencheCombo(0);</script>
+          <input name="submit" type="submit" class="botao" value="Ok">
+        </div></td>
+  </tr>
+</table></form>
+  </div>
 <?php 
 }
 
@@ -364,6 +391,8 @@ return $content;
 ************************************************************************************************************************/
 
 function versiculoDiario($novoFiltro) {
+
+if(get_option('estadoBancoDeDadosBOVP')=='vazio'){return false;}
 
 global $wpdb; 
 
@@ -481,11 +510,9 @@ if (is_page(BibliaOnline::$id_pagina_biblia)) {
 
 <div id='bibliaVP'>
 
-<div id="cabecaBibliaVP">
-
-<?php BibliaOnline::formBiblia(); ?>
-
-</div>
+  <div id="cabecaBibliaVP"> 
+    <?php BibliaOnline::formBiblia(); ?>
+  </div>
 		
 <?php  
 
@@ -502,6 +529,9 @@ $resultados = $wpdb->get_results("SELECT * FROM wp_arc WHERE (`texto` LIKE '% ".
 			$capitulo = $resultado->capitulo; 
 			$verso = $resultado->verso; 
 			$texto = $resultado->texto;
+			echo 'eu busco por: '.$busca;
+			$texto = str_replace('$busca."/i"','<font color="red">'.$busca.'</font>',$texto);
+			
 			
 			$livroCapitulos = BibliaOnline::livro_Capitulos($livro);
 			$livroCapitulosSplit = split("-",$livroCapitulos); 
@@ -557,7 +587,7 @@ $resultados = $wpdb->get_results("SELECT * FROM wp_arc WHERE (`texto` LIKE '% ".
 
 </div>
 	
-<div id='conteudo'>
+<div id='conteudo'><br>
 		<h3>
 		<?php 
 		$livroCapitulos = BibliaOnline::livro_Capitulos($var_livro);
@@ -576,9 +606,7 @@ $resultados = $wpdb->get_results("SELECT * FROM wp_arc WHERE (`texto` LIKE '% ".
 			
 </div>
 			<br>
-
 			<?php
-			 
 			$link = "?livro=".$var_livro."-".$var_paginas_livro;
 			$p = new pagination;
 			$p->Items($var_paginas_livro*$_limite_por_pagina);
@@ -592,7 +620,6 @@ $resultados = $wpdb->get_results("SELECT * FROM wp_arc WHERE (`texto` LIKE '% ".
 			$p->prevIcon('');//removing previous icon
 			$p->show();
 			?>
-			
 			
 <p class="resumo" align="center"> Exibindo o livro: &nbsp;<strong><?php echo $nomeLivro;?></strong>&nbsp;Cap&iacute;tulo: <strong><?php echo $var_capitulo ?></strong><br />
 Tradu&ccedil;&atilde;o: Jo&atilde;o Ferreira de Almeida - Atualizada</p>
@@ -610,7 +637,6 @@ Tradu&ccedil;&atilde;o: Jo&atilde;o Ferreira de Almeida - Atualizada</p>
 else {return $content;}
 }
 	
-
 function WidgetBuscaNaBiblia($args) {
 		if(is_page(BibliaOnline::$id_pagina_biblia)){return false;}
 		echo $args['before_widget'];
@@ -626,8 +652,8 @@ function WidgetVersiculoDiario($args) {
 		BibliaOnline::versiculoDiario(BibliaOnline::$origemVersiculo);
 		echo $args['after_widget'];
 }
-
 }
+
 register_activation_hook(__FILE__,array('BibliaOnline','Instalar'));
 register_sidebar_widget(__('Vers&iacute;culo Di&aacute;rio'),array('BibliaOnline', 'WidgetVersiculoDiario'));
 register_sidebar_widget(__('B&iacute;blia Online'),array('BibliaOnline', 'WidgetBuscaNaBiblia'));
