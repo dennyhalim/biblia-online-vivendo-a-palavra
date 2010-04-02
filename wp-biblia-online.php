@@ -23,6 +23,11 @@ class BibliaOnline {
 	private static $origemVersiculo;
 	private static $regEXP;
 	private static $linkBibliaOnline;	
+	private static $w_cons;	
+	private static $w_liv;	
+	private static $w_cap;	
+	private static $cor_fundo;	
+	
 
 function bibliaOnline_JS() {
 wp_enqueue_script('js_biblia_online', get_option('siteurl').'/wp-content/plugins/biblia-online/scripts/BibliaOnline.js');
@@ -145,7 +150,7 @@ function paginaCongigBOVP() {
 		BibliaOnline::importaTextoBiblico();
 		update_option("estadoBancoDeDadosBOVP", 'instalado');
 	}
-	settings_fields( 'opcoesBOVP' ); ?><?php BibliaOnline::versiculoDiario(BibliaOnline::$origemVersiculo); ?>
+	settings_fields( 'opcoesBOVP' ); ?><?php BibliaOnline::palavraDiaria(BibliaOnline::$origemVersiculo); ?>
     
 	<table class="form-table">
 		<?php  ?>
@@ -179,7 +184,7 @@ function paginaCongigBOVP() {
 
 function livro_Capitulos($nlv) {
 	switch($nlv) {
-		case 0:$nlv="Selecione o Livro-*"; break;
+		case 0:$nlv="Selecione o Livro-0"; break;
 		case 1:$nlv="G&ecirc;nesis-50"; break;
 		case 2:$nlv="&Ecirc;xodo-40"; break;
 		case 3:$nlv="Lev&iacute;tico-27"; break;
@@ -266,25 +271,26 @@ function preencheComboLivros(){
 	}
 	
 	
-function formBiblia(){ 
-	?>
+function formBiblia($w_cons = '90%', $w_liv = '70%', $w_cap = '20%', $cor_fundo = ''){ 
 
-<div id="formBuscaBiblia" style="border-bottom:3px double; width:100%; background-color:#ccc;"  > 
+?>
+
+<div id="formBuscaBiblia" style="background-color:<?php echo $cor_fundo; ?>;"> 
 <form name="BuscaNaBiblia" id="BuscaNaBiblia" action="<?php echo BibliaOnline::$diretoriodosite.'index.php'; ?>"/>
-<table width="100%" border="0" style="padding:5px";>
+<table width="100%" border="0" style="padding:5px;">
   <tr>
     <td><div align="right">
-	<font style="color:#999999;font: 12px Arial, Helvetica, sans-serif;">digite aqui o que deseja procurar:</font><br />
-    <input name="page_id" type="hidden" value="<?php echo BibliaOnline::$id_pagina_biblia?>"/><input name="consulta" type="text" class="caixaDeTexto" id="consulta" size="100%"/>
+	<font style="color:#003300;font: 12px Arial, Helvetica, sans-serif;">digite aqui o que deseja procurar:</font><br />
+    <input name="page_id" type="hidden" value="<?php echo BibliaOnline::$id_pagina_biblia;?>"/><input name="consulta" type="text" class="caixaDeTexto" id="consulta" style="width:<?php echo $w_cons; ?>;"/>
         </div></td>
   </tr>
   <tr>
     <td><div align="right">
-	<font style="color:#999999;font: 12px Arial, Helvetica, sans-serif;margin-bottom:5px;">para ler um livro, selecione aqui:</font><br />
-    <select name="livro" id="select2" onChange="PreencheCombo(this.form.livro.selectedIndex)" class="caixaLivro">
+	<font style="color:#003300;font: 12px Arial, Helvetica, sans-serif;margin-bottom:5px;">para ler um livro, selecione aqui:</font><br />
+    <select name="livro" id="select2" onChange="PreencheCombo(this.form.livro.selectedIndex)" class="caixaLivro"  style="width:<?php echo $w_liv; ?>;">
             <?php BibliaOnline::preencheComboLivros(); ?>
           </select>
-          <select name="capitulo" id="capitulo" class="caixaCapitulo">
+          <select name="capitulo" id="capitulo" class="caixaCapitulo" style="width:<?php echo $w_cap; ?>;"/>
             <option>Cap&iacute;tulo</option>
           </select>
         </div></td>
@@ -320,18 +326,60 @@ $nomesLivros = array(
 		array('9','1 samuel','1samuel','1sam','1s'),
 		array('10','2 samuel','2samuel','dt','deu','d'),
 		array('11','1 reis','1reis','1re','1r'),
-		array('12','1 crônicas','1 cronicas','1cronicas','1cro','1cr'),
-		array('13','2 crônicas','2 cronicas','2cronicas','2cro','2cr'),
-		array('14','esdras','esd','ed'),
-		array('15','neemias','nm'),
-		array('16','ester','esther','est','et'),
-		array('17','jó','jo'),
-		array('18','salmos','sl'),
-		array('19','provérbios','proverbios','prov','pr'),
-		array('20','eclesiastes','ecles','ecl','ec'),
-		array('21','cantares','canticos','cant','ct'),
-		array('22','2 reis','2reis','2re','2r'),
+		array('12','2 reis','2reis','2re','2r'),
+		array('13','1 crônicas','1 cronicas','1cronicas','1cro','1cr'),
+		array('14','2 crônicas','2 cronicas','2cronicas','2cro','2cr'),
+		array('15','esdras','esd','ed'),
+		array('16','neemias','nm'),
+		array('17','ester','esther','est','et'),
+		array('18','jó','jo'),
+		array('19','salmos','sl'),
+		array('20','provérbios','proverbios','prov','pr'),
+		array('21','eclesiastes','ecles','ecl','ec'),
+		array('22','cantares','canticos','cant','ct'),
+		array('23','isaías','is'),
+		array('24','Jeremias','jr'),
+		array('25','Lamentações de Jeremias','lm'),
+		array('26','Ezequiel','ezo'),
+		array('27','Daniel','dn'),
+		array('28','Oséias','os'),
+		array('39','joel','jl'),
+		array('30','amós','am'),
+		array('31','obadias','ob'),
+		array('32','jonas','jo'),
+		array('33','miquéias','jo'),
+		array('34','naum','jo'),
+		array('35','habacuque','jo'),
+		array('36','sofonias','jo'),
+		array('37','ageu','jo'),
+		array('38','zacarias','jo'),
+		array('39','malaquias','jo'),
+		array('40','mateus','jo'),
+		array('41','marcos','jo'),
+		array('42','lucas','jo'),
+		array('43','joão','joao','jo'),
+		array('44','atos','jo'),
+		array('45','romanos','jo'),
+		array('46','1 coriíntios','jo'),
+		array('47','2 coriíntios','jo'),
+		array('48','gálatas','jo'),
+		array('49','efésios','jo'),
+		array('50','filipenses','jo'),
+		array('51','colossenses','jo'),
+		array('52','1 tessalonissenses','jo'),
+		array('53','2 tessalonissenses','jo'),
+		array('54','1 timóteo','jo'),
+		array('55','2 timóteo','jo'),
+		array('56','tito','jo'),
+		array('57','filemom','jo'),
+		array('58','hebreus','jo'),
 		array('59','thiago','tiago','tg','t'),
+		array('60','1 pedro','1pe'),
+		array('61','2 pedro','2pe'),
+		array('62','1 joão','1jo'),
+		array('63','2 joão','2jo'),
+		array('64','3 joão','3 joao','2jo','j'),
+		array('65','judas','jd'),
 		array('66','apocalipse','apocap','apo','ap')
 		);
 		
@@ -358,7 +406,7 @@ $nomesLivros = array(
 							$nlvSplit = split("-",$livroCapitulos); 
 							$qtdCapitulos = $nlvSplit[1];
 							
-							$link = '<a href="'.BibliaOnline::$linkBibliaOnline.'&livro='.$varLivro.'-'.$qtdCapitulos.'&capitulo='.$varCapitulo.'">'.$substituir.'</a>';
+							$link = '<a href="'.BibliaOnline::$linkBibliaOnline.'&livro='.$varLivro.'-'.$qtdCapitulos.'&capitulo='.$varCapitulo.'&destaca='.$varVersiculo.'">'.$substituir.'</a>';
 							
 							$content = str_replace($substituir,$link,$content);
 
@@ -390,7 +438,7 @@ return $content;
 	de fazer um agrupamento dos versículos que completam o pensamento.
 ************************************************************************************************************************/
 
-function versiculoDiario($novoFiltro) {
+function palavraDiaria($novoFiltro) {
 
 if(get_option('estadoBancoDeDadosBOVP')=='vazio'){return false;}
 
@@ -475,6 +523,7 @@ if (isset($_GET['livro']) and ($_GET['livro'] != "")) {
 	$var_livro = $_GET['livro'];
 	$separa = explode('-', $var_livro);
 	$var_livro = $separa[0];
+	if($var_livro == 0) {$var_livro = 1; $var_paginas_livro = 50;}
 	$var_paginas_livro = $separa[1];
 } else { 
 	$var_livro = 1;
@@ -486,11 +535,17 @@ $var_capitulo = $_GET['capitulo'];
 } else { $var_capitulo = 1;}
 
 
+if (isset($_GET['destaca']) and ($_GET['destaca'] != "")) { 
+$destaca = $_GET['destaca'];
+} else { $destaca = 0;}
+
+
+
 if (is_page(BibliaOnline::$id_pagina_biblia)) {  
  
 		if (isset($busca) and ($busca != "")) { 
 			$busca = mysql_real_escape_string($busca);
-			$busca = str_replace(" ", "%", $busca); 
+			//$busca = str_replace(" ", "%", $busca); 
 			$tot_resultados = $wpdb->get_results("SELECT COUNT(wp_arc.texto) AS totalreg FROM wp_arc WHERE (wp_arc.texto LIKE '% ".$busca." %')"); 
 			
 			foreach($tot_resultados as $tot_result) {
@@ -510,9 +565,7 @@ if (is_page(BibliaOnline::$id_pagina_biblia)) {
 
 <div id='bibliaVP'>
 
-  <div id="cabecaBibliaVP"> 
-    <?php BibliaOnline::formBiblia(); ?>
-  </div>
+<?php BibliaOnline::formBiblia('250px','200px','50px','#D7D7D7'); ?>
 		
 <?php  
 
@@ -520,7 +573,7 @@ $resultados = $wpdb->get_results("SELECT * FROM wp_arc WHERE (`texto` LIKE '% ".
 ?>
 
 <div id='conteudo'>
-		<p><br><b>Exibindo resultados de <?php echo min($contador, ($inicio + 1))?> a <?php echo min($contador, ($inicio + $_limite_por_pagina))?></b>
+<p><b>Exibindo resultados de <?php echo min($contador, ($inicio + 1))?> a <?php echo min($contador, ($inicio + $_limite_por_pagina))?></b>
 		</p>
 		
 		<?php 	
@@ -529,8 +582,16 @@ $resultados = $wpdb->get_results("SELECT * FROM wp_arc WHERE (`texto` LIKE '% ".
 			$capitulo = $resultado->capitulo; 
 			$verso = $resultado->verso; 
 			$texto = $resultado->texto;
-			echo 'eu busco por: '.$busca;
-			$texto = str_replace('$busca."/i"','<font color="red">'.$busca.'</font>',$texto);
+				
+				$paraDestacar = '/'.$busca.'/i';
+				$paraDestacar = str_replace('%',' ', $paraDestacar);
+
+				preg_match_all($paraDestacar, $texto, $destacar );
+				$tamanho = count($destacar[0]);
+				foreach($destacar[0] as $destaque){
+				$texto = str_replace($destaque,'<font color="red">'.$destaque.'</font>',$texto);
+				}
+				
 			
 			
 			$livroCapitulos = BibliaOnline::livro_Capitulos($livro);
@@ -538,7 +599,7 @@ $resultados = $wpdb->get_results("SELECT * FROM wp_arc WHERE (`texto` LIKE '% ".
 			$nomeLivro = $livroCapitulosSplit[0];
 			$qtdCapitulos = $livroCapitulosSplit[1];
 		?>		
-		<p><b><a href="?page_id=<?php echo BibliaOnline::$id_pagina_biblia;?>&livro=<?php echo $livro;?>&capitulo=<?php echo $capitulo;?>&paginas=<?php echo $qtdCapitulos;?>"><?php echo $nomeLivro;?>: <?php echo $capitulo;?>: <?php echo $verso;?></a></b><br><?php echo $texto;?></p>
+		<p><b><a href="?page_id=<?php echo BibliaOnline::$id_pagina_biblia;?>&livro=<?php echo $livro;?>&capitulo=<?php echo $capitulo;?>&paginas=<?php echo $qtdCapitulos;?>&destaca=<?php echo $verso;?>"><?php echo $nomeLivro;?>: <?php echo $capitulo;?>: <?php echo $verso;?></a></b><br><?php echo $texto;?></p>
 		<?php
 		}
 		?>	
@@ -546,7 +607,7 @@ $resultados = $wpdb->get_results("SELECT * FROM wp_arc WHERE (`texto` LIKE '% ".
 </div>
 		<br>
 		<?php 
-		$link = "?consulta=".($_GET['consulta']);
+		$link = "?page_id=".BibliaOnline::$id_pagina_biblia."&consulta=".($_GET['consulta']);
 		$p = new pagination;
 		$p->Items($contador);
 		$p->limit($_limite_por_pagina);
@@ -583,11 +644,11 @@ $resultados = $wpdb->get_results("SELECT * FROM wp_arc WHERE (`texto` LIKE '% ".
 
 <div id="cabecaBibliaVP">
 
-<?php BibliaOnline::formBiblia(); ?>
+<?php BibliaOnline::formBiblia('250px','200px','50px','#D7D7D7'); ?>
 
 </div>
 	
-<div id='conteudo'><br>
+<div id='conteudo'>
 		<h3>
 		<?php 
 		$livroCapitulos = BibliaOnline::livro_Capitulos($var_livro);
@@ -599,15 +660,24 @@ $resultados = $wpdb->get_results("SELECT * FROM wp_arc WHERE (`texto` LIKE '% ".
 			$verso = $resultado_livro->verso; 
 			$texto = $resultado_livro->texto;
 		?>	
-			<p><b><?php echo $verso ?></b>: <?php echo $texto ?></p>
-		<?php 
+			<p><b><?php echo $verso ?></b>: 
+			
+			<?php 
+			
+				if($verso == $destaca) {
+					echo '<font color="red">'.$texto.'</font></p>';
+				} else {
+				echo $texto.'</p>';
+				}
+            
+		
 		}
 		?>
 			
 </div>
 			<br>
 			<?php
-			$link = "?livro=".$var_livro."-".$var_paginas_livro;
+			$link = "?page_id=".BibliaOnline::$id_pagina_biblia."&livro=".$var_livro."-".$var_paginas_livro;
 			$p = new pagination;
 			$p->Items($var_paginas_livro*$_limite_por_pagina);
 			$p->limit($_limite_por_pagina);
@@ -645,17 +715,17 @@ function WidgetBuscaNaBiblia($args) {
 		echo $args['after_widget'];
 }
 
-function WidgetVersiculoDiario($args) {
+function WidgetPalavraDiaria($args) {
 		
 		echo $args['before_widget'];
 		echo $args['before_title'] . "Palavra Di&aacute;ria" . $args['after_title'];
-		BibliaOnline::versiculoDiario(BibliaOnline::$origemVersiculo);
+		BibliaOnline::palavraDiaria(BibliaOnline::$origemVersiculo);
 		echo $args['after_widget'];
 }
 }
 
 register_activation_hook(__FILE__,array('BibliaOnline','Instalar'));
-register_sidebar_widget(__('Vers&iacute;culo Di&aacute;rio'),array('BibliaOnline', 'WidgetVersiculoDiario'));
+register_sidebar_widget(__('Palavra Di&aacute;ria'),array('BibliaOnline', 'WidgetPalavraDiaria'));
 register_sidebar_widget(__('B&iacute;blia Online'),array('BibliaOnline', 'WidgetBuscaNaBiblia'));
 register_deactivation_hook(__FILE__,array('BibliaOnline','Desinstalar'));
 add_filter('init', array('BibliaOnline','Inicializar'));
