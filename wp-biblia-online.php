@@ -99,14 +99,12 @@ function Inicializar(){
 		if ( get_option('estadoBancoDeDadosBOVP') == 'vazio' ) {
 		
 		function alertaBOVP() {
-		echo "
-			<div id='message' class='updated fade'><p><strong>".__('A B&iacute;blia Online VP est&aacute; quase pronta. ')."</strong> ".sprintf(__('<a href="%1$s">Clique aqui</a> para completar a instala&ccedil;&atilde;o.'), "plugins.php?page=biblia-online/wp-biblia-online.php")."</p></div>
-			";
+		echo "<div id='message' class='updated fade'><p><strong>".__('A B&iacute;blia Online VP est&aacute; quase pronta, para completar a instala&ccedil;&atilde;o acesse a página de op&ccedil;&otilde;es do plugin. ')."</strong></p></div>";
 		}
 		add_action('admin_notices', 'alertaBOVP');
 		return;
 	}
-		}	
+}	
 
 function Instalar(){ 
 		if ( is_null(BibliaOnline::$wpdb) ) BibliaOnline::inicializar();
