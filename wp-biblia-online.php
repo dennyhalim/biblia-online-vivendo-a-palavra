@@ -30,11 +30,11 @@ class BibliaOnline {
 	
 
 function bibliaOnline_JS() {
-wp_enqueue_script('js_biblia_online', get_option('siteurl').'/wp-content/plugins/biblia-online/scripts/BibliaOnline.js');
+wp_enqueue_script('js_biblia_online', BibliaOnline::$pastaPlugin.'/scripts/BibliaOnline.js');
 }
 
 function bibliaOnline_CSS() {
-echo '<link rel="stylesheet" href="'.get_option('siteurl').'/wp-content/plugins/biblia-online/css/BibliaOnlineCSS.css" type="text/css" media="screen" />';
+echo '<link rel="stylesheet" href="'.BibliaOnline::$pastaPlugin.'/css/BibliaOnlineCSS.css" type="text/css" media="screen" />';
 }
 
 function importaTextoBiblico(){
@@ -94,12 +94,12 @@ function Inicializar(){
 		BibliaOnline::$diretoriodosite = get_option('home').'/';
 		BibliaOnline::$id_pagina_biblia = get_option('paginaBOVP');
 		BibliaOnline::$origemVersiculo = get_option('verdiarioBOVP');
-		BibliaOnline::$pastaPlugin = plugins_url('/biblia-online/');// BibliaOnline::$diretoriodosite.'/wp-content/plugins/biblia-online/';
+		BibliaOnline::$pastaPlugin = plugins_url('/biblia-online-vivendo-a-palavra/');// BibliaOnline::$diretoriodosite.'/wp-content/plugins/biblia-online/';
 		
 		if ( get_option('estadoBancoDeDadosBOVP') == 'vazio' ) {
 		
 		function alertaBOVP() {
-		echo "<div id='message' class='updated fade'><p><strong>".__('A B&iacute;blia Online VP est&aacute; quase pronta, para completar a instala&ccedil;&atilde;o acesse a página de op&ccedil;&otilde;es do plugin. ')."</strong></p></div>";
+		echo "<div id='message' class='updated fade'><p><strong>".__('A B&iacute;blia Online VP est&aacute; quase pronta, para completar a instala&ccedil;&atilde;o acesse a p&aacute;gina de op&ccedil;&otilde;es do plugin. ')."</strong></p></div>";
 		}
 		add_action('admin_notices', 'alertaBOVP');
 		return;
