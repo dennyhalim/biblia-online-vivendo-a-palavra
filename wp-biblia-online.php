@@ -298,7 +298,7 @@ function formBiblia($w_cons = '90%', $w_liv = '70%', $w_cap = '20%', $cor_fundo 
   <tr>
     <td><div align="right">
           <script type="text/javascript" language="JavaScript">PreencheCombo(0);</script>
-          <input name="submit" type="submit" class="botao" value="Ok">
+          <input type="submit" class="botao" value="Ok">
         </div></td>
   </tr>
 </table></form>
@@ -438,7 +438,7 @@ return $content;
 	de fazer um agrupamento dos versículos que completam o pensamento.
 ************************************************************************************************************************/
 
-function palavraDiaria($novoFiltro) {
+function palavraDiaria($novoFiltro = 0) {
 
 if(get_option('estadoBancoDeDadosBOVP')=='vazio'){return false;}
 
@@ -519,7 +519,7 @@ global $post;
 global $wpdb; 
 $busca = $_GET['consulta'];
 
-if (isset($_GET['livro']) and ($_GET['livro'] != "")) { 
+if (isset($_GET['livro']) and ($_GET['livro'] != "") and ($_GET['livro'] != "0-0")) { 
 	$var_livro = $_GET['livro'];
 	$separa = explode('-', $var_livro);
 	$var_livro = $separa[0];
@@ -545,7 +545,7 @@ if (is_page(BibliaOnline::$id_pagina_biblia)) {
  
 		if (isset($busca) and ($busca != "")) { 
 			$busca = mysql_real_escape_string($busca);
-			//$busca = str_replace(" ", "%", $busca); 
+			//$busca = str_replace(" ", "%", $busca);  // Frase exata ou palavras da frase
 			$tot_resultados = $wpdb->get_results("SELECT COUNT(wp_arc.texto) AS totalreg FROM wp_arc WHERE (wp_arc.texto LIKE '% ".$busca." %')"); 
 			
 			foreach($tot_resultados as $tot_result) {
