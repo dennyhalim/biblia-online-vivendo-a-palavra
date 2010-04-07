@@ -30,11 +30,11 @@ class BibliaOnline {
 	
 
 function bibliaOnline_JS() {
-wp_enqueue_script('js_biblia_online', BibliaOnline::$pastaPlugin.'scripts/bibliaOnline.js');
+wp_enqueue_script('js_biblia_online', BibliaOnline::$pastaPlugin.'scripts/bibliaonline.js');
 }
 
 function bibliaOnline_CSS() {
-echo '<link rel="stylesheet" href="'.BibliaOnline::$pastaPlugin.'css/BibliaOnlineCSS.css" type="text/css" media="screen" />';
+echo '<link rel="stylesheet" href="'.BibliaOnline::$pastaPlugin.'css/bibliaonlinecss.css" type="text/css" media="screen" />';
 }
 
 function importaTextoBiblico(){
@@ -94,7 +94,7 @@ function Inicializar(){
 		BibliaOnline::$diretoriodosite = get_option('home').'/';
 		BibliaOnline::$id_pagina_biblia = get_option('paginaBOVP');
 		BibliaOnline::$origemVersiculo = get_option('verdiarioBOVP');
-		BibliaOnline::$pastaPlugin = plugins_url('/biblia-online-vivendo-a-palavra/');// BibliaOnline::$diretoriodosite.'/wp-content/plugins/biblia-online/';
+		BibliaOnline::$pastaPlugin = plugins_url('/biblia-online-vivendo-a-palavra/');
 		
 		if ( get_option('estadoBancoDeDadosBOVP') == 'vazio' ) {
 		
@@ -127,7 +127,7 @@ function Desinstalar(){
 }
 
 function criarMenuBOVP() {
-	add_menu_page('Configuracoes', 'Biblia Online', '10', __FILE__, array('BibliaOnline','paginaCongigBOVP'),plugins_url('/imagens/iconeBOVP.png', __FILE__));
+	add_menu_page('Configuracoes', 'Biblia Online', '10', __FILE__, array('BibliaOnline','paginaCongigBOVP'),plugins_url('/imagens/icone_bovp.png', __FILE__));
 	add_action( 'admin_init', array('BibliaOnline','configuraBOVP'));
 }
 
@@ -141,17 +141,23 @@ function paginaCongigBOVP() {
 <div class="wrap">
 <h2>Biblia Online VP</h2>
 
-<form method="post" action="options.php">
+
 
     <?php 
 	if(get_option('estadoBancoDeDadosBOVP')=='vazio'){ 
+		echo "<div id='message' class='updated fade'><p><strong>".__('Aguarde a instala&ccedil;&atilde;o do texto b&iacute;blico. Instalando ...')."</strong></p></div>";
+		
 		BibliaOnline::importaTextoBiblico();
 		update_option("estadoBancoDeDadosBOVP", 'instalado');
-	}
-	settings_fields( 'opcoesBOVP' ); ?><?php BibliaOnline::palavraDiaria(BibliaOnline::$origemVersiculo); ?>
+	}else{
+		
+	$registrosAdicionados = BibliaOnline::$wpdb->get_row("SELECT COUNT( id ) AS total FROM `wp_arc`");
+	echo '<p>Foram inseridos <font color=red>'.$registrosAdicionados->total.'</font> registros em seu Banco de Dados.<br>Se o n&uacute;mero de registros inseridos for 31106, &eacute; sinal de que <br>o Banco de dados foi instalado corretamente, caso contr&aacute;rio <br>desinstale o plugin e tente novamente a instala&ccedil;&atilde;o.</p><br>';
     
+	BibliaOnline::palavraDiaria(BibliaOnline::$origemVersiculo); ?>
+    <form method="post" action="options.php">
+    <?php settings_fields( 'opcoesBOVP' ); ?>
 	<table class="form-table">
-		<?php  ?>
         <tr valign="top">
         <th scope="row">P&aacute;gina onde ser&aacute; exibida a B&iacute;blia 
           Online VP</th>
@@ -178,7 +184,7 @@ function paginaCongigBOVP() {
 </form>
 </div>
 
-<?php } 
+<?php }} 
 
 function livro_Capitulos($nlv) {
 	switch($nlv) {
@@ -322,63 +328,63 @@ $nomesLivros = array(
 		array('7','juízes','juizes','jz','j'),
 		array('8','rute','ruth','rut','rt','r'),
 		array('9','1 samuel','1samuel','1sam','1s'),
-		array('10','2 samuel','2samuel','dt','deu','d'),
+		array('10','2 samuel','2samuel','2sam'),
 		array('11','1 reis','1reis','1re','1r'),
 		array('12','2 reis','2reis','2re','2r'),
-		array('13','1 crônicas','1 cronicas','1cronicas','1cro','1cr'),
-		array('14','2 crônicas','2 cronicas','2cronicas','2cro','2cr'),
+		array('13','1 crônicas','1 cronicas','1cronicas','1cron','1cr'),
+		array('14','2 crônicas','2 cronicas','2cronicas','2cron','2cr'),
 		array('15','esdras','esd','ed'),
-		array('16','neemias','nm'),
+		array('16','neemias','ne'),
 		array('17','ester','esther','est','et'),
 		array('18','jó','jo'),
-		array('19','salmos','sl'),
+		array('19','salmos','sal'),
 		array('20','provérbios','proverbios','prov','pr'),
-		array('21','eclesiastes','ecles','ecl','ec'),
+		array('21','eclesiastes','ecle','ecl','ec'),
 		array('22','cantares','canticos','cant','ct'),
 		array('23','isaías','is'),
-		array('24','Jeremias','jr'),
-		array('25','Lamentações de Jeremias','lm'),
-		array('26','Ezequiel','ezo'),
-		array('27','Daniel','dn'),
+		array('24','Jeremias','jer'),
+		array('25','Lamentações de Jeremias','lam'),
+		array('26','Ezequiel','ez'),
+		array('27','Daniel','dan'),
 		array('28','Oséias','os'),
 		array('39','joel','jl'),
 		array('30','amós','am'),
 		array('31','obadias','ob'),
-		array('32','jonas','jo'),
-		array('33','miquéias','jo'),
-		array('34','naum','jo'),
-		array('35','habacuque','jo'),
-		array('36','sofonias','jo'),
-		array('37','ageu','jo'),
-		array('38','zacarias','jo'),
-		array('39','malaquias','jo'),
-		array('40','mateus','jo'),
-		array('41','marcos','jo'),
-		array('42','lucas','jo'),
+		array('32','jonas','jon'),
+		array('33','miquéias','miq'),
+		array('34','naum','na'),
+		array('35','habacuque','hab'),
+		array('36','sofonias','sof'),
+		array('37','ageu','ag'),
+		array('38','zacarias','zac'),
+		array('39','malaquias','mal'),
+		array('40','mateus','mt'),
+		array('41','marcos','mc'),
+		array('42','lucas','lc'),
 		array('43','joão','joao','jo'),
-		array('44','atos','jo'),
-		array('45','romanos','jo'),
-		array('46','1 coriíntios','jo'),
-		array('47','2 coriíntios','jo'),
-		array('48','gálatas','jo'),
-		array('49','efésios','jo'),
-		array('50','filipenses','jo'),
-		array('51','colossenses','jo'),
-		array('52','1 tessalonissenses','jo'),
-		array('53','2 tessalonissenses','jo'),
-		array('54','1 timóteo','jo'),
-		array('55','2 timóteo','jo'),
-		array('56','tito','jo'),
-		array('57','filemom','jo'),
-		array('58','hebreus','jo'),
+		array('44','atos','at'),
+		array('45','romanos','rom'),
+		array('46','1 coriíntios','1co'),
+		array('47','2 coriíntios','2co'),
+		array('48','gálatas','gal'),
+		array('49','efésios','ef'),
+		array('50','filipenses','flp'),
+		array('51','colossenses','col'),
+		array('52','1 tessalonissenses','1tes'),
+		array('53','2 tessalonissenses','2tes'),
+		array('54','1 timóteo','1tim'),
+		array('55','2 timóteo','2tim'),
+		array('56','tito','tt'),
+		array('57','filemom','flm'),
+		array('58','hebreus','heb'),
 		array('59','thiago','tiago','tg','t'),
 		array('60','1 pedro','1pe'),
 		array('61','2 pedro','2pe'),
 		array('62','1 joão','1jo'),
 		array('63','2 joão','2jo'),
-		array('64','3 joão','3 joao','2jo','j'),
-		array('65','judas','jd'),
-		array('66','apocalipse','apocap','apo','ap')
+		array('64','3 joão','3 joao','3jo','j'),
+		array('65','judas','jud'),
+		array('66','apocalipse','apoc','apo','ap')
 		);
 		
 		preg_match_all($regEXP, $content, $matches );
