@@ -1,5 +1,5 @@
 ﻿=== Bíblia Online ===
-Tags: Bíblia, Palavra de Deus, Bíblia Sagrada, Bíblia Evangélica, Novo Testamento, Antigo Testamento, online bible
+Tags: Bíblia, Palavra de Deus, Bíblia Sagrada, Bíblia Evangélica, Novo Testamento, Antigo Testamento, online bible, biblia, bíblia, biblia wordpress, biblia online, on-line, online, widget palavra diária, widget busca na bíblia, versículo diário, versiculo diario, palavra diaria
 Contributors: Andre Brum Sampaio, Kerwin Muriel Hirt Mayer
 Donate link: http://www.vivendoapalavra.com.br/index.php/plugin-da-biblia-online/
 Requires at least: 2.9.2
