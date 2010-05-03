@@ -35,7 +35,7 @@ Consulta aos livros da Bíblia Sagrada. A versão que acompanha o plugin é Alme
 3. Vá para menu que dá acesso a página de opções da Bíblia Online VP e informe o ID da página onde será exibida a Bíblia. A página pode demorar a carregar um pouco no primeiro acesso, pois neste momento será instalado o texto bíblico em seu banco de dados, por favor aguarde.
 4. [opcional] Na página de opções da Bíblia Online VP informe a origem da Palavra Diária (toda a Bíblia, AT, NT, Salmos).
 5. Para exibir os widgets que acompanham o plugin, acesse: APARÊNCIA -> WIDGETS (são dois widgets: o Widget de busca na Bíblia Online e o Widget da Palavra Diária.
-6. Para inserir a Palavra Diária em outra parte do seu tema use <?php BibliaOnline::palavraDiaria()?>.
+6. Para inserir a Palavra Diária em outra parte do seu tema use a função BibliaOnline::palavraDiaria() dentro de um bloco PHP.
 
 
 
