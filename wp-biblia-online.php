@@ -26,7 +26,7 @@ class BibliaOnline {
 	private static $w_cons;	
 	private static $w_liv;	
 	private static $w_cap;	
-	private static $cor_fundo;	
+	private static $cor_fundo, $estado_banco_de_dados, $palavra_diaria;	
 	
 
 function bibliaOnline_JS() {
@@ -41,57 +41,61 @@ echo '<link rel="stylesheet" href="'.BibliaOnline::$pastaPlugin.'css/bibliaonlin
 
 function importa_texto_biblico(){
 
-$arquivos = array('dados1.sql','dados2.sql','dados3.sql');
-	
-$linhaComentada = array('#','-- ','/*!','--');
-$separador = ';';
-
-foreach ($arquivos as $arquivo){
-
-$inserir = BibliaOnline::$caminhoFisico.'dados/'.$arquivo;
-
-$fp = fopen($inserir, 'r');
-
-$dados = fread($fp, filesize($inserir));
-fclose($fp);
-
-$dados = explode("\n",$dados);
-$querysExecutadas = 0;
-
-for($i = 0; $i < count($dados ); $i++) {
-	foreach ($linhaComentada as $prefixo){
+	$arquivos = array('dados1.sql','dados2.sql','dados3.sql');
 		
-		if (strpos ($dados [$i], $prefixo) === 0){ 
-			$pularLinha=true;
+	$linhaComentada = array('#','-- ','/*!','--');
+	$separador = ';';
+
+	foreach ($arquivos as $arquivo){
+
+		$inserir = BibliaOnline::$caminhoFisico.'dados/'.$arquivo;
+		
+		$fp = fopen($inserir, 'r');
+		
+		$dados = fread($fp, filesize($inserir));
+		fclose($fp);
+		
+		$dados = explode("\n",$dados);
+		$querysExecutadas = 0;
+		
+		for($i = 0; $i < count($dados ); $i++) {
+		
+			foreach ($linhaComentada as $prefixo){
+				
+				if (strpos ($dados [$i], $prefixo) === 0){ 
+					$pularLinha=true;
+				}
+			}
+			$fragmento = trim($dados [$i]);
+			$ultimaLetra = substr(trim($dados [$i]), -1);
+			if ($ultimaLetra == $separador){
+				if(!$pularLinha){
+					$queryPronta = true;
+					$querysExecutadas++;
+					$insereTexto .= $fragmento;
+				}
+			}
+			if ($queryPronta){
+				if(!$pularLinha){
+					$insereTexto = trim($insereTexto);
+					BibliaOnline::$wpdb->query($insereTexto);
+					$insereTexto = '';
+					$queryPronta = false;
+				}else{$pularLinha = false;}
+			}
+			else {
+				if(!$pularLinha){
+				$insereTexto .= $fragmento;
+				}else{$pularLinha = false;}
+			}
 		}
 	}
-$fragmento = trim($dados [$i]);
-$ultimaLetra = substr(trim($dados [$i]), -1);
-	if ($ultimaLetra == $separador){
-		if(!$pularLinha){
-			$queryPronta = true;
-			$querysExecutadas++;
-			$insereTexto .= $fragmento;
-		}
-	}
-	if ($queryPronta){
-		if(!$pularLinha){
-			$insereTexto = trim($insereTexto);
-			BibliaOnline::$wpdb->query($insereTexto);
-			$insereTexto = '';
-			$queryPronta = false;
-		}else{$pularLinha = false;}
-	}
-	else {
-		if(!$pularLinha){
-		$insereTexto .= $fragmento;
-		}else{$pularLinha = false;}
-	}
-}
-}
-//echo "<meta HTTP-EQUIV='refresh' CONTENT='0'>";
+	
+	
 	$registrosAdicionados = BibliaOnline::$wpdb->get_row("SELECT COUNT( id ) AS total FROM `wp_arc`");
-	if ($registrosAdicionados->total == 31106) BibliaOnline::importa_texto_biblico(); 
+	if ($registrosAdicionados->total == 31106) {
+	update_option('estadoBancoDeDadosBOVP', '31106');	
+	} 
 
 }
 
@@ -107,34 +111,27 @@ function Inicializar(){
 		add_action("wp_head", array("BibliaOnline","bibliaOnline_CSS"));
 		add_action("admin_menu", array("BibliaOnline","criarMenuBOVP"));
 		BibliaOnline::$wpdb = $wpdb;
-		BibliaOnline::$wp_rewrite = $wp_rewrite;
 		BibliaOnline::$dataverdiario = date("Y-m-d");
 		BibliaOnline::$linkBibliaOnline = get_option('home').'/index.php/?page_id='.get_option('paginaBOVP');
 		BibliaOnline::$diretoriodosite = get_option('home').'/';
 		BibliaOnline::$id_pagina_biblia = get_option('paginaBOVP');
 		BibliaOnline::$origemVersiculo = get_option('verdiarioBOVP');
+		BibliaOnline::$estado_banco_de_dados = get_option('estadoBancoDeDadosBOVP');
 		BibliaOnline::$pastaPlugin = plugins_url('/biblia-online-vivendo-a-palavra/');
 		BibliaOnline::$caminhoFisico = dirname(__FILE__) . '/';
-
 		
-		if ( get_option('estadoBancoDeDadosBOVP') == 'vazio' ) {
 		
-		function alertaBOVP() {
-		echo "<div id='message' class='updated fade'><p><strong>".__('A B&iacute;blia Online VP est&aacute; quase pronta, para completar a instala&ccedil;&atilde;o acesse a p&aacute;gina de op&ccedil;&otilde;es do plugin. ')."</strong></p></div>";
-		}
-		add_action('admin_notices', 'alertaBOVP');
-		return;
-	}
 }	
 
 function Instalar(){ 
 		if ( is_null(BibliaOnline::$wpdb) ) BibliaOnline::inicializar();
 		
-		add_option("estadoBancoDeDadosBOVP", 'vazio', '', 'yes'); // página onde será exibida a Bíblia
+		add_option("estadoBancoDeDadosBOVP", '0', '', 'yes'); // página onde será exibida a Bíblia
 		add_option("paginaBOVP", '1717', '', 'yes'); // página onde será exibida a Bíblia
 		add_option("verdiarioBOVP", '0', '', 'yes'); // origem do versículo (AT, NT ou Toda a Bíblia)
 		add_option("idVerdiarioBOVP", '1', '', 'yes'); // Id do versiculo que será exibido na data atual
 		add_option("dataVerdiarioBOVP", BibliaOnline::$dataverdiario, '', 'yes'); // Data de exibição do veículo registrado
+		BibliaOnline::importa_texto_biblico();
 }	
 
 function Desinstalar(){
@@ -166,11 +163,16 @@ function paginaCongigBOVP() {
 
     <?php 
 
-		
-	$registrosAdicionados = BibliaOnline::$wpdb->get_row("SELECT COUNT( id ) AS total FROM `wp_arc`");
-	echo '<p>Foram inseridos <font color=red>'; if (!$registrosAdicionados->total) {echo '0';} else {echo $registrosAdicionados->total;};echo'</font> registros em seu Banco de Dados.<br>Se o n&uacute;mero de registros inseridos for 31106, &eacute; sinal de que <br>o Banco de dados foi instalado corretamente, caso contr&aacute;rio <br>desinstale o plugin e tente novamente a instala&ccedil;&atilde;o.</p><br>';
-    
-	BibliaOnline::palavraDiaria(BibliaOnline::$origemVersiculo); ?>
+	echo "<div id='message' class='updated fade'><p><strong>";
+	BibliaOnline::palavraDiaria(BibliaOnline::$origemVersiculo);
+	echo"</strong></p></div>";	
+	echo '<p>Foram inseridos <font color=red>'; 
+	echo BibliaOnline::$estado_banco_de_dados;
+	echo'</font> registros em seu Banco de Dados.<br>Se o n&uacute;mero de registros inseridos for 31106,
+	 &eacute; sinal de que <br>o Banco de dados foi instalado corretamente, caso contr&aacute;rio <br>
+	 desinstale o plugin e tente novamente a instala&ccedil;&atilde;o.</p><br>';
+
+	 ?>
     <form method="post" action="options.php">
     <?php settings_fields( 'opcoesBOVP' ); ?>
 	<table class="form-table">
@@ -460,7 +462,7 @@ return $content;
 
 function palavraDiaria($novoFiltro = 0) {
 
-if(get_option('estadoBancoDeDadosBOVP')=='vazio'){return false;}
+if(get_option('estadoBancoDeDadosBOVP')=='0'){return false;}
 
 global $wpdb; 
 
