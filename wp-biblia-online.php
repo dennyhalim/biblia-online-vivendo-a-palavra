@@ -30,11 +30,11 @@ class BibliaOnline {
 	
 
 function bibliaOnline_JS() {
-wp_enqueue_script('js_biblia_online', BibliaOnline::$pastaPlugin.'scripts/bibliaonline.js');
+wp_enqueue_script('js_biblia_online', BibliaOnline::$pastaPlugin.'scripts/biblia_online.js');
 }
 
 function bibliaOnline_CSS() {
-echo '<link rel="stylesheet" href="'.BibliaOnline::$pastaPlugin.'css/bibliaonlinecss.css" type="text/css" media="screen" />';
+echo '<link rel="stylesheet" href="'.BibliaOnline::$pastaPlugin.'css/biblia_online_css.css" type="text/css" media="screen" />';
 }
 
 /*****************************************************************************/
