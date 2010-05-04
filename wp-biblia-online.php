@@ -18,7 +18,7 @@ class BibliaOnline {
 	private static $id_pagina_biblia;
 	private static $id_widget_biblia;
 	private static $id_logo_biblia;
-	private static $CaminhoPlugin;
+	private static $CaminhoPlugin, $caminhoFisico;
 	private static $dataverdiario;
 	private static $origemVersiculo;
 	private static $regEXP;
@@ -30,55 +30,73 @@ class BibliaOnline {
 	
 
 function bibliaOnline_JS() {
-wp_enqueue_script('js_biblia_online', BibliaOnline::$pastaPlugin.'scripts/bibliaOnline.js');
+wp_enqueue_script('js_biblia_online', BibliaOnline::$pastaPlugin.'scripts/bibliaonline.js');
 }
 
 function bibliaOnline_CSS() {
-echo '<link rel="stylesheet" href="'.BibliaOnline::$pastaPlugin.'css/BibliaOnlineCSS.css" type="text/css" media="screen" />';
+echo '<link rel="stylesheet" href="'.BibliaOnline::$pastaPlugin.'css/bibliaonlinecss.css" type="text/css" media="screen" />';
 }
 
-function importaTextoBiblico(){
-	
-$arquivo = BibliaOnline::$pastaPlugin."dados/wp_arc.sql";
+/*****************************************************************************/
 
+function importa_texto_biblico(){
+
+$arquivos = array('dados1.sql','dados2.sql','dados3.sql');
+	
 $linhaComentada = array('#','-- ','/*!','--');
 $separador = ';';
-$fp = file_get_contents($arquivo);
-$data = explode("\n",$fp);
+
+foreach ($arquivos as $arquivo){
+
+$inserir = BibliaOnline::$caminhoFisico.'dados/'.$arquivo;
+
+$fp = fopen($inserir, 'r');
+
+$dados = fread($fp, filesize($inserir));
+fclose($fp);
+
+$dados = explode("\n",$dados);
 $querysExecutadas = 0;
 
-for($i = 0; $i < count($data); $i++) {
+for($i = 0; $i < count($dados ); $i++) {
 	foreach ($linhaComentada as $prefixo){
 		
-		if (strpos ($data[$i], $prefixo) === 0){ 
+		if (strpos ($dados [$i], $prefixo) === 0){ 
 			$pularLinha=true;
 		}
 	}
-$fragmento = trim($data[$i]);
-$ultimaLetra = substr(trim($data[$i]), -1);
-if ($ultimaLetra == $separador){
-	if(!$pularLinha){
-	$queryPronta = true;
-	$querysExecutadas++;
-	$insereTexto .= $fragmento;
+$fragmento = trim($dados [$i]);
+$ultimaLetra = substr(trim($dados [$i]), -1);
+	if ($ultimaLetra == $separador){
+		if(!$pularLinha){
+			$queryPronta = true;
+			$querysExecutadas++;
+			$insereTexto .= $fragmento;
+		}
 	}
+	if ($queryPronta){
+		if(!$pularLinha){
+			$insereTexto = trim($insereTexto);
+			BibliaOnline::$wpdb->query($insereTexto);
+			$insereTexto = '';
+			$queryPronta = false;
+		}else{$pularLinha = false;}
 	}
-if ($queryPronta){
-	if(!$pularLinha){
-		$insereTexto = trim($insereTexto);
-		BibliaOnline::$wpdb->query($insereTexto);
-		$insereTexto = '';
-		$queryPronta = false;
-	}else{$pularLinha = false;}
-}
-else {
-	if(!$pularLinha){
-	$insereTexto .= $fragmento;
-	}else{$pularLinha = false;}
+	else {
+		if(!$pularLinha){
+		$insereTexto .= $fragmento;
+		}else{$pularLinha = false;}
+	}
 }
 }
-echo "<meta HTTP-EQUIV='refresh' CONTENT='0'>";
+//echo "<meta HTTP-EQUIV='refresh' CONTENT='0'>";
+	$registrosAdicionados = BibliaOnline::$wpdb->get_row("SELECT COUNT( id ) AS total FROM `wp_arc`");
+	if ($registrosAdicionados->total == 31106) BibliaOnline::importa_texto_biblico(); 
+
 }
+
+/*****************************************************************************/
+
 
 function Inicializar(){
 		global $wpdb;
@@ -89,12 +107,15 @@ function Inicializar(){
 		add_action("wp_head", array("BibliaOnline","bibliaOnline_CSS"));
 		add_action("admin_menu", array("BibliaOnline","criarMenuBOVP"));
 		BibliaOnline::$wpdb = $wpdb;
+		BibliaOnline::$wp_rewrite = $wp_rewrite;
 		BibliaOnline::$dataverdiario = date("Y-m-d");
 		BibliaOnline::$linkBibliaOnline = get_option('home').'/index.php/?page_id='.get_option('paginaBOVP');
 		BibliaOnline::$diretoriodosite = get_option('home').'/';
 		BibliaOnline::$id_pagina_biblia = get_option('paginaBOVP');
 		BibliaOnline::$origemVersiculo = get_option('verdiarioBOVP');
 		BibliaOnline::$pastaPlugin = plugins_url('/biblia-online-vivendo-a-palavra/');
+		BibliaOnline::$caminhoFisico = dirname(__FILE__) . '/';
+
 		
 		if ( get_option('estadoBancoDeDadosBOVP') == 'vazio' ) {
 		
@@ -141,18 +162,13 @@ function paginaCongigBOVP() {
 <div class="wrap">
 <h2>Biblia Online VP</h2>
 
-
+	
 
     <?php 
-	if(get_option('estadoBancoDeDadosBOVP')=='vazio'){ 
-		echo "<div id='message' class='updated fade'><p><strong>".__('Aguarde a instala&ccedil;&atilde;o do texto b&iacute;blico. Instalando ...')."</strong></p></div>";
-		
-		BibliaOnline::importaTextoBiblico();
-		update_option("estadoBancoDeDadosBOVP", 'instalado');
-	}else{
+
 		
 	$registrosAdicionados = BibliaOnline::$wpdb->get_row("SELECT COUNT( id ) AS total FROM `wp_arc`");
-	echo '<p>Foram inseridos <font color=red>'.$registrosAdicionados->total.'</font> registros em seu Banco de Dados.<br>Se o n&uacute;mero de registros inseridos for 31106, &eacute; sinal de que <br>o Banco de dados foi instalado corretamente, caso contr&aacute;rio <br>desinstale o plugin e tente novamente a instala&ccedil;&atilde;o.</p><br>';
+	echo '<p>Foram inseridos <font color=red>'; if (!$registrosAdicionados->total) {echo '0';} else {echo $registrosAdicionados->total;};echo'</font> registros em seu Banco de Dados.<br>Se o n&uacute;mero de registros inseridos for 31106, &eacute; sinal de que <br>o Banco de dados foi instalado corretamente, caso contr&aacute;rio <br>desinstale o plugin e tente novamente a instala&ccedil;&atilde;o.</p><br>';
     
 	BibliaOnline::palavraDiaria(BibliaOnline::$origemVersiculo); ?>
     <form method="post" action="options.php">
@@ -184,7 +200,7 @@ function paginaCongigBOVP() {
 </form>
 </div>
 
-<?php }} 
+<?php }
 
 function livro_Capitulos($nlv) {
 	switch($nlv) {
@@ -280,33 +296,33 @@ function formBiblia($w_cons = '90%', $w_liv = '70%', $w_cap = '20%', $cor_fundo 
 ?>
 
 <div id="formBuscaBiblia" style="background-color:<?php echo $cor_fundo; ?>;"> 
-<form name="BuscaNaBiblia" id="BuscaNaBiblia" action="<?php echo BibliaOnline::$diretoriodosite.'index.php'; ?>"/>
-<table width="100%" border="0" style="padding:5px;">
-  <tr>
-    <td><div align="right">
-	<font style="color:#003300;font: 12px Arial, Helvetica, sans-serif;">digite aqui o que deseja procurar:</font><br />
-    <input name="page_id" type="hidden" value="<?php echo BibliaOnline::$id_pagina_biblia;?>"/><input name="consulta" type="text" class="caixaDeTexto" id="consulta" style="width:<?php echo $w_cons; ?>;"/>
-        </div></td>
-  </tr>
-  <tr>
-    <td><div align="right">
-	<font style="color:#003300;font: 12px Arial, Helvetica, sans-serif;margin-bottom:5px;">para ler um livro, selecione aqui:</font><br />
-    <select name="livro" id="select2" onChange="PreencheCombo(this.form.livro.selectedIndex)" class="caixaLivro"  style="width:<?php echo $w_liv; ?>;">
-            <?php BibliaOnline::preencheComboLivros(); ?>
-          </select>
-          <select name="capitulo" id="capitulo" class="caixaCapitulo" style="width:<?php echo $w_cap; ?>;"/>
+<form action="<?php echo BibliaOnline::$diretoriodosite.'index.php'; ?>" name="BuscaNaBiblia" id="BuscaNaBiblia"/>
+    <table width="100%" border="0" style="padding:5px;">
+      <tr> 
+        <td><div align="right"> <font style="color:#003300;font: 12px Arial, Helvetica, sans-serif;">digite 
+            aqui o que deseja procurar:</font><br />
+            <input name="page_id" type="hidden" value="<?php echo BibliaOnline::$id_pagina_biblia;?>"/>
+            <input name="consulta" type="text" class="caixaDeTexto" id="consulta" style="width:<?php echo $w_cons; ?>;"/>
+          </div></td>
+      </tr>
+      <tr> 
+        <td><div align="right"> <font style="color:#003300;font: 12px Arial, Helvetica, sans-serif;margin-bottom:5px;">para 
+            ler um livro, selecione aqui:</font><br />
+            <select name="livro" id="select2" onChange="PreencheCombo(this.form.livro.selectedIndex)" class="caixaLivro"  style="width:<?php echo $w_liv; ?>;">
+              <?php BibliaOnline::preencheComboLivros(); ?>
+            </select>
+            <select name="capitulo" id="capitulo" class="caixaCapitulo" style="width:<?php echo $w_cap; ?>;"/>
             <option>Cap&iacute;tulo</option>
-          </select>
-        </div></td>
-  </tr>
-  <tr>
-    <td><div align="right">
-          <script type="text/javascript" language="JavaScript">PreencheCombo(0);</script>
-          <input type="submit" class="botao" value="Ok">
-        </div></td>
-  </tr>
-</table></form>
-  </div>
+          </div></td>
+      </tr>
+      <tr> 
+        <td><div align="right"> 
+            <script type="text/javascript" language="JavaScript">PreencheCombo(0);</script>
+            <input name="submit" type="submit" class="botao" value="Ok">
+          </div></td>
+      </tr>
+    </table>
+    </form> </div>
 <?php 
 }
 
@@ -521,6 +537,7 @@ function exibeBiblia($content) {
 $_limite_por_pagina = 20;
 global $post;
 global $wpdb; 
+
 $busca = $_GET['consulta'];
 
 if (isset($_GET['livro']) and ($_GET['livro'] != "") and ($_GET['livro'] != "0-0")) { 
