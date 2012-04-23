@@ -3,7 +3,7 @@ Tags: Bíblia, Palavra de Deus, Bíblia Sagrada, Bíblia Evangélica, Novo Testa
 Contributors: Andre Brum Sampaio, Kerwin Muriel Hirt Mayer
 Donate link: http://www.vivendoapalavra.com.br/index.php/plugin-da-biblia-online/
 Requires at least: 2.9.2
-Tested up to: 2.9.2
+Tested up to: 3.3.1
 Stable tag: trunk
 
 
