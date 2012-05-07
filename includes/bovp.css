@@ -1,0 +1,194 @@
+
+/* CSS Form */
+#forms-bible-container{float:right; padding:50px 20px 0px 0px; display:block;margin: 25px 0px 50px 0px;text-align:right;}
+#forms-bible-container #bovp-form-search {width:100%;float:left;}
+#forms-bible-container input, #forms-bible-container select{height:12px;padding:11px 10px 9px;float:left;margin:6px 8px 0 0;border:none;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;background:#c2c2c2;font:12px Arial, Helvetica, sans-serif;color:#4a4a4c;}
+#forms-bible-container #bovp-form-search #bovp_search{width:150px;}
+#forms-bible-container #bovp-form-search select{width:144px;height:32px;padding:7px;}
+#forms-bible-container #bovp-form-search input{width:125px;}
+#bovp_chapter{width:55px !important;}
+#forms-bible-container #bovp-form-search input{width:23px;}
+#forms-bible-container #bovp-form-search #bible-submit{width:30px;	height:30px;padding:0;background:url(../img/sprites.png) no-repeat;cursor:pointer;}
+#forms-bible-container #bovp-form-search #bible-submit{background-position:-4px 0;}
+#forms-bible-container #bovp-form-search #bible-submit:hover{background-position:-64px 0 !important;}
+
+
+/* CSS Widget */
+#widget-bible-container{float:right; padding:0px 0px 0px 0px; display:block;margin: 0px 0px 0px 0px;}
+#widget-bible-container #bovp-form-search {width:100%;float:left;}
+#widget-bible-container input, #widget-bible-container select{height:12px;padding:11px 10px 9px;float:left;margin:6px 8px 0 0;border:none;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;background:#c2c2c2;font:12px Arial, Helvetica, sans-serif;color:#4a4a4c;}
+#widget-bible-container #bovp-form-search #bovp_search{width:150px;}
+#widget-bible-container #bovp-form-search select{width:144px;height:32px;padding:7px;}
+#widget-bible-container #bovp-form-search input{width:125px;}
+#bovp_chapter{width:55px !important;}
+#widget-bible-container #bovp-form-search input{width:23px;}
+#widget-bible-container #bovp-form-search #bible-submit{width:30px;	height:30px;padding:0;background:url(../img/sprites.png) no-repeat;cursor:pointer;}
+#widget-bible-container #bovp-form-search #bible-submit{background-position:-4px 0;}
+#widget-bible-container #bovp-form-search #bible-submit:hover{background-position:-64px 0 !important;}
+
+
+
+.verdiario {border: 1px solid #D3D3D3;background: #DBDBDB;color: #999999;padding:5px;}
+	
+.titulo {color: #3c78a7;font: 1.2em Arial, Helvetica, sans-serif;margin-bottom:5px;}
+
+	
+#bibliaVP {
+	width:100%;
+	border: 1px solid #D3D3D3;
+	background:url(../img/logo_top.png) top left no-repeat;
+	}
+	
+#rodapeBibliaVP {
+	width:100%;
+	background:#8a8615;
+	text-align:right;
+	height: 20px;
+	margin-top: 30px;
+	}
+	
+#rodapeBibliaVP .bovp_translate {
+	float:left;
+	font-size:12px;
+	padding: 0px 0px 0px 10px;
+	
+}
+
+
+#bibliaVP a, #bibliaVP a:link,#bibliaVP a:hover, #bibliaVP a:visited {
+	color: #949130;
+	text-decoration:none
+	}
+
+#bibliaVP img {
+	border:0px;
+	}
+	
+#conteudo {
+	width:90%;
+	margin: 15px 20px 20px 20px; /* cima - esquerda - abaixo - direita */
+	clear:both;
+	}
+	
+	
+#bibliaVP h3{
+	text-align:right;
+	font-size:20px;
+	margin-right:25px;
+	text-transform:uppercase;
+	}
+	
+#bibliaVP .bovp_cap {
+	margin-left:10px;
+	color:#360;
+	border:none;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	background:#c2c2c2;
+	padding:10px;
+	}
+	
+#conteudo .verse_num {
+	padding:10px;
+	font-size:16px;
+	font-weight:bold;
+	}
+	
+#conteudo p{padding:5px; !important;margin-bottom:1em;}
+
+#conteudo  p.bovp_color { background:#F8F7D1;}
+
+#BuscaNaBiblia {
+	height:100%;
+	margin:5px;
+	}
+
+.botao  {
+	font-size:11px;
+	background-color: #ffffff;
+	color:#999999;
+	border:1px solid #666;
+	text-decoration: none;
+	width:50px;
+	}
+
+.caixaDeTexto  {
+	font-size:11px;
+	background-color: #fff;
+	color:#999999;
+	border:1px solid #666;
+	text-decoration: none;
+	margin-bottom:5px;
+	}
+	
+.caixaLivro { 
+	background-color: #fff;
+	font-size:11px;
+	font-weight: bold;
+	border:1px solid #666;
+	color: #8c8c8c;
+	margin-bottom:5px;
+	}
+	
+.caixaCapitulo { 
+	background-color: #fff;
+	font-size:11px;
+	color:#999999;
+	font-weight: bold;
+	border:1px solid #666;
+	color: #8c8c8c;
+	margin-bottom:5px;
+	}
+
+
+	
+/* CSS Document 
+
+Plugin Name: WP-Digg Style Paginator
+Plugin URI: http://www.mis-algoritmos.com/2007/09/09/wp-digg-style-pagination-plugin-v-10/
+Author: Victor De la Rocha
+Author URI: http://www.mis-algoritmos.com
+
+verde base: beb80c
+verde claro: d9d7a6
+
+*/
+
+/*Quotes style*/
+#bibliaVP div.pagination {
+	padding:3px;
+	margin:3px;
+	text-align:center;
+}
+
+#bibliaVP div.pagination a {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #91906a;
+	text-decoration: none; 
+	color: #91906a;
+}
+#bibliaVP div.pagination a:hover, div.pagination a:active {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #a0a0a0;
+}
+#bibliaVP div.pagination span.current {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #ccc;
+	font-weight: bold;
+	background-color: #f0f0f0;
+	color: #aaa;
+}
+#bibliaVP div.pagination span.disabled {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #ccc;
+	color: #ccc;
+}
+#bibliaVP .Buttons {
+	border:1px solid #c8c8c8;
+	background-color: #f3f6f8;
+}
