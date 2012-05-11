@@ -69,10 +69,11 @@ Author URI: http://www.mis-algoritmos.com
 		var $pagination;
 
 		function pagination(){}
+		
 		function show(){
 				if(!$this->calculate)
 					if($this->calculate())
-						echo "<div class=\"$this->className\">$this->pagination</div>\n";
+						return "<div class=\"$this->className\">$this->pagination</div>\n";
 			}
 		function getOutput(){
 				if(!$this->calculate)

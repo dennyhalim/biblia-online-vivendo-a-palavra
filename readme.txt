@@ -1,7 +1,7 @@
 ﻿=== Bíblia Online ===
-Tags: Bíblia, Palavra de Deus, Bíblia Sagrada, Bíblia Evangélica, Novo Testamento, Antigo Testamento, online bible, biblia, bíblia, biblia wordpress, biblia online, on-line, online, widget palavra diária, widget busca na bíblia, versículo diário, versiculo diario, palavra diaria
-Contributors: Andre Brum Sampaio, Kerwin Muriel Hirt Mayer
-Donate link: http://www.vivendoapalavra.com.br/index.php/plugin-da-biblia-online/
+Tags: Bíblia, Palavra de Deus, Bíblia Sagrada, Bíblia Evangélica, Novo Testamento, Antigo Testamento, online bible, biblia, bíblia, biblia wordpress, biblia online, on-line, online, widget palavra diária, widget busca na bíblia, versículo diário, versiculo diario, palavra diaria, word of god
+Contributors: André Brum Sampaio
+Donate link: https://pagseguro.uol.com.br/checkout/v2/donation.html?receiverEmail=bibliaonlinevp@vivendoapalavra.com.br&currency=BRL
 Requires at least: 3.3.1
 Tested up to: 3.3.1
 Stable tag: trunk
@@ -11,16 +11,19 @@ O plugin Bíblia Online VP possibilita a consulta e exibição dos livros da Bí
 
 == Description ==
 
-Consulta aos livros da Bíblia Sagrada. A versão que acompanha o plugin é Almeida Revisada e Corrigida, considerada de domínio público. Este plugin, assim como o texto bíblico usado por ele não estão sendo comercializados. O texto bíblico utilizado foi coletado na internet, caso encontre algum erro no mesmo, nos informe para que possamos corrigir. Caso tenha direitos sobre o texto, nos comunique para que façamos a substituição.
+Plugin for implementation of Bible Online in your Wordpress blog. With it, you can make available the Word of God and bless your website\'s users. The plugin allows to consult all 66 books of the Holy Bible.
 
 
 == Changelog ==
 
-1.3
-    - Adicionada a função para criação automática de links, o widget de exibição da "Palavra Diária", mudança na estrutura do banco de dados. Nesta versão o plugin foi disponibilizado no repositório do wordpress.
+1.4 
+	- In this new edition we have fixed some errors reported by users and a few others we found along the way. We also replaced the Bible database, as the previous version contained incomplete verses. Besides that we changed some functions in order to improve the plugin's performance and we modified the standard layout of the Bible.
+
+1.3 
+	- Adicionada a função para criação automática de links, o widget de exibição da "Palavra Diária", mudança na estrutura do banco de dados. Nesta versão o plugin foi disponibilizado no repositório do wordpress.
 
 1.2
-    - corrigidos problemas de layout
+   	- corrigidos problemas de layout
 
 1.1
     - corrigidos alguns erros internos
@@ -30,30 +33,30 @@ Consulta aos livros da Bíblia Sagrada. A versão que acompanha o plugin é Alme
 
 == Installation ==
 
-1. coloque a pasta do plugin dentro de: [diretório do Wordpress]/wp-content/plugins/
-2. Ative o plugin na página de administração.
-3. Vá para menu que dá acesso a página de opções da Bíblia Online VP e informe o ID da página onde será exibida a Bíblia. A página pode demorar a carregar um pouco no primeiro acesso, pois neste momento será instalado o texto bíblico em seu banco de dados, por favor aguarde.
-4. [opcional] Na página de opções da Bíblia Online VP informe a origem da Palavra Diária (toda a Bíblia, AT, NT, Salmos).
-5. Para exibir os widgets que acompanham o plugin, acesse: APARÊNCIA -> WIDGETS (são dois widgets: o Widget de busca na Bíblia Online e o Widget da Palavra Diária.
-6. Para inserir a Palavra Diária em outra parte do seu tema use a função BibliaOnline::palavraDiaria() dentro de um bloco PHP.
-
+1. coloque a pasta do plugin dentro de: [Wordpress directory]/wp-content/plugins/
+2. Activate the plugin in the plugin admin page.
+3. In the admin bible page, choose the page where the bible.
+4. [opcional] In the admin bible page, choose the source daily verse.
+5. To actvate an widget, go to APARÊNCIA -> WIDGETS (são dois widgets: o Widget de busca na Bíblia Online e o Widget da Palavra Diária.
 
 
 == Frequently Asked Questions ==
 
-Perguntas frequêntes: Nenhuma ainda.
+No questions.
 
 
-= Can I suggest a feature for the plugin? =  
+== Can I suggest a feature for the plugin? ==
 
-Posso sugerir uma funcionalidade para o plugin?
-
-Sinta-se à vontade para enviar suas sugestões. Para isso visite nosso blog do Bíblia Online VP (http://www.vivendoapalavra.com.br/index.php/plugin-da-biblia-online/#comments)
+http://www.vivendoapalavra.com.br/plugins-para-wordpress/#comments
 
 == Upgrade Notice ==
 
-Nenhuma ainda.
+For the next version we are preparing a number of innovations which will make your Bible much more attractive, with both visual and structural resources to help you in your daily use. Among the innovations are:
+
+- Inclusion of the King James version for users of english language;
+- Social Networks integration;
+- Implementation of themes to make easier layout alterations.
 
 == Screenshots ==
 
-Sem imagens!! Instale e conheça!
+No images! Install!
