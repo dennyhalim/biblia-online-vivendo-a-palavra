@@ -2,7 +2,7 @@
 Tags: Bíblia, Palavra de Deus, Bíblia Sagrada, Bíblia Evangélica, Novo Testamento, Antigo Testamento, online bible, biblia, bíblia, biblia wordpress, biblia online, on-line, online, widget palavra diária, widget busca na bíblia, versículo diário, versiculo diario, palavra diaria, word of god
 Contributors: André Brum Sampaio
 Donate link: https://pagseguro.uol.com.br/checkout/v2/donation.html?receiverEmail=bibliaonlinevp@vivendoapalavra.com.br&currency=BRL
-Requires at least: 3.3.1
+Requires at least: 2.9.2
 Tested up to: 3.3.1
 Stable tag: trunk
 
