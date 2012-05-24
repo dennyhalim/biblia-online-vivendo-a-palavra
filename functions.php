@@ -3,8 +3,9 @@
 
 // Constants
 
-if(!defined('WP_CONTENT_URL')){define('WP_CONTENT_URL',get_option('siteurl').'/wp-content');}
 define('BOVP_URL',get_option('home').'/index.php?page_id='.get_option('bovp_page'));
+
+if(!defined('WP_CONTENT_URL')){define('WP_CONTENT_URL',get_option('siteurl').'/wp-content');}
 define('BOVP_FOLDER_NAME','/biblia-online-vivendo-a-palavra/');
 define('BOVP_BIBLE_URL',get_option('home').'/index.php?');
 define('BOVP_FOLDER',plugins_url('/biblia-online-vivendo-a-palavra/'));
