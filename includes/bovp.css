@@ -34,6 +34,7 @@
 
 	
 #bibliaVP {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 	width:100%;
 	border: 1px solid #D3D3D3;
 	background:url(../img/logo_top.png) top left no-repeat;
@@ -76,6 +77,7 @@
 	font-size:20px;
 	margin-right:25px;
 	text-transform:uppercase;
+	clear:both;
 	}
 	
 #bibliaVP .bovp_cap {
@@ -156,25 +158,25 @@ verde claro: d9d7a6
 */
 
 /*Quotes style*/
-#bibliaVP div.pagination {
+#bibliaVP div.bovp_pagination {
 	padding:3px;
 	margin:3px;
 	text-align:center;
 }
 
-#bibliaVP div.pagination a {
+#bibliaVP div.bovp_pagination a {
 	padding: 2px 5px 2px 5px;
 	margin-right: 2px;
 	border: 1px solid #91906a;
 	text-decoration: none; 
 	color: #91906a;
 }
-#bibliaVP div.pagination a:hover, div.pagination a:active {
+#bibliaVP div.bovp_pagination a:hover, div.bovp_pagination a:active {
 	padding: 2px 5px 2px 5px;
 	margin-right: 2px;
 	border: 1px solid #a0a0a0;
 }
-#bibliaVP div.pagination span.current {
+#bibliaVP div.bovp_pagination span.current {
 	padding: 2px 5px 2px 5px;
 	margin-right: 2px;
 	border: 1px solid #ccc;
@@ -182,7 +184,7 @@ verde claro: d9d7a6
 	background-color: #f0f0f0;
 	color: #aaa;
 }
-#bibliaVP div.pagination span.disabled {
+#bibliaVP div.bovp_pagination span.disabled {
 	padding: 2px 5px 2px 5px;
 	margin-right: 2px;
 	border: 1px solid #ccc;

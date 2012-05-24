@@ -12,9 +12,8 @@ Author URI: http://www.vivendoapalavra.com.br/
 
 // Includes
 
-require_once('includes/pagination.class.php');
-require_once('functions.php');
-
+require_once dirname(__FILE__) . '/includes/pagination.class.php';
+require_once dirname(__FILE__) . '/functions.php';
 
 //activation
 
@@ -30,15 +29,10 @@ global $wpdb;
 add_filter("the_content","exibeBiblia");
 add_filter("the_content","criaLinks");
 
-
-
 // hooks
-add_action("wp_head","include_css_js");
 add_action("admin_menu", "bovp_menu_mount");
 add_action('init', 'bovp_active_translate');
-
-// Funções
-
+add_action("wp_head", "include_css_js");
 
 // widgets
 
@@ -91,10 +85,12 @@ function bovp_options_set() {
 
 function include_css_js() {
 	echo '<!-- Online Bible -->';
-	echo '<link rel="stylesheet" href="'.BOVP_FOLDER.'includes/bovp.css" type="text/css" media="screen" />';
-	echo '<script type=\'text/javascript\' src=\''.BOVP_FOLDER.'/includes/bovp.js\'></script>';
-	echo '<html xmlns:fb="http://ogp.me/ns/fb#">';
+	echo '<link rel="stylesheet" href="'. BOVP_FOLDER .'includes/bovp.css" type="text/css" media="screen" />';
+	echo '<script type=\'text/javascript\' src=\''. BOVP_FOLDER .'includes/bovp.js\'></script>';
+	echo '<!-- End heads includes of Online Bible -->';
+	
 }
+
 
 
 // instalation function
@@ -166,8 +162,6 @@ function bovp_remove(){
 	delete_option('bovp_page'); // Id from Bible page
 	delete_option('bovp_source_random_verse'); // source of daily verse
 }
-
-
 
 
 // Old functions - will be replaced in next version
@@ -271,11 +265,11 @@ function preencheComboLivros($modo='ecoar'){
 	}
 	
 	
-function bible_form($bovp_return_form = 'echo', $bovp_div_container = 'forms-bible-container'){ 
+function bible_form($bovp_return_form = 'echo', $bovp_id_form_container = 'forms-bible-container'){ 
 
-$form_bovp = "
+$bovp_form = "
 
-<div id=\"" . $bovp_div_container .  "\">
+<div id=\"".$bovp_id_form_container."\">
           
 <form method=\"get\" id=\"bovp-form-search\" action=\"" . BOVP_BIBLE_URL . "index.php\" name=\"bovp-form-search\">
 <input name=\"page_id\" type=\"hidden\" value=\"" . BOVP_PAGE . "\"/>
@@ -297,7 +291,7 @@ $form_bovp = "
 ";
 
 
-if($bovp_return_form == 'echo') {echo $form_bovp;} elseif($bovp_return_form == 'var'){return $form_bovp;}
+if($bovp_return_form == 'echo') {echo $bovp_form;} elseif($bovp_return_form == 'var'){return $bovp_form;}
 
 }
 
@@ -427,7 +421,7 @@ return $content;
 
 //-----------------------------------------------------------------------------------------------
 
-function exibeBiblia($content) {
+function exibeBiblia() {
 	
 	$_limite_por_pagina = 20;
 	global $post;
@@ -480,17 +474,17 @@ function exibeBiblia($content) {
 				$bovp_start = ($pagina - 1) * $_limite_por_pagina; 
 		
 		
-		$content = "<div id='bibliaVP'>";
+		$bovp_content = "<div id='bibliaVP'>";
 		
-		$content .= bible_form(); 
+		$bovp_content .= bible_form('var', 'forms-bible-container'); 
 		
 		$resultados = $wpdb->get_results("SELECT * FROM bovp_arc WHERE ( LCASE(text) RLIKE '[[:<:]]".$busca."[[:>:]]' ) LIMIT ".$bovp_start.", ".$_limite_por_pagina);
 		
 		
 		
-		$content .= "<h3>". __('Find itens','bovp') . "<span class=\"bovp_cap\">" . $bovp_count . "</span></h3><br>";
+		$bovp_content .= "<h3>". __('Find itens','bovp') . "<span class=\"bovp_cap\">" . $bovp_count . "</span></h3><br>";
 		
-		$content .= "<div id='conteudo'>";
+		$bovp_content .= "<div id='conteudo'>";
 		
 		$bovp_color == '';
 				
@@ -508,7 +502,7 @@ function exibeBiblia($content) {
 				
 			if($bovp_color == ''){$bovp_color = 'bovp_color';} elseif($bovp_color == 'bovp_color'){$bovp_color = '';}
 			
-			$content .= "<p class='$bovp_color'><b><a href=\"?page_id=" . BOVP_PAGE . 
+			$bovp_content .= "<p class='$bovp_color'><b><a href=\"?page_id=" . BOVP_PAGE . 
 						"&bk=" . $capitulo . "-" .  $verso . "\">" . $texto . 
 						"</a></b><br>" . __('This is the book number ','bovp') . "&nbsp;<b>" . $capitulo . "</b>&nbsp;". __(' and have ','bovp'). "&nbsp;<b>".$verso.
 						"</b>&nbsp;".__(' chapters.','bovp')."</p>";	
@@ -530,17 +524,18 @@ function exibeBiblia($content) {
 						$nomeLivro = $livroCapitulosSplit[0];
 						$qtdCapitulos = $livroCapitulosSplit[1];
 						
-						$content .= "<p class='$bovp_color'><b><a href=\"?page_id=" . BOVP_PAGE . 
+						$bovp_content .= "<p class='$bovp_color'><b><a href=\"?page_id=" . BOVP_PAGE . 
 						"&livro=" . $livro . "&capitulo=" .  $capitulo . 
 						"&paginas=" . $qtdCapitulos . "&destaca=" . $verso . "\">" . $nomeLivro . 
 						":" . $capitulo . ":" . $verso . "</a></b><br>" . $texto . "</p>";			
 					} 
 		}
 		
-		$content .= "</div><br>";
+		$bovp_content .= "</div><br>";
 		
 				$link = "?page_id=". BOVP_PAGE ."&sh=".($_GET['sh']);
 				$p = new pagination;
+				$p->changeClass("bovp_pagination");
 				$p->Items($bovp_count);
 				$p->limit($_limite_por_pagina);
 				$p->target($link);
@@ -550,20 +545,20 @@ function exibeBiblia($content) {
 				$p->nextIcon('');
 				$p->prevIcon('');
 				
-		$content .= $p->show();
+		$bovp_content .= $p->show();
 		
 		$bovp_of = min($bovp_count, ($bovp_start + 1));
 		$bovp_to = min($bovp_count, ($bovp_start + $_limite_por_pagina));
 		$bovp_text = "Finded <b>$bovp_count</b> verses for your search.<br>Show results <b>$bovp_of</b> to <b>$bovp_to</b>";
 		
-		$content .= "<p class=\"resumo\" align=\"center\">" . __('Finded','bovp') .'&nbsp;<b>' . $bovp_count . '</b>&nbsp;' .__('verses for your search.','bovp') .'<br>';
-		$content .=  __('Show results','bovp') . '&nbsp;<b>' . $bovp_of . '</b>&nbsp;' . __('to','bovp') . '&nbsp;<b>' . $bovp_to . '</b>&nbsp;</p>';
+		$bovp_content .= "<p class=\"resumo\" align=\"center\">" . __('Finded','bovp') .'&nbsp;<b>' . $bovp_count . '</b>&nbsp;' .__('verses for your search.','bovp') .'<br>';
+		$bovp_content .=  __('Show results','bovp') . '&nbsp;<b>' . $bovp_of . '</b>&nbsp;' . __('to','bovp') . '&nbsp;<b>' . $bovp_to . '</b>&nbsp;</p>';
 		
-		$content .= "<div id=\"rodapeBibliaVP\">";
-		$content .= "<span class='bovp_translate'>" . __('Translate: ', 'bovp') . "Jo&atilde;o Ferreira de Almeida - Atualizada</span>";		
-		$content .= "<a href=\"http://www.vivendoapalavra.com.br/\"><img src=\"" . BOVP_FOLDER . "img/logovp.png\" border=\"0\"></a>";
-		$content .= "<div style=\"clear:both\"></div>";
-		$content .= "</div></div>";
+		$bovp_content .= "<div id=\"rodapeBibliaVP\">";
+		$bovp_content .= "<span class='bovp_translate'>" . __('Translate: ', 'bovp') . "Jo&atilde;o Ferreira de Almeida - Atualizada</span>";		
+		$bovp_content .= "<a href=\"http://www.vivendoapalavra.com.br/\"><img src=\"" . BOVP_FOLDER . "img/logovp.png\" border=\"0\"></a>";
+		$bovp_content .= "<div style=\"clear:both\"></div>";
+		$bovp_content .= "</div></div>";
 		
 		
 		}
@@ -575,21 +570,21 @@ function exibeBiblia($content) {
 				$resultados_livro = $wpdb->get_results($sql);
 				
 				
-		$content = "<div id=\"bibliaVP\">";
-		//$content .= "<div id=\"cabecaBibliaVP\">";
+		$bovp_content = "<div id=\"bibliaVP\">";
+		//$bovp_content .= "<div id=\"cabecaBibliaVP\">";
 		
-		$content .= bible_form(); 
+		$bovp_content .= bible_form('var', 'forms-bible-container'); 
 		
-		$content .= "<h3>";
+		$bovp_content .= "<h3>";
 		 
 				$livroCapitulos = livro_Capitulos($var_livro);
 				$nlvSplit = split("-",$livroCapitulos); 
 				$nomeLivro = $nlvSplit[0];
 				
-		$content .= $nomeLivro . "<span class=\"bovp_cap\">" . $var_capitulo . "</span></h3><br>";
+		$bovp_content .= $nomeLivro . "<span class=\"bovp_cap\">" . $var_capitulo . "</span></h3><br>";
 		
-		//$content .= "</div>";
-		$content .= "<div id='conteudo'>";
+		//$bovp_content .= "</div>";
+		$bovp_content .= "<div id='conteudo'>";
 		
 		$bovp_color == '';
 		
@@ -600,22 +595,23 @@ function exibeBiblia($content) {
 					$verso = $resultado_livro->vs; 
 					$texto = $resultado_livro->text;
 					
-		$content .= "<p class='$bovp_color'><span class=\"verse_num\">$verso</span>";			
+		$bovp_content .= "<p class='$bovp_color'><span class=\"verse_num\">$verso</span>";			
 					
 					
 						if($verso == $destaca) {
-						$content .= "<font color=\"red\">$texto</font></p>";
+						$bovp_content .= "<font color=\"red\">$texto</font></p>";
 						} else {
-						$content .= "$texto</p>";
+						$bovp_content .= "$texto</p>";
 						}
 					
 				}
 				
-		$content .= "</div><br>";	
+		$bovp_content .= "</div><br>";	
 			
 		
 					$link = "?page_id=". BOVP_PAGE . "&bk=".$var_livro."-".$var_paginas_livro;
 					$p = new pagination;
+					$p->changeClass("bovp_pagination");
 					$p->Items($var_paginas_livro*$_limite_por_pagina);
 					$p->limit($_limite_por_pagina);
 					$p->target($link);
@@ -626,24 +622,24 @@ function exibeBiblia($content) {
 					$p->nextIcon('');//removing next icon
 					$p->prevIcon('');//removing previous icon
 					
-		$content .= $p->show();
+		$bovp_content .= $p->show();
 					
 			
 					
-		$content .= "<div id=\"rodapeBibliaVP\">";
-		$content .= "<span class='bovp_translate'>" . __('Translate: ', 'bovp') . "Jo&atilde;o Ferreira de Almeida - Atualizada</span>";		
-		$content .= "<a href=\"http://www.vivendoapalavra.com.br/\"><img src=\"" . BOVP_FOLDER . "img/logovp.png\" border=\"0\"></a>";
-		$content .= "<div style=\"clear:both\"></div>";
-		$content .= "</div></div>";
+		$bovp_content .= "<div id=\"rodapeBibliaVP\">";
+		$bovp_content .= "<span class='bovp_translate'>" . __('Translate: ', 'bovp') . "Jo&atilde;o Ferreira de Almeida - Atualizada</span>";		
+		$bovp_content .= "<a href=\"http://www.vivendoapalavra.com.br/\"><img src=\"" . BOVP_FOLDER . "img/logovp.png\" border=\"0\"></a>";
+		$bovp_content .= "<div style=\"clear:both\"></div>";
+		$bovp_content .= "</div></div>";
 		
 		}
 		
 	} else {
 		
-		return $content;
+		return $bovp_content;
 	}
 
-return $content;
+return $bovp_content;
 }
 
 
