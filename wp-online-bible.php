@@ -421,33 +421,33 @@ return $content;
 
 //-----------------------------------------------------------------------------------------------
 
-function exibeBiblia() {
+function exibeBiblia($content) {
 	
-	$_limite_por_pagina = 20;
-	global $post;
-	global $wpdb; 
-	
-	$busca = $_GET['sh'];
-	
-	if (isset($_GET['bk']) and ($_GET['bk'] != "") and ($_GET['bk'] != "0-0")) { 
-		$var_livro = $_GET['bk'];
-		$separa = explode('-', $var_livro);
-		$var_livro = $separa[0];
-		if($var_livro == 0) {$var_livro = 1; $var_paginas_livro = 50;}
-		$var_paginas_livro = $separa[1];
-	} else { 
-		$var_livro = 1;
-		$var_paginas_livro = 50;
-	}
-	
-	if (isset($_GET['cp']) and ($_GET['cp'] != "")) { 
-	$var_capitulo = $_GET['cp'];
-	} else { $var_capitulo = 1;}
-	
-	
-	if (isset($_GET['vs']) and ($_GET['vs'] != "")) { 
-	$destaca = $_GET['vs'];
-	} else { $destaca = 0;}
+			$_limite_por_pagina = 20;
+			global $post;
+			global $wpdb; 
+			
+			$busca = $_GET['sh'];
+			
+			if (isset($_GET['bk']) and ($_GET['bk'] != "") and ($_GET['bk'] != "0-0")) { 
+				$var_livro = $_GET['bk'];
+				$separa = explode('-', $var_livro);
+				$var_livro = $separa[0];
+				if($var_livro == 0) {$var_livro = 1; $var_paginas_livro = 50;}
+				$var_paginas_livro = $separa[1];
+			} else { 
+				$var_livro = 1;
+				$var_paginas_livro = 50;
+			}
+			
+			if (isset($_GET['cp']) and ($_GET['cp'] != "")) { 
+			$var_capitulo = $_GET['cp'];
+			} else { $var_capitulo = 1;}
+			
+			
+			if (isset($_GET['vs']) and ($_GET['vs'] != "")) { 
+			$destaca = $_GET['vs'];
+			} else { $destaca = 0;}
 	
 	
 	
@@ -455,7 +455,7 @@ function exibeBiblia() {
 	
 		
 			 
-				if (isset($busca) and ($busca != "")) { 
+		if (isset($busca) and ($busca != "")) { 
 					$busca = mysql_real_escape_string($busca);
 					//$busca = str_replace(" ", "%", $busca);  // Frase exata ou palavras da frase
 					$tot_resultados = $wpdb->get_results("SELECT COUNT(text) AS totalreg FROM bovp_arc WHERE (LCASE(text) RLIKE '[[:<:]]" . $busca . "[[:>:]]')"); 
@@ -472,42 +472,50 @@ function exibeBiblia() {
 				
 				$pagina = max(min($paginas, $pagina), 1); 
 				$bovp_start = ($pagina - 1) * $_limite_por_pagina; 
-		
-		
-		$bovp_content = "<div id='bibliaVP'>";
-		
-		$bovp_content .= bible_form('var', 'forms-bible-container'); 
-		
-		$resultados = $wpdb->get_results("SELECT * FROM bovp_arc WHERE ( LCASE(text) RLIKE '[[:<:]]".$busca."[[:>:]]' ) LIMIT ".$bovp_start.", ".$_limite_por_pagina);
-		
-		
-		
-		$bovp_content .= "<h3>". __('Find itens','bovp') . "<span class=\"bovp_cap\">" . $bovp_count . "</span></h3><br>";
-		
-		$bovp_content .= "<div id='conteudo'>";
-		
-		$bovp_color == '';
 				
-		foreach ($resultados as $resultado){
-			
-			
-			
-			$livro = $resultado->book; 
-			$capitulo = $resultado->cp; 
-			$verso = $resultado->vs; 
-			$texto = $resultado->text;
-			$bovp_item_id = $resultado->id;
-			
-			if($bovp_item_id < 67) {
 				
-			if($bovp_color == ''){$bovp_color = 'bovp_color';} elseif($bovp_color == 'bovp_color'){$bovp_color = '';}
-			
-			$bovp_content .= "<p class='$bovp_color'><b><a href=\"?page_id=" . BOVP_PAGE . 
-						"&bk=" . $capitulo . "-" .  $verso . "\">" . $texto . 
-						"</a></b><br>" . __('This is the book number ','bovp') . "&nbsp;<b>" . $capitulo . "</b>&nbsp;". __(' and have ','bovp'). "&nbsp;<b>".$verso.
-						"</b>&nbsp;".__(' chapters.','bovp')."</p>";	
+				$bovp_content = "<div id='bibliaVP'>";
+				
+				$bovp_content .= bible_form('var', 'forms-bible-container'); 
+				
+				$resultados = $wpdb->get_results("SELECT * FROM bovp_arc WHERE ( LCASE(text) RLIKE '[[:<:]]" . 
+				$busca."[[:>:]]' ) LIMIT ".$bovp_start.", ".$_limite_por_pagina);
+				
+				
+				
+				$bovp_content .= "<h3>". __('Find itens','bovp') . "<span class=\"bovp_cap\">" . $bovp_count . "</span></h3><br>";
+				
+				$bovp_content .= "<div id='conteudo'>";
+				
+				$bovp_color == '';
+						
+				foreach ($resultados as $resultado){
 					
-			} else {
+					
+					
+					$livro = $resultado->book; 
+					$capitulo = $resultado->cp; 
+					$verso = $resultado->vs; 
+					$texto = $resultado->text;				
+					$bovp_item_id = $resultado->id;
+					
+					
+					
+					if($bovp_item_id < 67) {
+						
+						if($bovp_color == ''){$bovp_color = 'bovp_color';} elseif($bovp_color == 'bovp_color'){$bovp_color = '';}
+					
+						$bovp_content .= "<p class='$bovp_color'><b><a href=\"?page_id=" . BOVP_PAGE . 
+								"&bk=" . $capitulo . "-" .  $verso . "\">" . $texto . 
+								"</a></b><br>" . __('This is the book number ','bovp') . "&nbsp;<b>" . 
+								$capitulo . "</b>&nbsp;". __(' and have ','bovp'). "&nbsp;<b>".$verso.
+								"</b>&nbsp;".__(' chapters.','bovp')."</p>";	
+								
+								
+							
+					} else {
+			
+			
 						if($bovp_color == ''){$bovp_color = 'bovp_color';} elseif($bovp_color == 'bovp_color'){$bovp_color = '';}
 						
 						$paraDestacar = '/'.$busca.'/i';
@@ -528,118 +536,132 @@ function exibeBiblia() {
 						"&livro=" . $livro . "&capitulo=" .  $capitulo . 
 						"&paginas=" . $qtdCapitulos . "&destaca=" . $verso . "\">" . $nomeLivro . 
 						":" . $capitulo . ":" . $verso . "</a></b><br>" . $texto . "</p>";			
-					} 
-		}
-		
-		$bovp_content .= "</div><br>";
-		
-				$link = "?page_id=". BOVP_PAGE ."&sh=".($_GET['sh']);
-				$p = new pagination;
-				$p->changeClass("bovp_pagination");
-				$p->Items($bovp_count);
-				$p->limit($_limite_por_pagina);
-				$p->target($link);
-				$p->currentPage($pagina);
-				$p->nextLabel('<strong>Pr&oacute;ximo</strong>');
-				$p->prevLabel('<strong>Anterior</strong>');
-				$p->nextIcon('');
-				$p->prevIcon('');
+				} 
 				
-		$bovp_content .= $p->show();
+				
+				}
+				
+				$bovp_content .= "</div><br>";
+				
+						$link = "?page_id=". BOVP_PAGE ."&sh=".($_GET['sh']);
+						$p = new pagination;
+						$p->changeClass("bovp_pagination");
+						$p->Items($bovp_count);
+						$p->limit($_limite_por_pagina);
+						$p->target($link);
+						$p->currentPage($pagina);
+						$p->nextLabel('<strong>Pr&oacute;ximo</strong>');
+						$p->prevLabel('<strong>Anterior</strong>');
+						$p->nextIcon('');
+						$p->prevIcon('');
+						
+				$bovp_content .= $p->show();
+				
+				$bovp_of = min($bovp_count, ($bovp_start + 1));
+				$bovp_to = min($bovp_count, ($bovp_start + $_limite_por_pagina));
+				$bovp_text = "Finded <b>$bovp_count</b> verses for your search.<br>Show results <b>$bovp_of</b> to <b>$bovp_to</b>";
+				
+				$bovp_content .= "<p class=\"resumo\" align=\"center\">" . __('Finded','bovp') .'&nbsp;<b>' 
+				. $bovp_count . '</b>&nbsp;' .__('verses for your search.','bovp') .'<br>';
+				
+				$bovp_content .=  __('Show results','bovp') . '&nbsp;<b>' . $bovp_of . '</b>&nbsp;' . __('to','bovp') . '&nbsp;<b>' . $bovp_to . '</b>&nbsp;</p>';
+				
+				$bovp_content .= "<div id=\"rodapeBibliaVP\">";
+				$bovp_content .= "<span class='bovp_translate'>" . __('Translate: ', 'bovp') . "Jo&atilde;o Ferreira de Almeida - Atualizada</span>";		
+				$bovp_content .= "<a href=\"http://www.vivendoapalavra.com.br/\"><img src=\"" . BOVP_FOLDER . "img/logovp.png\" border=\"0\"></a>";
+				$bovp_content .= "<div style=\"clear:both\"></div>";
+				
+				
+				
+				$bovp_content .= "</div></div>"; // SAÍDA DA BUSCA
+				
+				return $bovp_content;
 		
-		$bovp_of = min($bovp_count, ($bovp_start + 1));
-		$bovp_to = min($bovp_count, ($bovp_start + $_limite_por_pagina));
-		$bovp_text = "Finded <b>$bovp_count</b> verses for your search.<br>Show results <b>$bovp_of</b> to <b>$bovp_to</b>";
-		
-		$bovp_content .= "<p class=\"resumo\" align=\"center\">" . __('Finded','bovp') .'&nbsp;<b>' . $bovp_count . '</b>&nbsp;' .__('verses for your search.','bovp') .'<br>';
-		$bovp_content .=  __('Show results','bovp') . '&nbsp;<b>' . $bovp_of . '</b>&nbsp;' . __('to','bovp') . '&nbsp;<b>' . $bovp_to . '</b>&nbsp;</p>';
-		
-		$bovp_content .= "<div id=\"rodapeBibliaVP\">";
-		$bovp_content .= "<span class='bovp_translate'>" . __('Translate: ', 'bovp') . "Jo&atilde;o Ferreira de Almeida - Atualizada</span>";		
-		$bovp_content .= "<a href=\"http://www.vivendoapalavra.com.br/\"><img src=\"" . BOVP_FOLDER . "img/logovp.png\" border=\"0\"></a>";
-		$bovp_content .= "<div style=\"clear:both\"></div>";
-		$bovp_content .= "</div></div>";
-		
-		
-		}
-		
-			else {
+		} else {
 		
 				$sql = "SELECT * FROM `bovp_arc` WHERE `book` =".$var_livro." AND `cp` =".$var_capitulo ;
 
 				$resultados_livro = $wpdb->get_results($sql);
 				
 				
-		$bovp_content = "<div id=\"bibliaVP\">";
-		//$bovp_content .= "<div id=\"cabecaBibliaVP\">";
-		
-		$bovp_content .= bible_form('var', 'forms-bible-container'); 
-		
-		$bovp_content .= "<h3>";
-		 
-				$livroCapitulos = livro_Capitulos($var_livro);
-				$nlvSplit = split("-",$livroCapitulos); 
-				$nomeLivro = $nlvSplit[0];
+				$bovp_content = "<div id=\"bibliaVP\">";
+				//$bovp_content .= "<div id=\"cabecaBibliaVP\">";
 				
-		$bovp_content .= $nomeLivro . "<span class=\"bovp_cap\">" . $var_capitulo . "</span></h3><br>";
-		
-		//$bovp_content .= "</div>";
-		$bovp_content .= "<div id='conteudo'>";
-		
-		$bovp_color == '';
-		
-		foreach ($resultados_livro as $resultado_livro){
-			
-			if($bovp_color == ''){$bovp_color = 'bovp_color';} elseif($bovp_color == 'bovp_color'){$bovp_color = '';}
-			
-					$verso = $resultado_livro->vs; 
-					$texto = $resultado_livro->text;
+				$bovp_content .= bible_form('var', 'forms-bible-container'); 
+				
+				$bovp_content .= "<h3>";
+				 
+						$livroCapitulos = livro_Capitulos($var_livro);
+						$nlvSplit = split("-",$livroCapitulos); 
+						$nomeLivro = $nlvSplit[0];
+						
+				$bovp_content .= $nomeLivro . "<span class=\"bovp_cap\">" . $var_capitulo . "</span></h3><br>";
+				
+				//$bovp_content .= "</div>";
+				$bovp_content .= "<div id='conteudo'>";
+				
+				$bovp_color == '';
+				
+				foreach ($resultados_livro as $resultado_livro){
 					
-		$bovp_content .= "<p class='$bovp_color'><span class=\"verse_num\">$verso</span>";			
+					if($bovp_color == ''){$bovp_color = 'bovp_color';} elseif($bovp_color == 'bovp_color'){$bovp_color = '';}
 					
-					
-						if($verso == $destaca) {
-						$bovp_content .= "<font color=\"red\">$texto</font></p>";
-						} else {
-						$bovp_content .= "$texto</p>";
+							$verso = $resultado_livro->vs; 
+							$texto = $resultado_livro->text;
+							
+				$bovp_content .= "<p class='$bovp_color'><span class=\"verse_num\">$verso</span>";			
+							
+							
+								if($verso == $destaca) {
+								$bovp_content .= "<font color=\"red\">$texto</font></p>";
+								} else {
+								$bovp_content .= "$texto</p>";
+								}
+							
 						}
+						
+				$bovp_content .= "</div><br>";	
 					
-				}
 				
-		$bovp_content .= "</div><br>";	
-			
-		
-					$link = "?page_id=". BOVP_PAGE . "&bk=".$var_livro."-".$var_paginas_livro;
-					$p = new pagination;
-					$p->changeClass("bovp_pagination");
-					$p->Items($var_paginas_livro*$_limite_por_pagina);
-					$p->limit($_limite_por_pagina);
-					$p->target($link);
-					$p->parameterName("cp");
-					$p->currentPage($var_capitulo);
-					$p->nextLabel('<strong>' . __('Next','bovp') . '</strong>');
-					$p->prevLabel('<strong>' . __('Previous','bovp') . '</strong>');
-					$p->nextIcon('');//removing next icon
-					$p->prevIcon('');//removing previous icon
+							$link = "?page_id=". BOVP_PAGE . "&bk=".$var_livro."-".$var_paginas_livro;
+							$p = new pagination;
+							$p->changeClass("bovp_pagination");
+							$p->Items($var_paginas_livro*$_limite_por_pagina);
+							$p->limit($_limite_por_pagina);
+							$p->target($link);
+							$p->parameterName("cp");
+							$p->currentPage($var_capitulo);
+							$p->nextLabel('<strong>' . __('Next','bovp') . '</strong>');
+							$p->prevLabel('<strong>' . __('Previous','bovp') . '</strong>');
+							$p->nextIcon('');//removing next icon
+							$p->prevIcon('');//removing previous icon
+							
+				$bovp_content .= $p->show();
+							
 					
-		$bovp_content .= $p->show();
-					
-			
-					
-		$bovp_content .= "<div id=\"rodapeBibliaVP\">";
-		$bovp_content .= "<span class='bovp_translate'>" . __('Translate: ', 'bovp') . "Jo&atilde;o Ferreira de Almeida - Atualizada</span>";		
-		$bovp_content .= "<a href=\"http://www.vivendoapalavra.com.br/\"><img src=\"" . BOVP_FOLDER . "img/logovp.png\" border=\"0\"></a>";
-		$bovp_content .= "<div style=\"clear:both\"></div>";
-		$bovp_content .= "</div></div>";
+							
+				$bovp_content .= "<div id=\"rodapeBibliaVP\">";
+				$bovp_content .= "<span class='bovp_translate'>" . __('Translate: ', 'bovp') . "Jo&atilde;o Ferreira de Almeida - Atualizada</span>";		
+				$bovp_content .= "<a href=\"http://www.vivendoapalavra.com.br/\"><img src=\"" . BOVP_FOLDER . "img/logovp.png\" border=\"0\"></a>";
+				$bovp_content .= "<div style=\"clear:both\"></div>";
+				
+				
+				$bovp_content .= "</div></div>"; // SAIDA DO LIVROS
+				
+				return $bovp_content;	
 		
 		}
 		
+		
+		
 	} else {
 		
-		return $bovp_content;
+	return $content;	
+		
 	}
 
-return $bovp_content;
+
+
 }
 
 
