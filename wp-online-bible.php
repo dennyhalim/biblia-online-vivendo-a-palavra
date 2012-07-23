@@ -533,11 +533,10 @@ function exibeBiblia($content) {
 						$qtdCapitulos = $livroCapitulosSplit[1];
 						
 						$bovp_content .= "<p class='$bovp_color'><b><a href=\"?page_id=" . BOVP_PAGE . 
-						"&livro=" . $livro . "&capitulo=" .  $capitulo . 
-						"&paginas=" . $qtdCapitulos . "&destaca=" . $verso . "\">" . $nomeLivro . 
+						"&bk=" . $livro . "-" . $qtdCapitulos . "&cp=" .  $capitulo . 
+						"&vs=" . $verso . "\">" . $nomeLivro . 
 						":" . $capitulo . ":" . $verso . "</a></b><br>" . $texto . "</p>";			
 				} 
-				
 				
 				}
 				
