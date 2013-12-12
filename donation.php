@@ -1,31 +1,21 @@
-<style>
-
-div.wrap fieldset {
-border:1px solid #CCC;
-margin:5px;
-padding:10px;
-max-width:600px;
-}
+﻿
+<?php 
 
 
-div.wrap legend
-{
-   padding: 0px 3px 0px 3px;
-   margin: 2px;
-   border: solid #CCC 1px;
-   font-size:0.9em;
-   background-color: #e8e8e8;
-}
-</style>
+if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) {die(__('Access denied.','bovp')); }
 
-<div class="wrap">
-<h2><?php _e('Online Bible for Wordpress','bovp'); ?></h2>
+require_once('functions.php');
 
-<fieldset>
-<legend><?php _e('Consider a Donation','bovp'); ?></legend>
+?>
+
+<div class="bovp_wrap">
+<h2 class="bovp_h2"><?php _e('Online Bible v.'. BOVP_SYSTEM_VERSION . ' - Settings','bovp');?></h2>
+
+<fieldset  class="bovp_fieldset">
+<legend  class="bovp_legend"><?php _e('Consider a Donation','bovp'); ?></legend>
 
 <p align="justify">
-<?php _e('If you use Online Bible plugin and want to contribute to the maintenance of the project, you can use the link below to make a donation.','bovp'); ?>
+<?php _e("If you use Online Bible plugin and want to contribute to the project's maintenance, you can use the link below to make a donation.",'bovp'); ?>
           
 </p>
 
@@ -38,36 +28,18 @@ div.wrap legend
 </form>
 <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
 
-<p align="justify">
-<?php _e('You can also contribute in other ways, see below:','bovp'); ?>
-</p>
 
-<p align="justify">
-<strong>1)</strong><?php _e('&nbsp;Enjoying and publicizing our Facebook page;','bovp'); ?><br />
-<strong>2)</strong><?php _e('&nbsp;Sending biblical exclusive articles for posting on our site;','bovp'); ?><br />
-<strong>3)</strong><?php _e('&nbsp;Sending suggestions for improving the plugin, through our website or our Facebook page.','bovp'); ?><br /><br />
+<!-- INICIO FORMULARIO BOTAO PAYPAL-->
+	
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="9KV25MLWLPKQN">
+<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+</form>
 
- 
-</p>
 
-<p align="justify">
-<?php _e('for articles submissions, use the email: ','bovp'); ?><strong>conteudo@vivendoapalavra.com.br</strong>.<br /><br />
-*<?php _e('&nbsp;Please only articles with permission of the author.','bovp'); ?>
-</p>
- 
-<!--
-
-Você também pode contribuir de outras formas, veja abaixo:
-
-1) Curtindo e divulgando nossa página no Facebook.
-2) Enviando artigos bíblicos exclusivos,  para postagem em nosso site.
-3) Enviando sugestões para aperfeiçoamento do plugin, através do nosso site ou da nossa página no Facebook. 
-
-* por favor, artigos apenas com a devida autorização do autor.
-
-para envio de artigos, use o email
-
--->
+<!-- FINAL FORMULARIO BOTAO PAYPAL-->
 
 </fieldset>
 </div>

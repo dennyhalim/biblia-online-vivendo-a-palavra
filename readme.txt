@@ -1,13 +1,13 @@
-﻿=== Bíblia Online ===
-Tags: Bíblia, Palavra de Deus, Bíblia Sagrada, Bíblia Evangélica, Novo Testamento, Antigo Testamento, online bible, biblia, bíblia, biblia wordpress, biblia online, on-line, online, widget palavra diária, widget busca na bíblia, versículo diário, versiculo diario, palavra diaria, word of god
+﻿=== Online Bible VP for Wordpress ===
+Tags: Online Bible, King James, Holly Bible, Almeida Corrigida e Fiel, Bíblia, Palavra de Deus, Bíblia Sagrada, Bíblia Evangélica, Novo Testamento, Antigo Testamento, biblia, bíblia, biblia wordpress, biblia online, on-line, online, widget palavra diária, widget busca na bíblia, versículo diário, versiculo diario, palavra diaria, word of god
 Contributors: André Brum Sampaio
-Donate link: https://pagseguro.uol.com.br/checkout/v2/donation.html?receiverEmail=bibliaonlinevp@vivendoapalavra.com.br&currency=BRL
-Requires at least: 2.9.2
-Tested up to: 3.3.1
+Donate link: http://www.vivendoapalavra.org/contribua/
+Requires at least: 3.3.1
+Tested up to: 3.7.1
 Stable tag: trunk
 
 
-O plugin Bíblia Online VP possibilita a consulta e exibição dos livros da Bíblia Sagrada no seu blog.
+The Online Bible plugin installs the Holy Bible entirely in your Wordpress blog.
 
 == Description ==
 
@@ -16,28 +16,32 @@ Plugin for implementation of Bible Online in your Wordpress blog. With it, you c
 
 == Changelog ==
 
+1.5
+	- Internationalization and add English King James Version.
+
 1.4 
 	- In this new edition we have fixed some errors reported by users and a few others we found along the way. We also replaced the Bible database, as the previous version contained incomplete verses. Besides that we changed some functions in order to improve the plugin's performance and we modified the standard layout of the Bible.
 
 1.3 
-	- Adicionada a função para criação automática de links, o widget de exibição da "Palavra Diária", mudança na estrutura do banco de dados. Nesta versão o plugin foi disponibilizado no repositório do wordpress.
+	- add link generate function, add widget "Daily Verse", change to estructure for database. Add to Wordpress repository.
 
 1.2
-   	- corrigidos problemas de layout
+   	- remove bugs in the layout.
 
 1.1
-    - corrigidos alguns erros internos
+    	- remove some bugs.
 
 1.0
-    - primeira versão do plugin com exibição e consulta do texto bíblico.
+    	- first version.
+
 
 == Installation ==
 
-1. coloque a pasta do plugin dentro de: [Wordpress directory]/wp-content/plugins/
-2. Activate the plugin in the plugin admin page.
-3. In the admin bible page, choose the page where the bible.
-4. [opcional] In the admin bible page, choose the source daily verse.
-5. To actvate an widget, go to APARÊNCIA -> WIDGETS (são dois widgets: o Widget de busca na Bíblia Online e o Widget da Palavra Diária.
+1) In the SETTINGS PAGE, select the translate and then click to install buttom. 
+2) Wait the bible text installation.
+3) When text bible installation finish, choose the options (page, itens per page, theme, verse source) and click update buttom.
+4) Enjoy!
+
 
 
 == Frequently Asked Questions ==
@@ -47,15 +51,15 @@ No questions.
 
 == Can I suggest a feature for the plugin? ==
 
-http://www.vivendoapalavra.com.br/plugins-para-wordpress/#comments
+http://www.vivendoapalavra.org/
+
 
 == Upgrade Notice ==
 
-For the next version we are preparing a number of innovations which will make your Bible much more attractive, with both visual and structural resources to help you in your daily use. Among the innovations are:
+For the next version:
 
-- Inclusion of the King James version for users of english language;
-- Social Networks integration;
-- Implementation of themes to make easier layout alterations.
+- Add new themes.
+
 
 == Screenshots ==
 

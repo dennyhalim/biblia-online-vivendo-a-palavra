@@ -1,77 +1,74 @@
-<?php require_once('functions.php');?>
+<?php 
 
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=219024078111031";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
+if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) {die(__('Access denied.','bovp')); }
 
-<style>
+require_once('functions.php');
 
-div.wrap fieldset {
-border:1px solid #CCC;
-margin:5px;
-padding:10px;
-max-width:600px;
-}
+?>
 
-div.wrap legend
-{
-   padding: 0px 3px 0px 3px;
-   margin: 2px;
-   border: solid #CCC 1px;
-   font-size:0.9em;
-   background-color: #e8e8e8;
-}
-</style>
 
-<div class="wrap">
-<h2><?php _e('Online Bible for Wordpress v.'. BOVP_VERSION,'bovp'); ?></h2>
+<div class="bovp_wrap">
+<h2 class="bovp_h2"><?php _e('Online Bible for Wordpress v.'. BOVP_SYSTEM_VERSION,'bovp'); ?></h2>
 
-<fieldset>
-<legend><?php _e('Like in Facebook','bovp');?></legend>
-<fb:like href="https://www.facebook.com/vivendoapalavra" send="true" width="500px" show_faces="false" font="tahoma"></fb:like>
-</fieldset>
+<fieldset  class="bovp_fieldset">
+<legend  class="bovp_legend"><?php _e('Consider a Donation','bovp'); ?></legend>
 
-<fieldset>
-<legend><?php _e('Informations','bovp');?></legend>
-
-<p>
-
-<p><?php _e('Plugin for implementation of Bible Online in your Wordpress blog. With it, you can make available the Word of God and bless your website\'s users. The plugin allows to consult all 66 books of the Holy Bible.','bovp'); ?>
-<p/>
- 
-<p>Author:&nbsp;<a href="https://www.facebook.com/andrebrumsampaio">Andre Brum Sampaio</a></p>
-<p><?php echo __('Version: ','bovp') .  BOVP_VERSION; ?></p>
-<p><?php echo __('Author URI: ','bovp') . '&nbsp;<a href="http://www.vivendoapalavra.com.br/">http://www.vivendoapalavra.com.br/</a>' ?></p>
+<p align="justify">
+<?php _e("If you use Online Bible plugin and want to contribute to the project's maintenance, you can use the link below to make a donation.",'bovp'); ?>
           
 </p>
 
 
+<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+<form target="pagseguro" action="https://pagseguro.uol.com.br/checkout/v2/donation.html" method="post">
+<input type="hidden" name="receiverEmail" value="bibliaonlinevp@vivendoapalavra.com.br" />
+<input type="hidden" name="currency" value="BRL" />
+<input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/doacoes/84x35-doar-azul.gif" name="submit" alt="Doe com PagSeguro - é rápido e seguro!" />
+</form>
+<!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
 
-<h3><?php _e('In this new edition:','bovp'); ?></h3>
-<p>
 
-<?php _e('In this new edition we have fixed some errors reported by users and a few others we found along the way. We also replaced the Bible database, as the previous version contained incomplete verses. Besides that we changed some functions in order to improve the plugin\'s performance and we modified the standard layout of the Bible.','bovp'); ?><br /><br />    
-</p>
+<!-- INICIO FORMULARIO BOTAO PAYPAL-->
+	
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="9KV25MLWLPKQN">
+<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+</form>
 
-<h3><?php _e('In the next edition:','bovp'); ?></h3>
 
-<p>
-
-<p><?php _e('For the next version we are preparing a number of innovations which will make your Bible much more attractive, with both visual and structural resources to help you in your daily use. Among the innovations are:','bovp'); ?><p>
-<br />
-
-- <?php _e('Inclusion of the King James version for users of english language;','bovp'); ?><br />
-- <?php _e('Social Networks integration;','bovp'); ?><br />
-- <?php _e('Implementation of themes to make easier layout alterations.','bovp');?>
-          
-</p>
+<!-- FINAL FORMULARIO BOTAO PAYPAL-->
 
 </fieldset>
+
+<fieldset class="bovp_fieldset">
+
+	<legend class="bovp_legend"><?php _e('Informations','bovp');?></legend>
+
+	<p>
+
+	<p><?php _e('Plugin for implementation of Bible Online in your Wordpress blog. With it, you can spread out the Word of God and bless your website\'s users. The plugin allows to consult all of 66 books of the Holy Bible.','bovp'); ?>
+	<p/>
+	 
+		<p>Author:&nbsp;<a href="https://www.facebook.com/andrebrumsampaio">Andre Brum Sampaio</a></p>
+		<p><?php echo __('Author URI: ','bovp') . '&nbsp;<a href="http://www.vivendoapalavra.org/">http://www.vivendoapalavra.org/</a>' ?></p>
+		<p><?php echo __('Version: ','bovp') .  BOVP_SYSTEM_VERSION; ?></p>      
+
+	</p>
+
+	<h3><?php _e('Versions:','bovp'); ?></h3>
+
+	<p><?php echo '• King James Edition - English<br>• Almeida Corrigida Fiel - Português (1994)';?></p>
+
+	<h3><?php _e('Settings:','bovp'); ?></h3>
+
+	<p><?php _e('In the SETTINGS PAGE, select desired version and then click to install. Wait the bible text installation complete and then choose the options (page, itens per page, theme, verse source).','bovp');?></p>
+
+
+
+</fieldset>
+
+
 </div>

@@ -1,78 +1,46 @@
-﻿var bovp_books = new Array()
-		bovp_books[0] = "Todos|0";
-		bovp_books[1] = "Gênesis|50";
-		bovp_books[2] = "Êxodo|40";
-		bovp_books[3] = "Levítico|27";
-		bovp_books[4] = "Números|36";
-		bovp_books[5] = "Deuteronômio|34";
-		bovp_books[6] = "Josué|24";
-		bovp_books[7] = "Juízes|21";
-		bovp_books[8] = "Rute|4";
-		bovp_books[9] = "I Samuel|31";
-		bovp_books[10] = "II Samuel|24";
-		bovp_books[11] = "I Reis|22";
-		bovp_books[12] = "II Reis|25";
-		bovp_books[13] = "I Crônicas|29";
-		bovp_books[14] = "II Crônicas|36";
-		bovp_books[15] = "Esdras|10";
-		bovp_books[16] = "Neemias|13";
-		bovp_books[17] = "Ester|10";
-		bovp_books[18] = "Jó|42";
-		bovp_books[19] = "Salmos|150";
-		bovp_books[20] = "Provérbios|31";
-		bovp_books[21] = "Eclesiastes|12";
-		bovp_books[22] = "Cântico dos Cânticos|8";
-		bovp_books[23] = "Isaías|66";
-		bovp_books[24] = "Jeremias|52";
-		bovp_books[25] = "Lamentações|5";
-		bovp_books[26] = "Ezequiel|48";
-		bovp_books[27] = "Daniel|12";
-		bovp_books[28] = "Oséias|14";
-		bovp_books[29] = "Joel|3";
-		bovp_books[30] = "Amós|9";
-		bovp_books[31] = "Abdias|1";
-		bovp_books[32] = "Jonas|4";
-		bovp_books[33] = "Miquéias|7";
-		bovp_books[34] = "Naum|3";
-		bovp_books[35] = "Habacuque|3";
-		bovp_books[36] = "Sofonias|3";
-		bovp_books[37] = "Ageu|2";
-		bovp_books[38] = "Zacarias|14";
-		bovp_books[39] = "Malaquias|3";
-		bovp_books[40] = "Mateus|28";
-		bovp_books[41] = "Marcos|16";
-		bovp_books[42] = "Lucas|24";
-		bovp_books[43] = "João|21";
-		bovp_books[44] = "Atos dos Apóstolos|28";
-		bovp_books[45] = "Romanos|16";
-		bovp_books[46] = "I Coríntios|16";
-		bovp_books[47] = "II Coríntios|13";
-		bovp_books[48] = "Gálatas|6";
-		bovp_books[49] = "Efésios|6";
-		bovp_books[50] = "Filipenses|4";
-		bovp_books[51] = "Colossenses|4";
-		bovp_books[52] = "I Tessalonicenses|5";
-		bovp_books[53] = "II Tessalonicenses|3";
-		bovp_books[54] = "I Timóteo|6";
-		bovp_books[55] = "II Timóteo|4";
-		bovp_books[56] = "Tito|3";
-		bovp_books[57] = "Filêmon|1";
-		bovp_books[58] = "Hebreus|13";
-		bovp_books[59] = "Tiago|5";
-		bovp_books[60] = "I Pedro|5";
-		bovp_books[61] = "II Pedro|3";
-		bovp_books[62] = "I João|5";
-		bovp_books[63] = "II João|1";
-		bovp_books[64] = "III João|1";
-		bovp_books[65] = "Judas|1";
-		bovp_books[66] = "Apocalipse|22";
-		
-function PreencheCombo(book){
+﻿jQuery(document).ready(function(){
 
-	if(book == 0) {document.getElementById('bovp_chapter').style.display = "none";} else {document.getElementById('bovp_chapter').style.display = "";}
-	document.forms['bovp-form-search'].bovp_chapter.options.length = 0;
-	for (i=0; i<bovp_books[book].split("|")[1]; i++) {
-	var bovp_counter = i+1;
-	document.forms['bovp-form-search'].bovp_chapter.options[i] = new Option(bovp_counter,bovp_counter);
-	}
-}
+	// Capther select
+
+	jQuery('#bovp_chapter').hide();
+
+
+	jQuery('#bovp_book').change(function(){
+
+		jQuery('#bovp_chapter').empty();
+
+		var num_pages =  jQuery('#bovp_book option:selected').attr('num_pages');
+
+		if(num_pages != 0) {
+		
+			var itens = []; 
+
+			for(i = 1; i <= num_pages; i++) {itens.push(i);}
+
+
+			jQuery('#bovp_chapter').append('<option value="0" >All</option>');
+
+
+			jQuery.each(itens, function(index, value) {
+
+			  jQuery('#bovp_chapter').append('<option value="'+value+'" >'+value+'</option>');
+
+
+			});
+
+			jQuery('#bovp_chapter').show();
+
+		} 
+
+		jQuery('#bovp_chapter:empty').hide();
+		
+			
+		
+
+    });
+					
+
+
+
+
+});
