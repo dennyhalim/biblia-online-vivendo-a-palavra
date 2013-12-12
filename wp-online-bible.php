@@ -67,6 +67,9 @@ if (is_page(BOVP_PAGE)) {
 	global $wpdb; 
 	global $wp_query;
 
+	$vs="";$is_search=false;$bovp_content="";$bovp_color="";$bovp_search="";$cpg="";$bk="";$cp="";
+
+
 	$vars = $wp_query->query_vars;
 
 	$sql = "SELECT * FROM `" . BOVP_TABLE . "` WHERE ";
@@ -182,8 +185,8 @@ if (is_page(BOVP_PAGE)) {
 						$texto = str_replace($destaque,'<font color="red">'.$destaque.'</font>',$texto);
 						}
 						
-						$book_name = book_info($livro, 'name'); //$livroCapitulosSplit[0];
-						$qtdCapitulos = book_info($livro, 'pages'); //$livroCapitulosSplit[1];
+						$book_name = book_info($livro, 'name'); 
+						$qtdCapitulos = book_info($livro, 'pages');
 						
 												
 						$bovp_content .= "<li class='$bovp_color'><b><a href=\"?page_id=" . BOVP_PAGE . 

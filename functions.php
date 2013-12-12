@@ -251,8 +251,6 @@ function bovp_options_select($name, $list){
 
 		$option_value = get_option($name); 
 	 
-	   	echo "<tr valign=\"top\" id=\"" . $name ."_row\">";
-		echo "<th scope=\"row\">" . _e($title,'bovp') . "</th>";
 		echo "<td><select name=\"" . $name . "\">";
 
 			foreach($list as $key => $value) {
@@ -261,8 +259,6 @@ function bovp_options_select($name, $list){
 	        }
 
 	    echo "</select> <br/>";
-	    echo $description;
-	    echo "</td></tr>";
 }
 
 
@@ -423,6 +419,8 @@ if($bovp_return_form == 'echo') {echo $bovp_form;} elseif($bovp_return_form == '
 }
 
 function bovp_pagination($inf){
+
+	$pagination = '';
 
 
 	$prmt = BOVP_URL;
