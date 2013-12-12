@@ -8,7 +8,34 @@ function bovp_install(){
 
 	global $wpdb;
 
-	$Verify_bovp_old_table = $wpdb->get_results("SELECT * FROM `bovp_arc` LIMIT 0,1" );
+        add_option("bovp_system_version", '1.5', '', 'yes');
+        add_option("bovp_itens_per_page", '20', '', 'yes');
+        add_option("bovp_bible_books_count", '0', '', 'yes');
+        add_option("bovp_theme", 'default', '', 'yes');
+        add_option("bovp_array_books", '0', '', 'yes'); 
+        add_option("bovp_table", '-1', '', 'yes'); 
+        add_option('bovp_version', '-1', '', 'yes'); 
+
+	
+        $bovp_bible_page = get_option('bovp_page');
+        $bovp_random_verse = get_option('bovp_source_random_verse');
+        $bovp_daily_verse = get_option('bovp_daily_verse');
+
+        if(!$bovp_bible_page) { add_option("bovp_page", '-1', '', 'yes');}
+        if(!$bovp_random_verse) { add_option("bovp_source_random_verse", '0', '', 'yes');}
+        if(!$bovp_daily_verse) { add_option("bovp_daily_verse", '0', '', 'yes');}
+
+
+        $bovp_registred_versions = array();
+
+        $bovp_registred_versions[0] = __('Not Instaled','bovp') . "|bovp_none";
+        $bovp_registred_versions[1] = "King James Edition - English|bovp_kj";
+        $bovp_registred_versions[2] = "Almeida Corrigida Fiel - Português (1994)|bovp_acf";
+
+        add_option("bovp_registred_versions", $bovp_registred_versions, '', 'yes'); 
+
+
+        $Verify_bovp_old_table = $wpdb->get_results("SELECT * FROM `bovp_arc` LIMIT 0,1" );
 
 		if($Verify_bovp_old_table) { 
 
@@ -23,41 +50,12 @@ function bovp_install(){
 
 		}
 
-	
-        $bovp_bible_page = get_option('bovp_page');
-        $bovp_random_verse = get_option('bovp_source_random_verse');
-        $bovp_daily_verse = get_option('bovp_daily_verse');
 
-
-        $bovp_bible_page = (isset($bovp_bible_page) AND !empty($bovp_bible_page)) ? $bovp_bible_page : '-1';
-        $bovp_random_verse = (isset($bovp_random_verse) AND !empty($bovp_random_verse)) ? $bovp_random_verse : '0';
-        $bovp_daily_verse = (isset($bovp_daily_verse) AND !empty($bovp_daily_verse)) ? $bovp_daily_verse : '0';
-
-                add_option("bovp_system_version", '1.5', '', 'yes');
-                add_option("bovp_itens_per_page", '20', '', 'yes');
-                add_option("bovp_bible_books_count", '0', '', 'yes');
-                add_option("bovp_theme", 'default', '', 'yes');
-                add_option("bovp_array_books", '0', '', 'yes'); 
-                add_option("bovp_table", '-1', '', 'yes'); 
-                add_option('bovp_version', '-1', '', 'yes'); 
-
-                add_option("bovp_page", $bovp_bible_page, '', 'yes');
-                add_option("bovp_source_random_verse", $bovp_random_verse, '', 'yes');         
-                add_option("bovp_daily_verse", $bovp_daily_verse, '', 'yes'); 
-
-                $bovp_registred_versions = array();
-
-                $bovp_registred_versions[0] = __('Not Instaled','bovp') . "|bovp_none";
-                $bovp_registred_versions[1] = "King James Edition - English|bovp_kj";
-                $bovp_registred_versions[2] = "Almeida Corrigida Fiel - Português (1994)|bovp_acf";
-
-                add_option("bovp_registred_versions", $bovp_registred_versions, '', 'yes'); 
-
-
-        delete_option('bovp_bd_state');
+    delete_option('bovp_bd_state');
 	       
 	bovp_book_array();
 }
+
 
 // uninstall
 
