@@ -15,6 +15,21 @@ function bovp_install(){
 	$bovp_random_verse = (isset($bovp_random_verse) AND !empty($bovp_random_verse)) ? $bovp_random_verse : '0';
 	$bovp_daily_verse = (isset($bovp_daily_verse) AND !empty($bovp_daily_verse)) ? $bovp_daily_verse : '0';
 
+	// Verify old bovp table -> bovp_bible
+
+	$Verify_bovp_old_table = $wpdb->get_results("SELECT * FROM `bovp_bible` LIMIT 0,1" );
+
+		if($Verify_bovp_old_table) { 
+
+		$wpdb->query("RENAME TABLE  `bovp_bible` TO `bovp_acf`");
+
+		update_option("bovp_table", 'bovp_acf');
+		update_option("bovp_version", '2'); 
+		
+		bovp_book_array();
+
+		}
+
 		add_option("bovp_system_version", '1.5', '', 'yes');
 		add_option("bovp_itens_per_page", '20', '', 'yes');
 		add_option("bovp_bible_books_count", '0', '', 'yes');
@@ -37,6 +52,8 @@ function bovp_install(){
 
 
 	delete_option('bovp_bd_state');
+
+
 	
 
 }
