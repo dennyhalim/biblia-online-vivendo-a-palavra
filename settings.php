@@ -26,8 +26,6 @@ if(isset($_REQUEST['bovp_install'])) {
  
 echo "<script language=\"JavaScript\"> window.location=\"admin.php?page=biblia-online-vivendo-a-palavra/settings.php\";</script>";
 
-
-
 }
 
 
