@@ -6,6 +6,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) {die(__('Ac
 
 function bovp_install(){ 
 
+	global $wpdb;
 
 	$Verify_bovp_old_table = $wpdb->get_results("SELECT * FROM `bovp_arc` LIMIT 0,1" );
 
