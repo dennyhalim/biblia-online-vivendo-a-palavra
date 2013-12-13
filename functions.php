@@ -8,8 +8,6 @@ function bovp_update(){
 
 	global $wpdb;
 
-	if(is_admin()&&!get_option('bovp_update')==false) {
-
 		$bovp_registred_versions = array();
         $bovp_registred_versions[1] = "King James Edition - English|bovp_kj";
         $bovp_registred_versions[2] = "Almeida Corrigida Fiel - Português (1994)|bovp_acf";
@@ -32,7 +30,7 @@ function bovp_update(){
 
 		delete_option('bovp_update');
 
-    }
+    
 }
 
 // instalation function

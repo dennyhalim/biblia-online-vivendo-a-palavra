@@ -5,8 +5,9 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) {die(__('Ac
 
 require_once('functions.php');
 
-$bovp_registred_versions = get_option('bovp_registred_versions');
+if(!get_option('bovp_update')==false) {bovp_update();}
 
+$bovp_registred_versions = get_option('bovp_registred_versions');
 
 if(isset($_REQUEST['bovp_install'])) {
 
