@@ -24,9 +24,7 @@ if(isset($_REQUEST['bovp_install'])) {
   import_sql_data($bible_file, $bovp_install);
 
  
-//echo "<script language=\"JavaScript\"> window.location=\"admin.php?page=biblia-online-vivendo-a-palavra/settings.php\";</script>";
-
-wp_redirect("admin.php?page=biblia-online-vivendo-a-palavra/settings.php");
+echo "<script language=\"JavaScript\"> window.location=\"admin.php?page=biblia-online-vivendo-a-palavra/settings.php\";</script>";
 
 }
 
@@ -158,7 +156,7 @@ wp_redirect("admin.php?page=biblia-online-vivendo-a-palavra/settings.php");
           <legend class="bovp_legend"><?php _e('Choose theme','bovp');?></legend>
 
             <select name="bovp_theme">
-                <option value="0" <?php if (get_option('bovp_theme')==0) {echo 'selected';} ?> ><?php _e('Default','bovp') ?></option>
+                <option value="default" <?php if (get_option('bovp_theme')=="default") {echo 'selected';} ?> ><?php _e('Default','bovp') ?></option>
             </select>
 
         </fieldset>
