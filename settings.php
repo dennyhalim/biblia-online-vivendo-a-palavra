@@ -24,7 +24,9 @@ if(isset($_REQUEST['bovp_install'])) {
   import_sql_data($bible_file, $bovp_install);
 
  
-echo "<script language=\"JavaScript\"> window.location=\"admin.php?page=biblia-online-vivendo-a-palavra/settings.php\";</script>";
+//echo "<script language=\"JavaScript\"> window.location=\"admin.php?page=biblia-online-vivendo-a-palavra/settings.php\";</script>";
+
+wp_redirect("admin.php?page=biblia-online-vivendo-a-palavra/settings.php");
 
 }
 
@@ -44,27 +46,40 @@ echo "<script language=\"JavaScript\"> window.location=\"admin.php?page=biblia-o
           
 </p>
 
+<h2><strong><?php _e("Make a donation with PAGSEGURO"); ?></strong></h2>
 
 <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+
 <form target="pagseguro" action="https://pagseguro.uol.com.br/checkout/v2/donation.html" method="post">
+
 <input type="hidden" name="receiverEmail" value="bibliaonlinevp@vivendoapalavra.com.br" />
+
 <input type="hidden" name="currency" value="BRL" />
+
 <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/doacoes/84x35-doar-azul.gif" name="submit" alt="Doe com PagSeguro - é rápido e seguro!" />
+
 </form>
+
 <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
 
+<h2><strong><?php _e("Make a donation with PAYPAL"); ?></strong></h2>
 
 <!-- INICIO FORMULARIO BOTAO PAYPAL-->
-  
+
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+
 <input type="hidden" name="cmd" value="_s-xclick">
+
 <input type="hidden" name="hosted_button_id" value="9KV25MLWLPKQN">
+
 <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+
 <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+
 </form>
 
-
 <!-- FINAL FORMULARIO BOTAO PAYPAL-->
+
 
 </fieldset>
 
@@ -78,12 +93,17 @@ echo "<script language=\"JavaScript\"> window.location=\"admin.php?page=biblia-o
 
       <select name="bovp_install">
 
-        <?php 
+        <?php
+
+        if (BOVP_BIBLE_VERSION=='0') {
+
+            echo "<option value=\"0\" selected >" . __('Not Installed','bovp') . "</option>";
+
+        }
       
 
           foreach($bovp_registred_versions as $indice => $bovp_version) {
 
-            
             $bovp_version_info = explode('|' , $bovp_version);
 
             echo "<option value=\"" . $indice . "\""; 
