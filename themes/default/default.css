@@ -1,133 +1,133 @@
-@charset "utf-8";
-/* CSS Document */
-
-@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro"); 
-
-/* RESET STYLES */
-div.bovp_container div,
-div.bovp_container a,  
-div.bovp_container img, 
-div.bovp_container button, 
-div.bovp_container ul, 
-div.bovp_container li, 
-div.bovp_container h2, 
-div.bovp_container h3, 
-div.bovp_container span, 
-div.bovp_container select, 
-div.bovp_container input  { margin: 0;padding: 0;border: 0;background:none;}
-
-div.bovp_container {
-	
-	font-family: 'Source Sans Pro', sans-serif;
-	background: url(bg_bovp.png) top left no-repeat;
-	padding: 50px 20px 10px 20px;
-	max-width: 1024px !important;
-	border-bottom: 4px solid #47450B;
-	position: relative;
-	font-size: 16px;
-
-}
-
-div.bovp_container .bovo_link_logo {position: absolute;top:10px;right:10px;}
-
-div.bovp_container h3 {
-	
-	font-family: 'Source Sans Pro', sans-serif;
-	text-align: right;
-	font-size: 22px;
-	text-transform: uppercase;
-	color: #949130;
-	padding-top: 20px;
-	padding-bottom: 40px;
-	display: block;
-}
-
-div.bovp_container form { margin: 15px 20px 20px 20px; }
-
-div.bovp_container input[type="submit"] {border: none;width:30px;height:30px;padding:0;background:url(sprites.png) no-repeat;cursor:pointer;}
-
-div.bovp_container input[type="submit"] {background-position:-4px 0;}
-
-div.bovp_container input[type="submit"]:hover {background-position:-64px 0 !important;}
-
-div.bovp_container input[type=text], div.bovp_container select {
-
-	font-family: inherit;
-	border:1px solid #ccc;
-	font-size:16px;
-	min-height:30px;
-	display:block;
-	padding: 6px;
-	float: left;
-	margin-right: 20px;
-	background: #fff;
-
-	-webkit-border-radius:5px;
-	-moz-border-radius:5px;
-	-o-border-radius:5px;
-	-ms-border-radius:5px;
-	border-radius:5px;
-	}
-
-div.bovp_container img { border:0px;}
-	
-div.bovp_container .bovp_cap {  
-
-	font-family: 'Source Sans Pro', sans-serif;
-	margin-left:10px;
-	color:#360;
-	border:none;
-	border-radius:5px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	background:#c2c2c2;
-	padding:10px;
-	}
-	
-div.bovp_container .verse_num { padding:15px; font-size:18px; font-weight:bold; }
-
-div.bovp_container ul li.bovp_color {background: #EEE;}
-
-div.bovp_container ul li { list-style: none;margin-bottom: 15px; text-align: justify; padding: 15px;}
-
-div.bovp_container ul li:hover { background: #BDBD9F;}
-
-div.bovp_container ul li a {display: block;}
-
-div.bovp_container a:link, div.bovp_container a:visited  {color: #949130;text-decoration:none;}
-
-div.bovp_container a:hover, div.bovp_container a:active {color: #000;text-decoration:none;}
-
-div.bovp_container div.bovp_translate{display: block;text-align: right;margin-top: 20px;}
-
-/* Pagination based on Victor De la Rocha's script (http://www.mis-algoritmos.com) */
-
-div.bovp_pagination { font-family: inherit; padding:3px; margin:3px; text-align:center; clear: both; }
-
-div.bovp_pagination a { padding: 2px 5px 2px 5px;margin-right: 2px;border: 1px solid #91906a;text-decoration: none; color: #91906a;}
-
-div.bovp_pagination a:hover, div.pagination a:active {padding: 2px 5px 2px 5px;margin-right: 2px;border: 1px solid #a0a0a0;}
-
-div.bovp_pagination span.current {padding: 2px 5px 2px 5px;margin-right: 2px;border: 1px solid #ccc;font-weight: bold;background-color: #f0f0f0;color: #aaa;}
-
-div.bovp_pagination span.disabled {padding: 2px 5px 2px 5px;margin-right: 2px;border: 1px solid #ccc;color: #ccc;}
-
-div.bovp_container .Buttons {border:1px solid #c8c8c8;background-color: #f3f6f8;}
-
-div.bovp_container button {
-
-	background-color: #21759b;
-	color: #fff;
-	padding: 6px;
-	background-image: -webkit-gradient(linear,left top,left bottom,from(#2a95c5),to(#21759b));
-	background-image: -webkit-linear-gradient(top,#2a95c5,#21759b);
-	background-image: -moz-linear-gradient(top,#2a95c5,#21759b);
-	background-image: -ms-linear-gradient(top,#2a95c5,#21759b);
-	background-image: -o-linear-gradient(top,#2a95c5,#21759b);
-	background-image: linear-gradient(to bottom,#2a95c5,#21759b);
-	border-color: #21759b;
-	border-bottom-color: #1e6a8d;
-
-}
-
+@charset "utf-8";
+/* CSS Document */
+
+@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro"); 
+
+/* RESET STYLES */
+div.bovp_container div,
+div.bovp_container a,  
+div.bovp_container img, 
+div.bovp_container button, 
+div.bovp_container ul, 
+div.bovp_container li, 
+div.bovp_container h2, 
+div.bovp_container h3, 
+div.bovp_container span, 
+div.bovp_container select, 
+div.bovp_container input  { margin: 0;padding: 0;border: 0;background:none;}
+
+div.bovp_container {
+	
+	font-family: 'Source Sans Pro', sans-serif;
+	background: url(bg_bovp.png) top left no-repeat;
+	padding: 50px 20px 10px 20px;
+	max-width: 1024px !important;
+	border-bottom: 4px solid #47450B;
+	position: relative;
+	font-size: 16px;
+
+}
+
+div.bovp_container .bovo_link_logo {position: absolute;top:10px;right:10px;}
+
+div.bovp_container h3 {
+	
+	font-family: 'Source Sans Pro', sans-serif;
+	text-align: right;
+	font-size: 22px;
+	text-transform: uppercase;
+	color: #949130;
+	padding-top: 20px;
+	padding-bottom: 40px;
+	display: block;
+}
+
+div.bovp_container form { margin: 15px 20px 20px 20px; }
+
+div.bovp_container input[type="submit"] {border: none;width:30px;height:30px;padding:0;background:url(sprites.png) no-repeat;cursor:pointer;}
+
+div.bovp_container input[type="submit"] {background-position:-4px 0;}
+
+div.bovp_container input[type="submit"]:hover {background-position:-64px 0 !important;}
+
+div.bovp_container input[type=text], div.bovp_container select {
+
+	font-family: inherit;
+	border:1px solid #ccc;
+	font-size:16px;
+	min-height:30px;
+	display:block;
+	padding: 6px;
+	float: left;
+	margin-right: 20px;
+	background: #fff;
+
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-o-border-radius:5px;
+	-ms-border-radius:5px;
+	border-radius:5px;
+	}
+
+div.bovp_container img { border:0px;}
+	
+div.bovp_container .bovp_cap {  
+
+	font-family: 'Source Sans Pro', sans-serif;
+	margin-left:10px;
+	color:#360;
+	border:none;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	background:#c2c2c2;
+	padding:10px;
+	}
+	
+div.bovp_container .verse_num { padding:15px; font-size:18px; font-weight:bold; }
+
+div.bovp_container ul li.bovp_color {background: #EEE;}
+
+div.bovp_container ul li { list-style: none;margin-bottom: 15px; text-align: justify; padding: 15px;}
+
+div.bovp_container ul li:hover { background: #BDBD9F;}
+
+div.bovp_container ul li a {display: block;}
+
+div.bovp_container a:link, div.bovp_container a:visited  {color: #949130;text-decoration:none;}
+
+div.bovp_container a:hover, div.bovp_container a:active {color: #000;text-decoration:none;}
+
+div.bovp_container div.bovp_translate{display: block;text-align: right;margin-top: 20px;}
+
+/* Pagination based on Victor De la Rocha's script (http://www.mis-algoritmos.com) */
+
+div.bovp_pagination { font-family: inherit; padding:3px; margin:3px; text-align:center; clear: both; }
+
+div.bovp_pagination a { padding: 2px 5px 2px 5px;margin-right: 2px;border: 1px solid #91906a;text-decoration: none; color: #91906a;}
+
+div.bovp_pagination a:hover, div.pagination a:active {padding: 2px 5px 2px 5px;margin-right: 2px;border: 1px solid #a0a0a0;}
+
+div.bovp_pagination span.current {padding: 2px 5px 2px 5px;margin-right: 2px;border: 1px solid #ccc;font-weight: bold;background-color: #f0f0f0;color: #aaa;}
+
+div.bovp_pagination span.disabled {padding: 2px 5px 2px 5px;margin-right: 2px;border: 1px solid #ccc;color: #ccc;}
+
+div.bovp_container .Buttons {border:1px solid #c8c8c8;background-color: #f3f6f8;}
+
+div.bovp_container button {
+
+	background-color: #21759b;
+	color: #fff;
+	padding: 6px;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#2a95c5),to(#21759b));
+	background-image: -webkit-linear-gradient(top,#2a95c5,#21759b);
+	background-image: -moz-linear-gradient(top,#2a95c5,#21759b);
+	background-image: -ms-linear-gradient(top,#2a95c5,#21759b);
+	background-image: -o-linear-gradient(top,#2a95c5,#21759b);
+	background-image: linear-gradient(to bottom,#2a95c5,#21759b);
+	border-color: #21759b;
+	border-bottom-color: #1e6a8d;
+
+}
+
 span.verse_ref {display: block;}

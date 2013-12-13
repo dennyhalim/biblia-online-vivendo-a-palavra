@@ -8,10 +8,8 @@ function bovp_install(){
 
 	global $wpdb;
 
-
 	    $bovp_registred_versions = array();
 
-        $bovp_registred_versions[0] = __('Not Instaled','bovp') . "|bovp_none";
         $bovp_registred_versions[1] = "King James Edition - English|bovp_kj";
         $bovp_registred_versions[2] = "Almeida Corrigida Fiel - Português (1994)|bovp_acf";
 
@@ -28,9 +26,11 @@ function bovp_install(){
         add_option("bovp_registred_versions", $bovp_registred_versions, '', 'yes');
 
         update_option("bovp_table", 'wp_bovp_acf', '', 'yes');
-        update_option('bovp_version', '2', '', 'yes');         
+        update_option('bovp_version', '2', '', 'yes');
 
-        $rename_table = $wpdb->query("RENAME TABLE  `bovp_arc` TO `wp_bovp_acf`");
+        $wpdb->query("DROP TABLE  `bovp_arc`");
+
+        import_sql_data('bovp_acf','2');
 
 		} else { // New Instalation
 
@@ -47,7 +47,6 @@ function bovp_install(){
 		add_option("bovp_page", '-1', '', 'yes');
 		add_option("bovp_source_random_verse", '0', '', 'yes');
 		add_option("bovp_daily_verse", '0', '', 'yes');
-        
 
 		}
 
@@ -55,7 +54,6 @@ function bovp_install(){
 	       
 	bovp_book_array();
 }
-
 
 // uninstall
 
@@ -200,9 +198,7 @@ function bovp_active_translate(){ // activate translate pluging function
 
 function bovo_include_dependences() {  
 
-	$themes[0] = "default";
-
-	$theme = $themes[get_option('bovp_theme')];
+	$theme = get_option('bovp_theme');
 		
 	$style_sheet = BOVP_FOLDER ."themes/".$theme."/".$theme.".css";
 
