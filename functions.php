@@ -2,21 +2,17 @@
 
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) {die(__('Access denied.','bovp')); }
 
-// instalation function
+// Update function
 
-function bovp_install(){ 
+function bovp_update(){ 
 
 	global $wpdb;
 
-	    $bovp_registred_versions = array();
+	if(is_admin()&&!get_option('bovp_update')==false) {
 
+		$bovp_registred_versions = array();
         $bovp_registred_versions[1] = "King James Edition - English|bovp_kj";
         $bovp_registred_versions[2] = "Almeida Corrigida Fiel - Português (1994)|bovp_acf";
-
-
-		$bovp_version = get_option('bovp_version');
-
-		if($bovp_version=='1.3' OR $bovp_version=='1.4') { // Instalation Update
 
 		add_option("bovp_system_version", '1.5', '', 'yes');
         add_option("bovp_itens_per_page", '20', '', 'yes');
@@ -24,15 +20,32 @@ function bovp_install(){
         add_option("bovp_theme", 'default', '', 'yes');
         add_option("bovp_array_books", '0', '', 'yes'); 
         add_option("bovp_registred_versions", $bovp_registred_versions, '', 'yes');
-
         update_option("bovp_table", 'wp_bovp_acf', '', 'yes');
         update_option('bovp_version', '2', '', 'yes');
+		delete_option('bovp_bd_state');
 
         $wpdb->query("DROP TABLE  `bovp_arc`");
 
-        import_sql_data('bovp_acf','2');
+        import_sql_data('bovp_acf','2');	    
+	       
+		bovp_book_array();
 
-		} else { // New Instalation
+		delete_option('bovp_update');
+
+    }
+}
+
+// instalation function
+
+function bovp_install(){ 
+
+	global $wpdb;
+
+		add_option("bovp_update", false, '', 'yes');
+
+	    $bovp_registred_versions = array();
+        $bovp_registred_versions[1] = "King James Edition - English|bovp_kj";
+        $bovp_registred_versions[2] = "Almeida Corrigida Fiel - Português (1994)|bovp_acf";
 
 		add_option("bovp_system_version", '1.5', '', 'yes');
         add_option("bovp_itens_per_page", '20', '', 'yes');
@@ -40,22 +53,17 @@ function bovp_install(){
         add_option("bovp_theme", 'default', '', 'yes');
         add_option("bovp_array_books", '0', '', 'yes'); 
         add_option("bovp_registred_versions", $bovp_registred_versions, '', 'yes');  
-
         add_option("bovp_table", '-1', '', 'yes');
         add_option('bovp_version', '0', '', 'yes'); 
-
 		add_option("bovp_page", '-1', '', 'yes');
 		add_option("bovp_source_random_verse", '0', '', 'yes');
 		add_option("bovp_daily_verse", '0', '', 'yes');
-
-		}
-
-    delete_option('bovp_bd_state');
+		delete_option('bovp_bd_state');
 	       
 	bovp_book_array();
 }
 
-// uninstall
+// uninstall function
 
 function bovp_uninstall(){
 
@@ -90,7 +98,6 @@ function import_sql_data($file,$version){
 
 	if($bible_file) {
 	
-
 		$bovp_table = $wpdb->prefix . $bible_file; 
 
 		$create_bovp_table = "CREATE TABLE `".$bovp_table."` (
