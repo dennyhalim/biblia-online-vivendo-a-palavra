@@ -11,7 +11,7 @@ The Online Bible plugin installs the Holy Bible entirely in your Wordpress blog.
 
 == Description ==
 
-Plugin for implementation of Bible Online in your Wordpress blog. With it, you can make available the Word of God and bless your website\'s users. The plugin allows to consult all 66 books of the Holy Bible.
+Plugin for implementation of Bible Online in your Wordpress blog. With it, you can make available the Word of God and bless your website\'s users. The plugin allows to consult all 66 books of the Holy Bible. Versions: King James and Almeida Corrigida e Fiel (1994).
 
 
 == Changelog ==
@@ -20,7 +20,7 @@ Plugin for implementation of Bible Online in your Wordpress blog. With it, you c
 	- Internationalization and add English King James Version.
 
 1.4 
-	- In this new edition we have fixed some errors reported by users and a few others we found along the way. We also replaced the Bible database, as the previous version contained incomplete verses. Besides that we changed some functions in order to improve the plugin's performance and we modified the standard layout of the Bible.
+	- In this new edition we have fixed some errors reported by users and a few others we found along the way. We also replaced the Bible database, as the previous version contained incomplete verses. Besides that we changed some functions in order to improve the plugin's performance and we modified the standard layout of the Bible.Versions: King James and Almeida Corrigida e Fiel (1994).
 
 1.3 
 	- add link generate function, add widget "Daily Verse", change to estructure for database. Add to Wordpress repository.

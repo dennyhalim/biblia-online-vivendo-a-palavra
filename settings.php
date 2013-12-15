@@ -7,7 +7,6 @@ require_once('functions.php');
 
 $bovp_registred_versions = get_option('bovp_registred_versions');
 
-
 if(isset($_REQUEST['bovp_install'])) {
 
   $bovp_install = $_REQUEST['bovp_install'];
