@@ -547,12 +547,23 @@ class bovp_widget_search extends WP_Widget
 		if ( $title )
 		echo $before_title . $title . $after_title;
 	
-		echo "<form method=\"post\" id=\"bovp_form_search\" action=\"" . BOVP_BIBLE_URL . "\" name=\"bovp_form_search\">";
+		echo "<div class=\"bovp_form_container\">";
+
+		echo "<form method=\"post\" action=\"" . BOVP_BIBLE_URL . "\" name=\"bovp_form_search\">";
+
 		echo "<input name=\"page_id\" type=\"hidden\" value=\"" . BOVP_PAGE . "\"/>";
-		echo "<input type=\"text\" id=\"sh\" name=\"sh\" placeholder=\"" . __('search','bovp') . "\" >";
-		echo "<select name=\"bk\" id=\"bovp_book\">" . book_select("var") . "</select>";
-		echo "<select type=\"text\" name=\"cp\" id=\"bovp_chapter\"></select>";
-		echo "<input type=\"submit\" id=\"bible-submit\" value=\"\"></form>";
+
+		echo "<input type=\"text\" id=\"sh\" name=\"sh\" placeholder=\"" . __('Search','bovp') . "\" >";
+
+		echo "<select name=\"bk\" id=\"bovp_widget_book\">" . book_select("var") . "</select>";
+
+		echo "<select type=\"text\" name=\"cp\" id=\"bovp_widget_chapter\"></select>";
+
+		echo "<button type=\"submit\">" . __('Send','bovp') . "</button>";
+
+		echo "</form>";
+	
+		echo "</div>";
 	
 		echo $after_widget;
 	
