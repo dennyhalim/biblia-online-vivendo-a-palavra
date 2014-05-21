@@ -1,32 +1,30 @@
-<?php 
-
+<?php  
 
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) {die(__('Access denied.','bovp')); }
 
 require_once('functions.php');
 
-$bovp_registred_versions = get_option('bovp_registred_versions');
+  if( isset($_REQUEST['bovp_install']) AND !isset($_REQUEST['settings-updated'])) {
 
-if(isset($_REQUEST['bovp_install'])) {
+          $bovp_install = $_REQUEST['bovp_install'];
 
-  $bovp_install = $_REQUEST['bovp_install'];
+            if ($bovp_install == $bovp_array_settings['bovp_version']) {
 
-  $bovp_version_selected = $bovp_registred_versions[$bovp_install];
+              $bovp_message = PluginShowMessage(__('This table is already installed in your database.', 'bovp'), false);
+            
+            } else {
 
-  $bovp_version_info_explode = explode('|' , $bovp_version_selected);
+             
+              $bovp_text_install = PluginInsertData($bovp_install); 
 
-  $bible_file = $bovp_version_info_explode[1];
+              if($bovp_text_install) {
+                  
+                  $bovp_message = PluginShowMessage($bovp_array_settings["message"]);    
+                      
+              } else { $bovp_message = PluginShowMessage(__('Failed to create table', 'bovp'), false); }
 
-
-  // install bible select table.
-
-  import_sql_data($bible_file, $bovp_install);
-
- 
-echo "<script language=\"JavaScript\"> window.location=\"admin.php?page=biblia-online-vivendo-a-palavra/settings.php\";</script>";
-
-}
-
+            }
+  }   
 
 ?>
 
@@ -43,33 +41,29 @@ echo "<script language=\"JavaScript\"> window.location=\"admin.php?page=biblia-o
           
 </p>
 
-<h2><strong><?php _e("Make a donation with PAGSEGURO"); ?></strong></h2>
-
 <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
 
-<form target="pagseguro" action="https://pagseguro.uol.com.br/checkout/v2/donation.html" method="post">
+<form target="pagseguro" action="https://pagseguro.uol.com.br/checkout/v2/donation.html" method="post" style="float:left;" target="_blank">
 
 <input type="hidden" name="receiverEmail" value="bibliaonlinevp@vivendoapalavra.com.br" />
 
 <input type="hidden" name="currency" value="BRL" />
 
-<input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/doacoes/84x35-doar-azul.gif" name="submit" alt="Doe com PagSeguro - é rápido e seguro!" />
+<input type="image" src= <?php echo plugin_dir_url(__FILE__) . 'img/pagseguro.jpg' ?> name="submit" alt="Doe com PagSeguro - é rápido e seguro!" />
 
 </form>
 
 <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
 
-<h2><strong><?php _e("Make a donation with PAYPAL"); ?></strong></h2>
-
 <!-- INICIO FORMULARIO BOTAO PAYPAL-->
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post"  target="_blank">
 
 <input type="hidden" name="cmd" value="_s-xclick">
 
 <input type="hidden" name="hosted_button_id" value="9KV25MLWLPKQN">
 
-<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+<input type="image" src=<?php echo plugin_dir_url(__FILE__) . 'img/paypal.jpg' ?> border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
 
 <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
 
@@ -83,43 +77,51 @@ echo "<script language=\"JavaScript\"> window.location=\"admin.php?page=biblia-o
 <fieldset class="bovp_fieldset">
 
 <legend class="bovp_legend"><?php _e('Choose and Install the Bible version','bovp');?></legend>
+  
 
-<form action="admin.php" method="get">
+
+<div id="bible_version" class="clearfix">
+  
+    <form id="text_install" action="admin.php" method="get" style="float:left;">
 
       <input type="hidden" value="biblia-online-vivendo-a-palavra/settings.php" name="page">
 
-      <select name="bovp_install">
+        <select name="bovp_install" id="bovp_install">
 
-        <?php
+          <?php
 
-        if (BOVP_BIBLE_VERSION=='0') {
+          if ($bovp_array_settings['bovp_version'] =='-1') {
 
-            echo "<option value=\"0\" selected >" . __('Not Installed','bovp') . "</option>";
+              echo "<option value=\"-1\" selected>" . __('Not Installed','bovp') . "</option>";
 
-        }
-      
+          } else {echo "<option value=\"-1\">" . __('Not Installed','bovp') . "</option>";}
+        
 
-          foreach($bovp_registred_versions as $indice => $bovp_version) {
+            foreach($bovp_versions_inf as $indice => $bovp_version) {
 
-            $bovp_version_info = explode('|' , $bovp_version);
+              echo "<option value=\"" . $indice . "\""; 
 
-            echo "<option value=\"" . $indice . "\""; 
+              if ($bovp_array_settings['bovp_version']==$indice) {echo " selected";}
 
-            if (BOVP_BIBLE_VERSION==$indice) {echo " selected";}
+              echo ">" . $bovp_version['name'] . "</option>";
 
-            echo ">" . $bovp_version_info[0] . "</option>";
+            }
 
-          }
+            echo "</select>";
+            
+            ?>
 
-          echo "</select>";
-          
-          ?>
+            <button type="submit" id="text_install_button" class="button-primary"><?php _e('Install','bovp') ?></button>
 
-          <input type="submit" class="button-primary" value="<?php _e('Install','bovp') ?>" />
+  </form>
 
-    </form>
+</div>
 
-  </fieldset>
+<?php  if(isset($bovp_message)) echo $bovp_message; ?>
+
+</fieldset>
+
+
     
 <form method="post" action="options.php">
 
@@ -128,7 +130,7 @@ echo "<script language=\"JavaScript\"> window.location=\"admin.php?page=biblia-o
           
         <fieldset class="bovp_fieldset">
           <legend class="bovp_legend"><?php _e('Page where the online Bible will be displayed','bovp');?></legend>
-          <?php bovp_options_select ('bovp_page', bovp_get_all_pages ()); ?>
+          <?php PluginSelectConstruct ('bovp_page', PluginGetAllPages ()); ?>
         </fieldset>
 
 
