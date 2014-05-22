@@ -1,0 +1,419 @@
+@charset "utf-8";
+
+/* GOOGLE FONTS */
+
+@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro"); 
+
+/* RESET STYLES */
+
+section.bovp_container div, section.bovp_container p, section.bovp_container a, section.bovp_container img, section.bovp_container button, 
+section.bovp_container ul, section.bovp_container li, section.bovp_container h2, section.bovp_container h3, section.bovp_container span, 
+section.bovp_container select, section.bovp_container input, section.bovp_container form  { margin: 0;padding: 0;border: 0;background:none;}
+
+/* CLEARFIX */
+
+section.bovp_container .clearfix:after {content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+
+
+/* STYLES DEFAULT THEME */
+
+section.bovp_container {
+	
+	font-family: 'Open Sans', sans-serif !important;
+	background: transparent !important;
+	padding: 0px 0px 10px 0px;
+	max-width: 1024px !important;
+	border-bottom: 4px solid #47450B;
+	position: relative;
+
+}
+
+section.bovp_container img { 
+
+	border:0px;
+}
+
+/* LOGO VP */
+
+section.bovp_container .bovo_link_logo {
+
+	position: absolute;
+	top:10px;right:10px;
+}
+
+/* HEADER */
+
+section.bovp_container .bovp_header {
+
+	margin-bottom: 30px;
+
+}
+
+
+/* TITLE (BOOK OR SEARCH) */
+
+section.bovp_container div.bovp_title {
+
+font-family: 'Open Sans', sans-serif !important;
+font-size: 35px !important;
+text-transform: capitalize !important;
+color: #0387B2 !important;
+font-weight: 100 !important;
+margin-bottom: 30px;
+
+}
+
+section.bovp_container span.bovp_cap {  
+
+font-weight:bold;
+color:black;
+margin-left: 10px;
+
+}
+
+
+/* GROUPS */
+
+section.bovp_container div.bovp_group { 
+
+	padding: 20px 0px 20px 0px; 
+
+}
+
+section.bovp_container input[type="submit"]:hover, 
+div.bovp_form_container input[type="submit"]:hover {
+
+	color:#ccc; !important;
+
+}
+
+section.bovp_container input[type=text], 
+div.bovp_form_container input[type="text"], 
+section.bovp_container select, 
+div.bovp_form_container select {
+
+	font-family: inherit;
+	font-size:16px;
+	display:block;
+	padding: 4px;
+	float: left;
+	margin-right: 20px;
+	background: #fff;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-o-border-radius:5px;
+	-ms-border-radius:5px;
+	border-radius:5px;
+
+	}
+
+
+
+
+/* BIBLE TEXT */
+
+section.bovp_container ul li { 
+
+	color:#000; 
+	list-style: none; 
+	text-align: justify; 
+	margin-bottom: 
+	5px !important; 
+	padding: 10px!important;
+
+}
+
+section.bovp_container p.ref_search{
+
+	float: left;margin-right: 10px;
+
+}	
+
+section.bovp_container li.ref_search a:link, 
+section.bovp_container li.ref_search a:visited {
+
+	color: #000;
+	font-weight: 400;
+	margin-right: 10px;
+
+}	
+
+section.bovp_container li.ref_search a:hover, 
+section.bovp_container li.ref_search a:active {
+
+	color: #000;
+	font-weight: 400;
+	margin-right: 10px;
+
+}
+
+section.bovp_container span.verse_num { 
+
+	padding:15px; 
+	font-size:18px; 
+	font-weight:bold; 
+
+}
+
+section.bovp_container ul li.bovp_color {
+
+	background: #EEE;
+}
+
+
+/* LINKS */ 
+
+section.bovp_container a:link, 
+section.bovp_container a:visited  {
+
+	text-decoration:none;
+
+}
+
+section.bovp_container a:hover, 
+section.bovp_container a:active {
+
+	color: #000;text-decoration:none;
+}
+
+
+/* VERSION SECTION */
+
+section.bovp_container section.bovp_version {
+	display: block;
+	text-align: right;
+	margin-top: 20px;
+}
+
+
+/* PAGINATION */
+
+nav.bovp_pagination { 
+
+	background: #0387B2; 
+	padding: 10px 0 10px 0;
+	font-family: inherit; 
+	margin: 20px 0 20px 0; 
+	margin:3px; 
+	text-align:center; 
+	clear: both; 
+}
+
+
+nav.bovp_pagination a:link, 
+nav.bovp_pagination a:visited { 
+
+	padding: 2px 8px 2px 8px;
+	margin-right: 2px;
+	text-decoration: none;
+	color: #044F9C;
+	background: #C7EAF9;
+
+}
+
+nav.bovp_pagination a:hover, 
+nav.bovp_pagination a:active {
+
+	padding: 2px 8px 2px 8px;
+	margin-right: 2px;
+	color:#a0a0a0;
+}
+
+nav.bovp_pagination span.current {
+
+	padding: 2px 8px 2px 8px;
+	margin-right: 2px;
+	background-color: #f0f0f0;
+	color: #aaa;
+}
+
+nav.bovp_pagination span.disabled {
+
+	padding: 2px 8px 2px 8px;
+	margin-right: 2px;
+	background-color: #f0f0f0;
+	color: #aaa;
+
+}
+
+/* FORMS */
+
+button.bovp_button,
+section.bovp_container button {
+
+	font-family: inherit;
+	font-size: 16px;
+	min-width: 50px;
+	display: block;
+	padding: 4px 8px 4px 8px;
+	float: right;
+	border:none;
+	background-color: #21759b;
+	color: #fff;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#2a95c5),to(#21759b));
+	background-image: -webkit-linear-gradient(top,#2a95c5,#21759b);
+	background-image: -moz-linear-gradient(top,#2a95c5,#21759b);
+	background-image: -ms-linear-gradient(top,#2a95c5,#21759b);
+	background-image: -o-linear-gradient(top,#2a95c5,#21759b);
+	background-image: linear-gradient(to bottom,#2a95c5,#21759b);
+	border-color: #21759b;
+	border-bottom-color: #1e6a8d;
+	border-radius: 5px 0 5px 0;
+	-webkit-border-radius:5px 0 5px 0;
+	-moz-border-radius:5px 0 5px 0;
+	-o-border-radius:5px 0 5px 0;
+	-ms-border-radius:5px 0 5px 0;
+}
+
+
+div.bovp_search_container,
+section.bovp_container div.bovp_search_container {
+
+border: 1px solid #ccc;
+float: right;
+padding: 3px;
+border-radius: 5px 0 5px 0;
+
+}
+
+div.bovp_index_widget {
+
+float: right;
+padding: 3px;
+border-radius: 5px 0 5px 0;
+
+}
+
+div.bovp_search_widget {
+
+border: 1px solid #ccc;
+float: right;
+padding: 3px;
+border-radius: 5px 0 5px 0;
+
+}
+
+input[type=text].bovp_seach_input {
+
+	font-family: inherit;
+	font-size:16px;
+	display:block;
+	padding: 4px;
+	float: left;
+	margin-right: 20px;
+	background: #fff;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-o-border-radius:5px;
+	-ms-border-radius:5px;
+	border-radius:5px;
+
+	}
+
+
+/* WIDGETS */ 
+
+#bovp_widget_book, #bovp_widget_chapter {
+
+float: left;
+padding: 3px;
+font-size: 18px;
+border: 1px solid #ccc;
+border-radius: 5px 0 5px 0;
+margin-left: 10px;
+
+}
+
+#bovp_widget_book {
+
+	margin-right: 10px;
+
+}
+
+.bovp_selects_form {
+
+	margin-bottom: 20px;
+
+}
+
+span.verse_ref {
+
+	display: block; 
+	text-align: right;
+
+}
+
+section.bovp_container a.bovp_tag_link  {
+
+	color: #0387B2 !important; 
+	text-decoration:none !important;
+
+}
+
+
+section.bovp_container div.bovp_fsize {
+
+	float: left;
+	background: #999;
+	padding: 7px 15px;
+	color: #fff;
+
+}
+
+section.bovp_container div.bovp_fsize span a { 
+
+	color: #fff; 
+
+}
+
+section.bovp_container div.bovp_fsize span a.decrease { 
+
+	font-size: 14px;
+	padding: 5px;
+
+}
+
+section.bovp_container div.bovp_fsize span a.default { 
+
+	color: #084D8F; 
+	font-size: 16px;
+	padding: 5px;
+
+}
+
+section.bovp_container div.bovp_fsize span a.increase { 
+
+	font-size: 18px;
+	padding: 5px;
+
+}
+
+/* SHARE */
+
+.bovp_item_selected {
+
+	background: #FEF9D0 !important;
+
+}
+
+
+/* 7.3. Mobile Portrait Size to Mobile Landscape Size (devices and browsers)
+====================================================================== */
+@media only screen and (max-width: 479px) {
+
+section.bovp_container {
+	
+	max-width: 450px !important;
+
+}
+
+section.bovp_container input[type=text], 
+div.bovp_form_container input[type="text"], 
+section.bovp_container select, div.bovp_form_container select {width: 70%;}
+
+section.bovp_container button {min-width: 20%;}
+
+#bovp_search_container {width: 95%;}
+
+
+}
