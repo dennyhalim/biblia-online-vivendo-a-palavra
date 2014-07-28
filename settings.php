@@ -8,20 +8,20 @@ require_once('functions.php');
 
           $bovp_install = $_REQUEST['bovp_install'];
 
-            if ($bovp_install == $bovp_array_settings['bovp_version']) {
+            if ($bovp_install == get_option('bovp_version')) {
 
               $bovp_message = PluginShowMessage(__('This table is already installed in your database.', 'bovp'), false);
             
             } else {
 
-             
               $bovp_text_install = PluginInsertData($bovp_install); 
 
-              if($bovp_text_install) {
+              if($bovp_text_install[0]!=false) {
                   
-                  $bovp_message = PluginShowMessage($bovp_array_settings["message"]);    
+                  $bovp_message = PluginShowMessage($bovp_text_install[1], false);
+                  update_option('bovp_version', $bovp_install); 
                       
-              } else { $bovp_message = PluginShowMessage(__('Failed to create table', 'bovp'), false); }
+              } else { $bovp_message = PluginShowMessage($bovp_text_install[1], true); }
 
             }
   }   
@@ -90,7 +90,7 @@ require_once('functions.php');
 
           <?php
 
-          if ($bovp_array_settings['bovp_version'] =='-1') {
+          if (get_option('bovp_version') =='-1') {
 
               echo "<option value=\"-1\" selected>" . __('Not Installed','bovp') . "</option>";
 
@@ -101,7 +101,7 @@ require_once('functions.php');
 
               echo "<option value=\"" . $indice . "\""; 
 
-              if ($bovp_array_settings['bovp_version']==$indice) {echo " selected";}
+              if (get_option('bovp_version') == $indice) {echo " selected";}
 
               echo ">" . $bovp_version['name'] . "</option>";
 
@@ -157,7 +157,7 @@ require_once('functions.php');
           <legend class="bovp_legend"><?php _e('Choose theme','bovp');?></legend>
 
             <select name="bovp_theme">
-                <option value="default" <?php if (get_option('bovp_theme')=="default") {echo 'selected';} ?> ><?php _e('Default','bovp') ?></option>
+                <option value="default" <?php if (BOVP_THEME=="default") {echo 'selected';} ?> ><?php _e('Default','bovp') ?></option>
             </select>
 
         </fieldset>

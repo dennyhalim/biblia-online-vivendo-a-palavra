@@ -65,52 +65,75 @@ bovpJQuery(window).ready(function() {
 
         });
 
+    // Capther select Bible
+
+
+    bovpJQuery("#bovp_widget_chapter").hide();
+
+
+    bovpJQuery("#bovp_widget_book").change(function(){
+
+        bovpJQuery("#bovp_widget_chapter").empty();
+
+        var num_pages =  bovpJQuery("#bovp_widget_book option:selected").attr("num_pages");
+
+        if(num_pages != 0) {
+
+            var itens = []; 
+            for(i = 1; i <= num_pages; i++) {itens.push(i);}
+            bovpJQuery("#bovp_widget_chapter").append("<option value=\"0\" >All</option>");
+            bovpJQuery.each(itens, function(index, value) {
+
+              bovpJQuery("#bovp_widget_chapter").append("<option value=\""+value+"\" >"+value+"</option>");
+
+            });
+
+            bovpJQuery("#bovp_widget_chapter").show();
+
+        } 
+
+        bovpJQuery("#bovp_widget_chapter:empty").hide();
+
+
+    });
+
+
+
+
 	// Capther select Bible
 
-	bovpJQuery("#bovp_widget_chapter").hide();
+	bovpJQuery("#bovp_cp").hide();
 
+	bovpJQuery("#bovp_bk").change(function(){
 
+		bovpJQuery("#bovp_cp").empty();
 
-
-
-	bovpJQuery("#bovp_widget_book").change(function(){
-
-
-
-		bovpJQuery("#bovp_widget_chapter").empty();
-
-
-
-		var num_pages =  bovpJQuery("#bovp_widget_book option:selected").attr("num_pages");
-
-
+		var num_pages =  bovpJQuery("#bovp_bk option:selected").attr("num_pages");
 
 		if(num_pages != 0) {
-
-
 
 			var itens = []; 
 
 			for(i = 1; i <= num_pages; i++) {itens.push(i);}
 
-			bovpJQuery("#bovp_widget_chapter").append("<option value=\"0\" >All</option>");
+			bovpJQuery("#bovp_cp").append("<option value=\"0\" >All</option>");
 
 			bovpJQuery.each(itens, function(index, value) {
 
 
 
-			  bovpJQuery("#bovp_widget_chapter").append("<option value=\""+value+"\" >"+value+"</option>");
+			  bovpJQuery("#bovp_cp").append("<option value=\""+value+"\" >"+value+"</option>");
 
 
 
 			});
 
 
-			bovpJQuery("#bovp_widget_chapter").show();
+			bovpJQuery("#bovp_cp").show();
 
 		} 
 
-		bovpJQuery("#bovp_widget_chapter:empty").hide();
+		bovpJQuery("#bovp_cp:empty").hide();
 
     });
 

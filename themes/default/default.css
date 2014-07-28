@@ -22,11 +22,11 @@ section.bovp_container select, section.bovp_container input, section.bovp_contai
 
 
 
-/* CLEARFIX */
+/* bovp_clear */
 
-section.bovp_container .clearfix:after {content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+section.bovp_container .bovp_clear:after {content: "."; display: block; height: 0; clear: both; visibility: hidden;}
 
-.clearfix:after {content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.bovp_clear:after {content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 
 
 
@@ -543,6 +543,8 @@ float: right;
 padding: 3px;
 
 border-radius: 5px 0 5px 0;
+
+background: #fff;
 
 
 
