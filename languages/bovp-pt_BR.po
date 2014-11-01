@@ -1,0 +1,363 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Online Bible v1.5.1\n"
+"POT-Creation-Date: 2014-10-26 00:11-0300\n"
+"PO-Revision-Date: 2014-10-26 00:12-0300\n"
+"Last-Translator: André Brum Sampaio <ab_sampaio@hotmail.com>\n"
+"Language-Team: André Brum <ab_sampaio@hotmail.com>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Basepath: C:\\xampp\\htdocs\\wordpress\\wp-content\\plugins\\biblia-"
+"online-vivendo-a-palavra\\\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: C:\\xampp\\htdocs\\wordpress\\wp-content\\plugins"
+"\\biblia-online-vivendo-a-palavra\n"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_layout.class.php:50
+msgid "Back to Results"
+msgstr "Voltar a Pesquisa"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_layout.class.php:160
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_layout.class.php:164
+msgid "Previous"
+msgstr "Anterior"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_layout.class.php:272
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_layout.class.php:276
+msgid "Next"
+msgstr "Próximo"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_layout.class.php:297
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:37
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:817
+msgid "Search"
+msgstr "Buscar"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_layout.class.php:304
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:38
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:822
+msgid "Send"
+msgstr "Enviar"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_layout.class.php:331
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1637
+msgid "Version: "
+msgstr "Versão: "
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:8
+msgid "Use this widget to display the bible form search"
+msgstr "Use este widget para exibir o formulário de pesquisa na Bíblia"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:19
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:59
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:120
+msgid "Bible Search"
+msgstr "Busca na Bíblia"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:21
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:84
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:147
+msgid "Widget "
+msgstr "Widget"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:62
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:124
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:185
+msgid "Title:"
+msgstr "Título: "
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:72
+msgid "This widget show an index of books of Bible in your sidebar."
+msgstr "Este widget exibe um índice da bíblia na sua barra lateral."
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:83
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1028
+msgid "Bible Index"
+msgstr "Índice da Bíblia"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:99
+msgid "Go"
+msgstr "Ir"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:135
+msgid "Use this widget to display the daily verse"
+msgstr "Use este widget para exibir o versículo diário."
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:146
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/includes/bovp_widget.class.php:180
+msgid "Daily Verse"
+msgstr "Versículo Diário"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:60
+msgid "results"
+msgstr "resultados"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:244
+msgid "Found"
+msgstr "Encontrado"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:244
+msgid "verses for your search."
+msgstr "versículos para a sua pesquisa."
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:246
+msgid "Show results"
+msgstr "Mostrar Resultados"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:246
+msgid "to"
+msgstr "para"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:250
+msgid "Find items"
+msgstr "Itens Encontrados"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:500
+msgid "The table was installed successfully."
+msgstr "A tabela foi instalada com sucesso."
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:502
+msgid "The Bible Text insert fail. Please try again!"
+msgstr "Falha na inserção do texto bíblico. Tente novamente"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:504
+msgid "Unable to create the table."
+msgstr "Não foi possível instalar a tabela."
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:561
+msgid "Select a page"
+msgstr "Selecione a página"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:786
+msgid "Entire Bible"
+msgstr "Toda a Bíblia"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:787
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1089
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1514
+msgid "Old Testament"
+msgstr "Antigo Testamento"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:797
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1125
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1515
+msgid "New Testament"
+msgstr "Novo Testamento"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1023
+msgid "Search for: "
+msgstr "Buscar por:"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1024
+msgid "Search in the Bible: "
+msgstr "Busca na Bíblia"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1029
+msgid "All of 66 books of Holly Bible. Choose one!"
+msgstr "Todos os 66 livros da Biblia Sabrada. Escolha um!"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1034
+msgid "Online Bible: "
+msgstr "Bíblia Online:"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1208
+msgid "Bible on Twitter"
+msgstr "Bíblia no Twitter"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1208
+msgid "Holly Bible"
+msgstr "Bíblia Sagrada"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1342
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1343
+msgid "Online Bible"
+msgstr "Bíblia Online"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1352
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1353
+msgid "Settings"
+msgstr "Configurações"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1385
+msgid "This table is already installed in your database."
+msgstr "Esta tabela já está instalada em seu banco de dados."
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1406
+msgid "Online Bible v."
+msgstr "Bíblia Online v. "
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1409
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1587
+msgid "Consider a Donation"
+msgstr "Faça uma doação"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1412
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1591
+msgid ""
+"If you use Online Bible plugin and want to contribute to the project's "
+"maintenance, you can use the link below to make a donation."
+msgstr ""
+"Se você usa o Plugin da Bíblia Online para Wordpress e deseja contribuir com "
+"a manutenção deste projeto, você pode usar o link abaixo para fazer sua "
+"doação."
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1451
+msgid "Choose and Install the Bible version"
+msgstr "Escolha e instale a versão desejada"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1467
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1469
+msgid "Not Installed"
+msgstr "Não instalada"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1486
+msgid "Install"
+msgstr "Instalar"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1504
+msgid "Page where the online Bible will be displayed"
+msgstr "Página na qual a Bíblia será exibida"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1510
+msgid "Source of the daily verse"
+msgstr "Origem do versículo diário"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1513
+msgid "All the Bible"
+msgstr "Toda a Bíblia"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1516
+msgid "The Book of Psalms"
+msgstr "Livro dos Salmos"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1521
+msgid "Search results to be displayed per page"
+msgstr "Quantidade de resultados exibidos por página"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1530
+msgid "Show on front:"
+msgstr "Exibir na frente:"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1533
+msgid "Show index"
+msgstr "Exibir índice"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1534
+msgid "Show Book of Genesis"
+msgstr "Exibir livro Genesis"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1542
+msgid "Default font size:"
+msgstr "Tamanho Padrão da fonte:"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1555
+msgid "Choose theme"
+msgstr "Escolha o tema"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1558
+msgid "Default"
+msgstr "Padrão"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1565
+msgid "Update Settings"
+msgstr "Atualizar opções"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1583
+msgid "Online Bible for Wordpress v."
+msgstr "Biblia Online para Wordpress v."
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1629
+msgid "Informations"
+msgstr "Informações"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1631
+msgid ""
+"Plugin for implementation of Bible Online in your Wordpress blog. With it, "
+"you can spread the Word of God and bless your website's users. The plugin "
+"allows to consult all of 66 books of the Holy Bible."
+msgstr ""
+"Plugin para a implementação da Bíblia Online em seu blog Wordpress. Com ele, "
+"você disponibiliza todo o texto bíblico e pode abençoar a vida dos "
+"visitantes do seu site. O Plugin permite a consulta aos 66 livros da Bíblia "
+"Sagrada."
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1635
+msgid "Author URI: "
+msgstr "Autor URI: "
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1642
+msgid "Versions:"
+msgstr "Versões: "
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1653
+msgid "Settings:"
+msgstr "Configurações"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\biblia-online-vivendo-a-palavra/wp-online-bible.php:1655
+msgid ""
+"In the SETTINGS PAGE, select desired version and then click to install. Wait "
+"the bible text installation complete and then choose the options (page, "
+"itens per page, theme, verse source)."
+msgstr ""
+"Na PÁGINA DE CONFIGURAÇÃO, selecione a versão desejada e clique em instalar. "
+"Aguarde o término da instalação e então escolha as opções (página, itens por "
+"página, origem do versículo diário e o tema)."
+
+#~ msgid "Falha na inserção do texto bíblico. Tente novamente"
+#~ msgstr "Falha na inserção do texto bíblico. Tente novamente"
+
+#~ msgid "Finded"
+#~ msgstr "Encontrado"
+
+#~ msgid "Find itens"
+#~ msgstr "Itens Encontrados"
+
+#~ msgid "This widget show an index of books of Bible in ior sidebar."
+#~ msgstr "Este widget exibe um índice da bíblia na sua barra lateral."
+
+#~ msgid "Bible Index: "
+#~ msgstr "Índice da Bíblia:"
+
+#, fuzzy
+#~ msgid "bible"
+#~ msgstr "Bíblia Online"
+
+#~ msgid "Access denied."
+#~ msgstr "Acesso negado."
+
+#~ msgid ""
+#~ "Plugin for implementation of Bible Online in your Wordpress blog. With "
+#~ "it, you can spread out the Word of God and bless your website's users. "
+#~ "The plugin allows to consult all of 66 books of the Holy Bible."
+#~ msgstr ""
+#~ "Plugin para a implementação da Bíblia Online em seu blog Wordpress. Com "
+#~ "ele, você disponibiliza todo o texto bíblico e pode abençoar a vida dos "
+#~ "visitantes do seu site. O Plugin permite a consulta aos 66 livros da "
+#~ "Bíblia Sagrada."
+
+#~ msgid "All the Bilble"
+#~ msgstr "All the Bible"
+
+#~ msgid "Psalms Book"
+#~ msgstr "Livro dos Salmos"
+
+#~ msgid "Show Genesis"
+#~ msgstr "Exibir livro Genesis"
+
+#~ msgid ""
+#~ "The Bible %s has been installed in your database. %s verses were inserted "
+#~ "in %s seconds "
+#~ msgstr ""
+#~ "A Bíblia %s, foi instalada em seu banco de dados. Foram inseridos %s "
+#~ "versículos em %s segundos"
+
+#~ msgid "m/d/Y"
+#~ msgstr "d/m/Y"
+
+#~ msgid " (Book)"
+#~ msgstr " (Livro)"
