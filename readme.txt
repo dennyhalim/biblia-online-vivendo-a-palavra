@@ -1,6 +1,6 @@
 ﻿=== Online Bible VP for Wordpress ===
 
-Tags: Online Bible, King James, REina-Valera, Almeida Corrigida e Fiel, Bíblia, Holly Bible, Palavra de Deus, Bíblia Sagrada, Bíblia Evangélica, Novo Testamento, Antigo Testamento, biblia, bíblia, biblia wordpress, biblia online, on-line, online, widget palavra diária, widget busca na bíblia, versículo diário, versiculo diario, palavra diaria, word of god
+Tags: Online Bible, King James, Reina-Valera, Almeida Corrigida e Fiel, Louis Segond (LSG 1910), Holly Bible, Palavra de Deus, Bíblia Sagrada, Bíblia Evangélica, Novo Testamento, Antigo Testamento, biblia, bíblia, biblia wordpress, biblia online, on-line, online, widget palavra diária, widget busca na bíblia, versículo diário, versiculo diario, palavra diaria, word of god
 
 Contributors: André Brum Sampaio
 
@@ -8,22 +8,22 @@ Donate link: http://www.vivendoapalavra.org/contribua/
 
 Requires at least: 3.7.1
 
-Tested up to: 3.9.1
+Tested up to: 4.0
 
 Stable tag: trunk
 
-The Online Bible plugin installs the Holy Bible entirely in your Wordpress blog. versions: King James Edition - English, Almeida Corrigida Fiel - Português (1994), Spanish Reina Valera (1960).
+The Online Bible plugin installs the Holy Bible entirely in your Wordpress blog. versions: King James Edition - English, Almeida Corrigida Fiel - Português (1994), Spanish Reina Valera (1960) and the Louis Segond (1910).
 
 == Description ==
 
-Plugin for implementation of Bible Online in your Wordpress blog. With it, you can make available the Word of God and bless your website\'s users. The plugin allows to consult all 66 books of the Holy Bible. Versions: King James,Almeida Corrigida e Fiel (1994) and Spanish Reina-Valera.
+Plugin for implementation of Bible Online in your Wordpress blog. With it, you can make available the Word of God and bless your website\'s users. The plugin allows to consult all 66 books of the Holy Bible. Versions: King James,Almeida Corrigida e Fiel (1994), Spanish Reina-Valera and the French Louis Segond (1910).
 
 == Changelog ==
 
+1.5.2
+	- The Louis Segond version was included, the shortcode for passage bible, share buttons, tags association, link generate for wellformed links. 
 1.5.1 
-
 	- The Spanish version Reina-Valera was included.
-
 1.5
 	- Internationalization and add English King James Version.
 1.4 

@@ -1,0 +1,3 @@
+<?php
+// God is good.
+?>

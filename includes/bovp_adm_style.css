@@ -7,5 +7,4 @@ div.bovp_wrap #loading{text-align: center;float: left;margin-left: 30px;}
 div.bovp_wrap .progress {height: 25px;width: 300px;background: #ccc;display:none;}
 div.bovp_wrap .success {color: #34C409;font-size: 16px;margin-left: 30px;float: left;margin-top: 3px;display:none;}
 .clearfix:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
-.bovp_success {clear: both;margin-top: 20px;border: 1px solid #209D10;background: #dff0d8;padding: 0px 10px 0px 10px;border-radius: 10px 0 10px 0px;}
-.bovp_error {clear: both;margin-top: 20px;border: 1px solid #209D10;background: #f2dede;padding: 0px 10px 0px 10px;border-radius: 10px 0 10px 0px;}
+.bovp_success {clear: both;margin-top: 20px;border: 1px solid #209D10;background: #DCF3BA;padding: 0px 10px 0px 10px;border-radius: 10px 0 10px 0px;}

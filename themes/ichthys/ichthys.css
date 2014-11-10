@@ -1,0 +1,614 @@
+@charset "utf-8";
+
+/* GOOGLE FONTS */
+
+/* TITLES */ 
+@import url("http://fonts.googleapis.com/css?family=Playfair+Display");
+
+/* TEXT */
+@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro"); 
+
+/* BOVP CLEAR */
+
+.bovp_clear:after, .bovp_clear:before {
+
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	height: 2px;
+	
+}
+
+
+/* STYLES DEFAULT THEME */
+
+div.bovp_container {
+
+	font-family: 'Open Sans', sans-serif !important;
+	padding: 0px 0px 10px 0px;
+	max-width: 1024px !important;
+	position: relative;
+	margin: 0 auto 20px auto;
+	background: transparent url('img/bg.png') top left no-repeat !important;
+
+}
+
+div.bovp_container img { 
+
+	border:0px;
+
+}
+
+/* LOGO VP */
+
+div.bovp_container .bovo_link_logo {
+
+	position: absolute;
+	top:10px;right:10px;
+
+}
+
+/* HEADER */
+
+div.bovp_container .bovp_header {
+
+	margin-bottom: 30px;
+}
+
+/* TITLE (BOOK OR SEARCH) */
+
+div.bovp_container div.bovp_title {
+
+font-family: 'Playfair Display', serif !important;
+font-size: 35px !important;
+text-transform: capitalize !important;
+border-bottom: 2px dotted #ccc;
+color: #000000 !important;
+font-weight: 100 !important;
+margin: 10px 0 30px 0;
+clear: both;
+text-align: right;
+
+}
+
+div.bovp_container span.bovp_cap {  
+
+font-weight:bold;
+color:black;
+margin-left: 10px;
+
+}
+
+/* GROUPS */
+
+div.bovp_container div.bovp_group { 
+
+	padding: 20px 0px 20px 0px; 
+
+}
+
+div.bovp_container input[type="submit"]:hover, 
+div.bovp_form_container input[type="submit"]:hover {
+
+	color:#ccc; !important;
+
+}
+
+div.bovp_container input[type=text], 
+div.bovp_form_container input[type="text"], 
+div.bovp_container select, 
+div.bovp_form_container select {
+
+	font-family: inherit;
+	font-size:16px;
+	display:block;
+	padding: 2px;
+	float: left;
+	background: #fff;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-o-border-radius:5px;
+	-ms-border-radius:5px;
+	border-radius:5px;
+	}
+
+
+/* SHOW TEXT LINES */
+
+ul li.bovp_text_li { 
+
+	color: #000;
+	list-style: none;
+	text-align: justify;
+	margin-bottom: 5px !important;
+	padding: 10px!important;
+	border-bottom: 1px dotted #ccc;
+
+}
+
+
+div.bovp_container p.ref_search{
+
+	float: left; margin-right: 10px;
+
+}	
+
+
+div.bovp_container li.ref_search a:link, 
+div.bovp_container li.ref_search a:visited {
+
+	color: #000;
+	font-weight: 400;
+	margin-right: 10px;
+
+}	
+
+
+div.bovp_container li.ref_search a:hover, 
+div.bovp_container li.ref_search a:active {
+
+	color: #000;
+	font-weight: 400;
+	margin-right: 10px;
+
+}
+
+div.bovp_container span.verse_num { 
+
+	padding:15px; 
+	font-size:18px; 
+	font-weight:bold; 
+
+}
+
+ul li.bovp_color {
+
+	/* background: #EEE; */
+
+}
+
+/* LINKS */ 
+
+div.bovp_container a:link, 
+div.bovp_container a:visited  {
+
+	text-decoration:none;
+
+}
+
+div.bovp_container a:hover, 
+div.bovp_container a:active {
+
+	color: #000;text-decoration:none;
+}
+
+/* VERSION SECTION */
+
+div.bovp_container div.bovp_version {
+
+	display: block;
+	text-align: right;
+	margin-top: 20px;
+
+}
+
+
+/* PAGINATION */
+
+nav.bovp_pagination { 
+
+padding: 10px 0 10px 0;
+font-family: inherit;
+margin: 3px;
+text-align: right;
+clear: both; 
+
+}
+
+nav.bovp_pagination a:link, 
+nav.bovp_pagination a:visited { 
+
+padding: 2px 8px 2px 8px;
+margin-right: 2px;
+text-decoration: none;
+color: #FFFFFF;
+background: #60A0BB;
+
+}
+
+nav.bovp_pagination a:hover, 
+nav.bovp_pagination a:active {
+
+	padding: 2px 8px 2px 8px;
+	margin-right: 2px;
+	color:#FFFFFF;
+
+}
+
+
+
+nav.bovp_pagination span.current {
+
+	padding: 2px 8px 2px 8px;
+	margin-right: 2px;
+	background-color: #f0f0f0;
+	color: #aaa;
+
+}
+
+nav.bovp_pagination span.disabled {
+
+	padding: 2px 8px 2px 8px;
+	margin-right: 2px;
+	background-color: #f0f0f0;
+	color: #aaa;
+
+}
+
+/* FORMS */
+
+.bovp_select_widget {
+
+	float: right;
+	margin-bottom: 5px;
+	margin-left: 10px;
+
+}
+
+
+button.bovp_search_widget {
+
+width: 30px;
+height: 30px;
+font-family: inherit;
+background: transparent !important;
+padding: 0;
+
+}
+
+.bovp_search_input {
+
+border: 1px solid #ccc !important;
+border-radius: 0 !important;
+width: 82% !important;
+
+}
+
+button.bovp_button_index {
+
+border: 1px dotted #ccc !important;
+border-radius: 0 !important;
+padding: 4px 10px 4px 10px;
+
+}
+
+div.bovp_container {
+
+background: transparent;
+max-width: 420px;
+min-width: 320px;
+float: right;
+
+}
+
+
+div.bovp_search_container {
+
+background: transparent;
+max-width: 420px;
+min-width: 320px;
+float: right;
+margin-left: 10px;
+margin-bottom: 30px;
+
+}
+
+div.bovp_index_widget {
+
+float: right;
+padding: 3px;
+border-radius: 5px 0 5px 0;
+
+}
+
+div.bovp_search_widget  {
+
+
+
+}
+
+input[type=text].bovp_search_input {
+
+	font-family: inherit;
+	font-size:16px;
+	display:block;
+	padding: 4px;
+	float: left;
+	background: transparent;
+
+}
+
+
+
+
+
+/* WIDGETS */ 
+
+#bovp_widget_book, #bovp_widget_chapter {
+
+	width: 100%;
+	padding: 3px;
+	font-size: 18px;
+	border: 1px solid #ccc;
+	border-radius: 5px 0 5px 0;
+
+}
+
+.bovp_selects_form {
+
+	margin-bottom: 20px;
+
+}
+
+span.verse_ref {
+
+	display: block; 
+	text-align: right;
+	margin-bottom: 15px;
+
+}
+
+div.bovp_container a.bovp_tag_link  {
+
+	color: #0387B2 !important; 
+	text-decoration:none !important;
+
+}
+
+div.bovp_container div.bovp_fsize {
+
+	float: left;
+	background: #999;
+	padding: 0 5px 0 5px;
+	color: #fff;
+	height: 28px;
+}
+
+div.bovp_container div.bovp_fsize span a { 
+
+	color: #fff; 
+
+}
+
+div.bovp_container div.bovp_fsize span a.decrease { 
+
+	font-size: 14px;
+	padding: 5px;
+}
+
+div.bovp_container div.bovp_fsize span a.default { 
+
+	color: #084D8F; 
+	font-size: 16px;
+	padding: 5px;
+}
+
+div.bovp_container div.bovp_fsize span a.increase { 
+
+	font-size: 18px;
+	padding: 5px;
+}
+
+
+
+
+
+ul.bovp_bible_indice {
+
+	list-style: none;
+}
+
+li.bovp_title_book {
+
+	font-size: 16px;
+	color: black;
+	border-bottom: 2px dotted #ccc;
+	display: block;
+	clear: both;
+	margin-bottom: 10px;
+
+}
+
+li.bovp_item_book {
+	
+	font-size: 16px;
+	background: #60A0BB;
+	padding: 3px 5px 3px 5px;
+	margin:0 5px 10px 0;
+	float: left;
+}
+
+li.bovp_item_book a {
+
+	color: #fff;
+	display: block;
+	text-decoration: none;
+
+}
+
+h3.div_testament {
+
+	clear: both;
+	font-family: 'Playfair Display', serif !important;
+}
+
+li.bovp_back_results {text-align: right;list-style:none;}
+
+li.bovp_back_results a {
+
+clear: both;
+background: #A0BEC6;
+padding: 3px 10px 3px 10px;
+font-size: 70%;
+color: #000;
+
+}
+
+
+.bovp_btn {
+
+font-family: inherit;
+font-size: 16px;
+display: block;
+padding: 4px 10px 4px 10px;
+float: right;
+color: #000;
+background: transparent;
+
+}
+
+.bovp_btn:hover,.bovp_btn:focus,.bovp_btn:active {
+
+background: transparent;
+
+}
+
+.bovp_border {
+
+	border:1px dotted #ccc;
+}
+
+
+/* SHARE BUTTONS */
+
+.bovp_item_selected {
+
+	background: #FEF9D0 !important;
+
+}
+
+#bovp_social_bar {
+
+	width: 100%;
+	margin-bottom: 10px;
+
+}
+
+#bovp_social_bar img {
+
+	float: right;
+
+}
+
+
+.bovp_share  {
+
+	width: 99px;
+	float: left;
+
+}
+
+ul.bovp_social_icons {
+
+	width: 99px;
+	float: left;
+	margin: 0;
+	list-style: none;
+
+}
+
+li.bovp_social_li {
+
+	float: left;
+	width: 30px;
+	height: 28px;
+	margin: 0 3px 0 0 !important;
+	padding: 0 !important;
+
+}
+
+.fb_icon {
+
+	width: 30px;
+	height: 28px;
+	display: block;
+	background: url('img/social_icons.jpg') 0 0 ;
+}
+
+.tw_icon {
+
+	width: 30px;
+	height: 28px;
+	display: block;
+	background: url('img/social_icons.jpg') -30px 0 ;
+}
+
+.gl_icon {
+
+	width: 30px;
+	height: 28px;
+	display: block;
+	background: url('img/social_icons.jpg') -60px 0 ;
+}
+
+.fb_icon:hover {
+
+	background: url('img/social_icons.jpg') 0 -29px ;
+}
+
+.tw_icon:hover {
+
+	background: url('img/social_icons.jpg') -30px -29px ;
+}
+
+.gl_icon:hover {
+
+	background: url('img/social_icons.jpg') -60px -29px ;
+}
+
+/* passage format */
+
+.bovp_reference {
+
+	border-left: 4px solid #ffba00;
+	padding: 10px 0 10px 20px;
+	font-family: 'Open Sans', sans-serif !important;
+	font-weight: 200;
+	font-size: 1.2em;
+	margin: 10px 40px 10px 40px;
+	text-align: justify;
+
+}
+
+
+/* FOOTER */
+
+.bovp_footer img.bovp_bottom {
+
+	width: 100%;
+
+}
+
+/* FEATURED VERSE */ 
+
+.bovp_featured_li {
+
+	color: #000 !important;
+	background: #A0BEC6;
+
+}
+
+/* RESULTS */
+
+.bovp_text_found {
+
+	font-weight: bold;
+}
+
+.bovp_tools {
+
+	float: right;
+	margin-bottom: 30px;
+
+}
