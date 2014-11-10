@@ -1416,66 +1416,69 @@ function bovpShowMessage($message, $errormsg = false) {
 
 		if($atts['ref']==false) { 
 
-			$bovp_short_code = bovpShowVerse('var');
-			return $bovp_short_code['vd'];
+		$daily_verse = get_option('bovp_daily_verse');
+
+		$book_name = $daily_verse['book_name'];
+		$book = $daily_verse['book'];
+		$cp = $daily_verse['cp'];
+		$vs = $daily_verse['vs'];
 
 		} else {
 
-			$explode = explode(':',$atts['ref']);
+		$explode = explode(':',$atts['ref']);
 
-			if(bovpBookInfo($explode[0],'name') OR bovpBookInfo($explode[0],'bk')) {
+		$book_name = bovpBookInfo($explode[0],'name');
+		$book = bovpBookInfo($explode[0],'bk');
+		$cp = $explode[1];
+		$vs = $explode[2];
 
-				$book_name = bovpBookInfo($explode[0],'name');
-				$book = bovpBookInfo($explode[0],'bk');
-				$cp = $explode[1];
-				$vs = $explode[2];
+		}
 
-				if( preg_match('/-/',$vs) ) { $vs_link = explode('-', $vs); $vs_link = $vs_link['0']; } else { $vs_link = $vs; }
+		
+			if( preg_match('/-/',$vs) ) { $vs_link = explode('-', $vs); $vs_link = $vs_link['0']; } else { $vs_link = $vs; }
 
-				$prmt = array('bk'=>$book,'cp'=>$cp,'vs'=>$vs_link);
+			$prmt = array('bk'=>$book,'cp'=>$cp,'vs'=>$vs_link);
 
-				$link = bovpWriteUrl($prmt);
+			$link = bovpWriteUrl($prmt);
 
-				$sql = "SELECT CONCAT(`vs`,' ',`text`) AS 'text' FROM ". BOVP_TABLE_NAME ." WHERE `book` = $book AND `cp`= $cp ";
+			$sql = "SELECT CONCAT(`vs`,' ',`text`) AS 'text' FROM ". BOVP_TABLE_NAME ." WHERE `book` = $book AND `cp`= $cp ";
 
-			 	if (preg_match('/-/',$vs)) {
+		 	if (preg_match('/-/',$vs)) {
 
-					$trecho = explode('-', $explode[2]);
-					$start = $trecho[0];
-					$end = $trecho[1];
+				$trecho = explode('-', $vs);
+				$start = $trecho[0];
+				$end = $trecho[1];
 
-					$sql .= "AND `vs` BETWEEN ". $start ." AND ". $end;				
-	 
-				} else {
+				$sql .= "AND `vs` BETWEEN ". $start ." AND ". $end;				
+ 
+			} else {
 
-					$sql .= "AND `vs` = " . $explode[2];
+				$sql .= "AND `vs` = " . $vs;
 
+			}
+
+			$verses = $wpdb->get_results ( $sql, ARRAY_A );
+
+			if($verses) {
+
+				$group_verse = '';
+
+				foreach ($verses as $verse) {
+
+					$group_verse .= $verse['text'] . ' ';
 				}
 
-				$verses = $wpdb->get_results ( $sql, ARRAY_A );
-
-				if($verses) {
-
-					$group_verse = '';
-
-					foreach ($verses as $verse) {
-
-						$group_verse .= $verse['text'] . ' ';
-					}
-
-
-					$return  = "<div class='bovp_reference'>";
-					$return .= $group_verse;
-					$return .= " <span class='bovp_reference_link'><a href='" . $link . "'>($book_name:$cp:$vs)</a></span></div>";
-
-				} else {$return = false;}
+				$return  = "<div class='bovp_reference'>";
+				$return .= $group_verse;
+				$return .= " <span class='bovp_reference_link'><a href='" . $link . "'>($book_name:$cp:$vs)</a></span></div>";
 
 			} else {$return = false;}
 
-			if($return == false) {$return = __('Error: Invalid format','bovp');}
 
-			return $return;
-		}
+	if($return == false) {$return = __('Error: Invalid format','bovp');}
+
+	return $return;
+		
 
 	}
 
