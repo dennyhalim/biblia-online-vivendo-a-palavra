@@ -20,6 +20,8 @@ define('BOVP_SYSTEM_VERSION', get_option('bovp_system_version'));
 define('BOVP_ITENS_PER_PAGE', get_option('bovp_itens_per_page'));
 define('BOVP_FOLDER_NAME', bovpFolderName());
 define('BOVP_BD_VERSION', get_option('bovp_bd_version'));
+define('BOVP_TAGGER', false);
+
 
 $bovp_version =  get_option('bovp_version');
 
@@ -87,6 +89,8 @@ function bovpShowBible($content) {
 	if (is_page(BOVP_PAGE) AND defined('BOVP_VERSION') AND  BOVP_VERSION != -1) {  
 
 		global $bovp_vars;
+
+		bovpSiteMap();
 
 		$bovp_daily_verse = get_option('bovp_daily_verse');
 		
@@ -184,6 +188,8 @@ function bovpShowBible($content) {
 				$vs = $item->vs; 
 				$text = $item->text;
 
+				if (BOVP_TAGGER==true) {$text = bovpTagMarker($text);}
+
 				$book_name = bovpBookInfo($book, 'name'); 
 
 				#LIST RESULTS --> SEARCH RESULTS
@@ -193,11 +199,6 @@ function bovpShowBible($content) {
 						
 						$bovp_color = ($bovp_color == '') ? $bovp_color = "bovp_color" : $bovp_color = '';
 						$text = preg_replace_callback($bovp_regex, "bovpCallback", $text);
-
-						//$text = str_replace($bovp_array_replace,'<font color="red">'.$bovp_search.'</font>',$text);
-
-
-						if (function_exists('bovpTagMarker')) {$text = bovpTagMarker($text);}
 
 						if(BOVP_FURL_STATS) {
 							
@@ -223,8 +224,6 @@ function bovpShowBible($content) {
 
 					$bovp_color = ($bovp_color == '') ? $bovp_color = "bovp_color" : $bovp_color = '';
 
-					if (function_exists('bovpTagMarker')) {/*$text = bovpTagMarker($item->text);*/}
-
 
 						if($item->vs == $bovp_vars['vs']) {
 
@@ -247,9 +246,7 @@ function bovpShowBible($content) {
 
 			}
 
-
-			$bovp_content = bovpTagMarker($bovp_content);
-
+			
 			
 			if($bovp_vars['sh']!== 0) {
 
@@ -1258,31 +1255,29 @@ function bovpShowMessage($message, $errormsg = false) {
 
 	global $wpdb;
 
-	$array_search = array();
 	$array_replace = array();
-
 	$QueryTags = "SELECT DISTINCT $wpdb->terms.* FROM $wpdb->terms ";
-
 	$tags = $wpdb->get_results($QueryTags, ARRAY_A);
 
 		if($tags){
+
 
 			foreach ($tags as $tag) {
 
 				$tag_id = "tag_id_".trim($tag['term_id']);
 				$tag_name = trim($tag['name']);
 				$tag_slug = trim($tag['slug']);
+				
+				$bovp_replace = preg_replace("/$tag_name/i", "#$tag_id#", $bovp_replace);
+
 				$link_url = get_option('siteurl') . "?tag=" . $tag_slug;
 				$link = "<a class='bovp_tag_link' href='$link_url'>$tag_name</a>";
-				$array_replace["/$tag_id/"] = $link;
-				$bovp_replace = preg_replace("/$tag_name/", "/$tag_id/", $bovp_replace);
-				
+				$array_replace["#$tag_id#"] = $link;
 			}
 
-		$bovp_replace = str_replace(array_keys($array_replace), $array_replace, $bovp_replace);
-		//$bovp_replace = preg_replace($array_search, $array_replace, $bovp_replace);
+			$bovp_replace = str_replace(array_keys($array_replace), $array_replace, $bovp_replace);
 
-		return $bovp_replace;
+			return $bovp_replace;
 
 		} else {return false;}
 
@@ -1814,6 +1809,46 @@ function bovpMenuInitPage() {
 
 
 }
+
+
+	/* Site Map Genarator */
+
+	function bovpSiteMap() {
+
+		$base_url = BOVP_URL;
+
+		$site_map_content = "";
+
+		// Sitema File Generate - Using DOM Object 
+        $sitemapxml = new DOMDocument();
+        $sitemapxml->loadXML('<?xml version="1.0" encoding="UTF-8"?>');
+
+
+
+
+
+
+
+
+
+		$array_books = get_option('bovp_array_books');
+
+		foreach($array_books as $book) {
+			
+			$site_map_content .= $base_url . $book['slug_name'] . '/<br>';
+
+			for ($i=1; $i<= $book['pages']; $i++) {
+
+				$site_map_content .= $base_url . $book['slug_name'] . '/' . $i . '/<br>';
+
+			}
+
+		}
+
+
+		echo $site_map_content;
+
+	}
 
 	/* Test status only */
 	/* ADD in the 1.5.1 Version */
