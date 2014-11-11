@@ -1811,44 +1811,7 @@ function bovpMenuInitPage() {
 }
 
 
-	/* Site Map Genarator */
 
-	function bovpSiteMap() {
-
-		$base_url = BOVP_URL;
-
-		$site_map_content = "";
-
-		// Sitema File Generate - Using DOM Object 
-        $sitemapxml = new DOMDocument();
-        $sitemapxml->loadXML('<?xml version="1.0" encoding="UTF-8"?>');
-
-
-
-
-
-
-
-
-
-		$array_books = get_option('bovp_array_books');
-
-		foreach($array_books as $book) {
-			
-			$site_map_content .= $base_url . $book['slug_name'] . '/<br>';
-
-			for ($i=1; $i<= $book['pages']; $i++) {
-
-				$site_map_content .= $base_url . $book['slug_name'] . '/' . $i . '/<br>';
-
-			}
-
-		}
-
-
-		echo $site_map_content;
-
-	}
 
 	/* Test status only */
 	/* ADD in the 1.5.1 Version */
