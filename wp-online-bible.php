@@ -90,8 +90,6 @@ function bovpShowBible($content) {
 
 		global $bovp_vars;
 
-		bovpSiteMap();
-
 		$bovp_daily_verse = get_option('bovp_daily_verse');
 		
 		if(isset($_REQUEST['test_plugin'])){bovpShowStatus(); return false;}
