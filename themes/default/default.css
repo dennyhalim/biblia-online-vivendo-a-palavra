@@ -1,4 +1,4 @@
-@charset "utf-8";
+bovp_social_icons@charset "utf-8";
 
 /* GOOGLE FONTS */
 
@@ -503,6 +503,7 @@ ul.bovp_social_icons {
 	float: left;
 	list-style: none;
 	margin: 0;
+	padding: 0;
 
 }
 
